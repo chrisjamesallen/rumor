@@ -5,8 +5,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class mesh;
+@class renderer;
 
-@interface director : NSObject
-
-- (void)start;
+@interface chris : NSObject
+@property(nonatomic, retain) mesh *mesh;
+@property(nonatomic, assign) renderer *renderer;
 @end

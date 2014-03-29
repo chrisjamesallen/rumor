@@ -5,13 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class mesh;
-@class renderer;
 
+@interface Emma : NSObject
 
-@interface foo : NSObject
-
-
-@property(nonatomic, retain) mesh *mesh;
-@property(nonatomic, assign) renderer *renderer;
+- (void)start;
 @end

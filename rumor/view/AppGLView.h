@@ -8,13 +8,13 @@
 #import <GLKit/GLKit.h>
 #import <QuartzCore/CVDisplayLink.h>
 
-@class director;
+@class Emma;
 
 @interface AppGLView : NSOpenGLView <NSWindowDelegate>{
 @public
     NSSize  windowSize;
 }
-@property(nonatomic, retain) director *director;
+@property(nonatomic, retain) Emma *director;
 
 - (void)setup;
 @end

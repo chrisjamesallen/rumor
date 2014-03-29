@@ -4,12 +4,12 @@
 //
 #import <GLKit/GLKit.h>
 #import <OpenGL/OpenGL.h>
-#import "foo.h"
+#import "chris.h"
 #import "mesh.h"
 #import "renderer.h"
 
 
-@implementation foo
+@implementation chris
 
 - (id)init {
     self = [super init];

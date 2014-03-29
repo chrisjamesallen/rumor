@@ -3,12 +3,12 @@
 // Copyright (c) 2014 ___FULLUSERNAME___. All rights reserved.
 //
 
-#import "director.h"
-#import "foo.h"
+#import "Emma.h"
+#import "chris.h"
 
 
-@implementation director{
-    foo * test;
+@implementation Emma {
+    chris * test;
 }
 
 -(id) init;
@@ -16,27 +16,16 @@
     self = [super init];
     if(self != nil)
     {
-	test = [[foo alloc] init];
+	test = [[chris alloc] init];
     }
     return self;
 }
 
 -(void)test{
-    //create fooObject
-
-    
-
     [test draw];
-
-
-    //create mesh
-    //create renderer
 }
-
-
 
 - (void)start {
     [self test];
-
 }
 @end

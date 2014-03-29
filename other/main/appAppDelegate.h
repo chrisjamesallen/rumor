@@ -9,12 +9,12 @@
 #import <Cocoa/Cocoa.h>
 
 @class AppGLView;
-@class director;
+@class Emma;
 
 @interface appAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 
 @property(nonatomic, retain) AppGLView *glview;
-@property(nonatomic, retain) director *director;
+@property(nonatomic, retain) Emma *director;
 @end

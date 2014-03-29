@@ -8,7 +8,7 @@
 
 #import "appAppDelegate.h"
 #import "AppGLView.h"
-#import "director.h"
+#import "Emma.h"
 
 @implementation appAppDelegate
 
@@ -28,18 +28,18 @@
     
     //add view to window
 //    [window.contentView addSubview:self.glview];
-	[window setContentView:self.glview];ch
+	[window setContentView:self.glview];
     self.glview->windowSize =  window.frame.size;
 	self.glview.frame = CGRectMake(0, 0, window.frame.size.width, window.frame.size.height);
 
     //prepare view opengl.. :)
     //[self.glview prepareOpenGL];
 
-    //create director
-    self.director = [[[director alloc]init] autorelease];
+    //create Emma
+    self.director = [[[Emma alloc]init] autorelease];
 
-    //start director :)
-    //[self.director start];
+    //start Emma :)
+    //[self.Emma start];
 
     self.glview.director = self.director;
     //Make full screen dimensions..

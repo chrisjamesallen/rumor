@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		72AF10E2869F8E60ED3B18E3 /* renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1EB80487E93A7DD0CD45 /* renderer.m */; };
 		72AF1141A1EDD2938130CE7A /* mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1EAE593CFB90B0A15129 /* mesh.m */; };
-		72AF1240C254A3A66F10107A /* director.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1756FCF6BEDAF09E4A10 /* director.m */; };
+		72AF1240C254A3A66F10107A /* Emma.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1756FCF6BEDAF09E4A10 /* Emma.m */; };
 		72AF12BD14D286F5E3C798B8 /* texture.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1B019C5D67A0DA70D863 /* texture.m */; };
-		72AF13433173929534D04D3E /* foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1353DC6398EF39932983 /* foo.m */; };
+		72AF13433173929534D04D3E /* chris.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1353DC6398EF39932983 /* chris.m */; };
 		72AF139ABEED6C9736EF9F6F /* AppGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF18F27E3CDC58BD7E60E3 /* AppGLView.m */; };
 		72AF14120CEA2A77EFBBF4E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72AF183E8E4DD4BA995AE04D /* InfoPlist.strings */; };
 		72AF1552931FC6E1DEF5DA68 /* default.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 72AF12AD3D83846937D537FA /* default.vsh */; };
@@ -36,16 +36,16 @@
 		72AF11AD808DCCFF833C4E95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72AF128DA5A06EE92305716E /* appAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appAppDelegate.h; sourceTree = "<group>"; };
 		72AF12AD3D83846937D537FA /* default.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.vsh; sourceTree = "<group>"; };
-		72AF1353DC6398EF39932983 /* foo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = foo.m; sourceTree = "<group>"; };
+		72AF1353DC6398EF39932983 /* chris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chris.m; sourceTree = "<group>"; };
 		72AF136855377E4E09C2638D /* default.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.fsh; sourceTree = "<group>"; };
 		72AF13D31D0687192EC64940 /* rumor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "rumor-Info.plist"; sourceTree = "<group>"; };
 		72AF144559629296821E05E9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		72AF14CDD204742277F25466 /* director.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = director.h; sourceTree = "<group>"; };
+		72AF14CDD204742277F25466 /* Emma.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emma.h; sourceTree = "<group>"; };
 		72AF15A63B2C0ADA6F5C7534 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
 		72AF15E382E5CFB115F3A38E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = rumor/Base.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		72AF160C61584BE3AA343E74 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
 		72AF1728AC4CD3A035E2EB97 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		72AF1756FCF6BEDAF09E4A10 /* director.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = director.m; sourceTree = "<group>"; };
+		72AF1756FCF6BEDAF09E4A10 /* Emma.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emma.m; sourceTree = "<group>"; };
 		72AF17D2C51EA69B5B913618 /* rumor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rumor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72AF18D21E6E88E42E7CBABB /* rumor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "rumor-Prefix.pch"; sourceTree = "<group>"; };
 		72AF18F27E3CDC58BD7E60E3 /* AppGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppGLView.m; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		72AF1E7600476010528AA13D /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
 		72AF1EAE593CFB90B0A15129 /* mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mesh.m; sourceTree = "<group>"; };
 		72AF1EB80487E93A7DD0CD45 /* renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = renderer.m; sourceTree = "<group>"; };
-		72AF1EC6639600773CED5076 /* foo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foo.h; sourceTree = "<group>"; };
+		72AF1EC6639600773CED5076 /* chris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chris.h; sourceTree = "<group>"; };
 		BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCDE08D118DDF07C002587B8 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BCDE08D318DDF0B6002587B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -175,10 +175,10 @@
 		72AF1C2A6460A0BC9E763974 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				72AF1756FCF6BEDAF09E4A10 /* director.m */,
-				72AF14CDD204742277F25466 /* director.h */,
-				72AF1353DC6398EF39932983 /* foo.m */,
-				72AF1EC6639600773CED5076 /* foo.h */,
+				72AF1756FCF6BEDAF09E4A10 /* Emma.m */,
+				72AF14CDD204742277F25466 /* Emma.h */,
+				72AF1353DC6398EF39932983 /* chris.m */,
+				72AF1EC6639600773CED5076 /* chris.h */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -284,8 +284,8 @@
 			files = (
 				72AF139ABEED6C9736EF9F6F /* AppGLView.m in Sources */,
 				72AF18F99137FCA1F6743C9F /* main.m in Sources */,
-				72AF1240C254A3A66F10107A /* director.m in Sources */,
-				72AF13433173929534D04D3E /* foo.m in Sources */,
+				72AF1240C254A3A66F10107A /* Emma.m in Sources */,
+				72AF13433173929534D04D3E /* chris.m in Sources */,
 				72AF1141A1EDD2938130CE7A /* mesh.m in Sources */,
 				72AF10E2869F8E60ED3B18E3 /* renderer.m in Sources */,
 				72AF12BD14D286F5E3C798B8 /* texture.m in Sources */,
