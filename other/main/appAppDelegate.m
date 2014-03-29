@@ -28,7 +28,7 @@
     
     //add view to window
 //    [window.contentView addSubview:self.glview];
-	[window setContentView:self.glview];
+	[window setContentView:self.glview];ch
     self.glview->windowSize =  window.frame.size;
 	self.glview.frame = CGRectMake(0, 0, window.frame.size.width, window.frame.size.height);
 
