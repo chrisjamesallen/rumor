@@ -28,7 +28,7 @@
 
 - (void)clearContent
 {
-	[[NSColor colorWithCalibratedRed: 0.01 green: 0.01 blue: 0.4 alpha:0.4] set];
+	[[NSColor colorWithCalibratedRed: 0 green: 0 blue: 0 alpha:0] set];
 	//[[NSColor colorWithCalibratedRed: 0.00 green: 0.00 blue: 0.0 alpha:0.4] set];
 	NSRectFill([self bounds]);
 }
