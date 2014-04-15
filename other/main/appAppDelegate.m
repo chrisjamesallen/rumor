@@ -42,7 +42,7 @@
     //[self.Emma start];
 
     self.glview.director = self.director;
-    //Make full screen dimensions..
+      //Make full screen dimensions..
     //CGRect frame = [NSScreen mainScreen].frame;
     //[window setFrame: frame display:YES];
 

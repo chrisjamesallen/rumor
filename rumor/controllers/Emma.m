@@ -8,7 +8,7 @@
 
 
 @implementation Emma {
-    chris * test;
+    chris * shape;
 }
 
 -(id) init;
@@ -16,16 +16,13 @@
     self = [super init];
     if(self != nil)
     {
-	test = [[chris alloc] init];
+	shape = [[chris alloc] init];
     }
     return self;
 }
-
--(void)test{
-    [test draw];
-}
+ 
 
 - (void)start {
-    [self test];
+    [shape draw];
 }
 @end
