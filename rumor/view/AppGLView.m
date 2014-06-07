@@ -1,7 +1,7 @@
 #import "AppGLView.h"
 
-const NSString * LUA_PATH = @"/Users/chrisallen/projects/rumor/scripts/";
-const NSString * LUA_MAIN = @"/Users/chrisallen/projects/rumor/scripts/main.lua";
+const NSString * LUA_PATH = @"/Users/chrisallen/projects/desky/scripts/";
+const NSString * LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
 static int gl_enable(lua_State *L);
 static int gl_clearcolor(lua_State *L);
 void loadLuaMetaTable(lua_State * L, const luaL_Reg *table, const char * name){
@@ -51,7 +51,6 @@ static int gl_clearcolor(lua_State *L){
 -(void)startUpLua {
     L = luaL_newstate();
     luaL_openlibs(L);
-    //setenv("LUA_PATH", "/Users/chrisallen/projects/rumor/scripts/", 1);
     //add watcher support
     kqueue = [UKKQueue sharedFileWatcher];
     [kqueue addPath:LUA_MAIN];

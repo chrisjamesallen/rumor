@@ -1,13 +1,13 @@
 
-/* : so here we want to load up the game engine emma,
+/* So here we want to load up the game engine emma,
  set window size and we are good to go!
  =================================================== */
 
-#import "appAppDelegate.h"
+#import "app.h"
 #import "AppGLView.h"
 #import "Emma.h"
 
-@implementation appAppDelegate
+@implementation App
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -15,14 +15,18 @@
   [self setupDirector];
 }
 
+
 -(void)configureWindow{
+  
   //make translucent
   [self.window setOpaque:NO];
   NSColor * transparent = [NSColor colorWithCalibratedWhite:1.0 alpha:0.4];
   [self.window setBackgroundColor:transparent];
 }
 
+
 -(void)setupDirector{
+  
   //vars
   NSWindow * window = self.window;
   
@@ -37,15 +41,12 @@
   //set view dimensions
   self.glview->windowSize =  window.frame.size;
 	self.glview.frame = CGRectMake(0, 0, window.frame.size.width, window.frame.size.height);
-  //Make full screen dimensions..
-  //CGRect frame = [NSScreen mainScreen].frame;
-  //[window setFrame: frame display:YES];
   
   //create Emma
-  self.director = [[[Emma alloc]init] autorelease];
+  self.emma = [[[Emma alloc]init] autorelease];
   
   //assign emma to view
-  self.glview.director = self.director;
+  self.glview.director = self.emma;
   
 }
 
@@ -54,7 +55,7 @@
 
 
 - (void)dealloc {
-  [_director release];
+  [_emma release];
   [super dealloc];
 }
 

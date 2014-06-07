@@ -11,10 +11,10 @@
 @class AppGLView;
 @class Emma;
 
-@interface appAppDelegate : NSObject <NSApplicationDelegate>
+@interface App : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 
 @property(nonatomic, retain) AppGLView *glview;
-@property(nonatomic, retain) Emma *director;
+@property(nonatomic, retain) Emma *emma;
 @end

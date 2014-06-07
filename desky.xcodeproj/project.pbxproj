@@ -17,10 +17,10 @@
 		72AF1552931FC6E1DEF5DA68 /* default.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 72AF12AD3D83846937D537FA /* default.vsh */; };
 		72AF15B5CE93CAD0A1D8BEDF /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 72AF1C8FF9A6E9203A597204 /* readme.txt */; };
 		72AF16694FB538CED698330B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 72AF1F7C52B8AF283C0E44A2 /* Credits.rtf */; };
-		72AF18B8D92EF49D61111960 /* appAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1042F698081DF1660915 /* appAppDelegate.m */; };
+		72AF18B8D92EF49D61111960 /* app.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1042F698081DF1660915 /* app.m */; };
 		72AF18F99137FCA1F6743C9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1728AC4CD3A035E2EB97 /* main.m */; };
 		72AF196F30A00FA55C3CC9F4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72AF1CC5D97BCA23032105B3 /* Images.xcassets */; };
-		72AF1B4B7F02A1BEBD32BB06 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF134F9D30135C8ACF058A /* MainMenu.xib */; };
+		72AF1B4B7F02A1BEBD32BB06 /* app.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72AF134F9D30135C8ACF058A /* app.xib */; };
 		72AF1CFCC850CA72EEE269F2 /* default.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 72AF136855377E4E09C2638D /* default.fsh */; };
 		72AF1DAC87E1E41FA5D12CCA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF1DF4C009A23351ADAA58 /* OpenGL.framework */; };
 		72AF1FE9C5EE931DF7440FB5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF196F0065B0BF8B317CF5 /* Cocoa.framework */; };
@@ -68,10 +68,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		72AF1042F698081DF1660915 /* appAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appAppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
+		72AF1042F698081DF1660915 /* app.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = app.m; sourceTree = "<group>"; usesTabs = 0; };
 		72AF118FFBCCBCEC7B26AC62 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		72AF11AD808DCCFF833C4E95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		72AF128DA5A06EE92305716E /* appAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appAppDelegate.h; sourceTree = "<group>"; };
+		72AF128DA5A06EE92305716E /* app.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app.h; sourceTree = "<group>"; };
 		72AF12AD3D83846937D537FA /* default.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.vsh; sourceTree = "<group>"; };
 		72AF1353DC6398EF39932983 /* chris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chris.m; sourceTree = "<group>"; };
 		72AF136855377E4E09C2638D /* default.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.fsh; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		72AF144559629296821E05E9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		72AF14CDD204742277F25466 /* Emma.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emma.h; sourceTree = "<group>"; };
 		72AF15A63B2C0ADA6F5C7534 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
-		72AF15E382E5CFB115F3A38E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = rumor/Base.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
+		72AF15E382E5CFB115F3A38E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = rumor/Base.lproj/app.xib; sourceTree = SOURCE_ROOT; };
 		72AF160C61584BE3AA343E74 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
 		72AF1728AC4CD3A035E2EB97 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../rumor/main.m; sourceTree = "<group>"; };
 		72AF1756FCF6BEDAF09E4A10 /* Emma.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emma.m; sourceTree = "<group>"; };
@@ -243,13 +243,12 @@
 				72AF1DF4C009A23351ADAA58 /* OpenGL.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		72AF10C9025F77D679CB67FA = {
 			isa = PBXGroup;
 			children = (
-				72AF128A88F5682B7A3BB410 /* Products */,
-				72AF104082EBD70AC73DFE58 /* Frameworks */,
 				72AF1D5E33684D7E53676F56 /* rumor */,
 				72AF1D9B43962BA9C3A73D3D /* other */,
 			);
@@ -272,6 +271,7 @@
 				72AF17D2C51EA69B5B913618 /* desky.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		72AF12929BAD15036CA86B7B /* Supporting Files */ = {
@@ -300,8 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				72AF1728AC4CD3A035E2EB97 /* main.m */,
-				72AF1042F698081DF1660915 /* appAppDelegate.m */,
-				72AF128DA5A06EE92305716E /* appAppDelegate.h */,
+				72AF1042F698081DF1660915 /* app.m */,
+				72AF128DA5A06EE92305716E /* app.h */,
 			);
 			name = main;
 			path = ../other/main;
@@ -322,10 +322,10 @@
 		72AF1C2A6460A0BC9E763974 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				72AF1756FCF6BEDAF09E4A10 /* Emma.m */,
 				72AF14CDD204742277F25466 /* Emma.h */,
-				72AF1353DC6398EF39932983 /* chris.m */,
+				72AF1756FCF6BEDAF09E4A10 /* Emma.m */,
 				72AF1EC6639600773CED5076 /* chris.h */,
+				72AF1353DC6398EF39932983 /* chris.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -347,6 +347,8 @@
 		72AF1D9B43962BA9C3A73D3D /* other */ = {
 			isa = PBXGroup;
 			children = (
+				72AF128A88F5682B7A3BB410 /* Products */,
+				72AF104082EBD70AC73DFE58 /* Frameworks */,
 				BC438C4818FC982400AA5D15 /* lua */,
 				BC663EB018F9C0B8001DB2C3 /* libraries */,
 				72AF12929BAD15036CA86B7B /* Supporting Files */,
@@ -359,7 +361,7 @@
 			children = (
 				72AF18F27E3CDC58BD7E60E3 /* AppGLView.m */,
 				72AF1E0CC06A0A4269E2F863 /* AppGLView.h */,
-				72AF134F9D30135C8ACF058A /* MainMenu.xib */,
+				72AF134F9D30135C8ACF058A /* app.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -546,7 +548,7 @@
 			files = (
 				72AF196F30A00FA55C3CC9F4 /* Images.xcassets in Resources */,
 				72AF15B5CE93CAD0A1D8BEDF /* readme.txt in Resources */,
-				72AF1B4B7F02A1BEBD32BB06 /* MainMenu.xib in Resources */,
+				72AF1B4B7F02A1BEBD32BB06 /* app.xib in Resources */,
 				72AF14120CEA2A77EFBBF4E5 /* InfoPlist.strings in Resources */,
 				72AF16694FB538CED698330B /* Credits.rtf in Resources */,
 				72AF1CFCC850CA72EEE269F2 /* default.fsh in Resources */,
@@ -605,19 +607,19 @@
 				BC438CF218FC9E8100AA5D15 /* UKFileWatcher.m in Sources */,
 				BC438CB718FC982400AA5D15 /* ldo.c in Sources */,
 				BC438CA518FC982400AA5D15 /* lapi.c in Sources */,
-				72AF18B8D92EF49D61111960 /* appAppDelegate.m in Sources */,
+				72AF18B8D92EF49D61111960 /* app.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		72AF134F9D30135C8ACF058A /* MainMenu.xib */ = {
+		72AF134F9D30135C8ACF058A /* app.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				72AF15E382E5CFB115F3A38E /* Base */,
 			);
-			name = MainMenu.xib;
+			name = app.xib;
 			sourceTree = "<group>";
 		};
 		72AF183E8E4DD4BA995AE04D /* InfoPlist.strings */ = {
