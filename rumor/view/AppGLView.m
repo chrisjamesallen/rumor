@@ -1,9 +1,5 @@
 #import "AppGLView.h"
 
-
-
-
-
 const NSString * LUA_PATH = @"/Users/chrisallen/projects/rumor/scripts/";
 const NSString * LUA_MAIN = @"/Users/chrisallen/projects/rumor/scripts/main.lua";
 static int gl_enable(lua_State *L);

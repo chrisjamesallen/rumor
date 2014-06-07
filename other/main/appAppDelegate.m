@@ -1,10 +1,4 @@
-//
-//  appAppDelegate.m
-//  rumor
-//
-//  Created by ChrisAllen on 22/03/2014.
-//  Copyright (c) 2014 ChrisAllen. All rights reserved.
-//
+
 
 #import "appAppDelegate.h"
 #import "AppGLView.h"
@@ -31,10 +25,7 @@
 	[window setContentView:self.glview];
     self.glview->windowSize =  window.frame.size;
 	self.glview.frame = CGRectMake(0, 0, window.frame.size.width, window.frame.size.height);
-
-    //prepare view opengl.. :)
-    //[self.glview prepareOpenGL];
-
+ 
     //create Emma
     self.director = [[[Emma alloc]init] autorelease];
 

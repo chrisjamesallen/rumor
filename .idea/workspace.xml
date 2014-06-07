@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb5cf8b-8075-4104-9fff-6b1fd006eee3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rumor/lua/lua" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rumor/lua/luac" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rumor/lua/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rumor.xcodeproj/project.xcworkspace/xcuserdata/chrisallen.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/rumor.xcodeproj/project.xcworkspace/xcuserdata/chrisallen.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rumor/view/AppGLView.m" afterPath="$PROJECT_DIR$/rumor/view/AppGLView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rumor.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/rumor.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="cdb5cf8b-8075-4104-9fff-6b1fd006eee3" name="Default" comment="" />
     <ignored path="rumor.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,37 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="default.vsh" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rumor/shaders/default.vsh">
+      <file leaf-file-name="Emma.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rumor/controllers/Emma.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mesh.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rumor/meshes+texture/mesh.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="14" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1326">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="renderer.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rumor/shaders/renderer.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="9" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="5253">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppGLView.m" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/rumor/view/AppGLView.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="0" selection-start="1991" selection-end="1991" vertical-scroll-proportion="0.39854318" vertical-offset="790" max-vertical-offset="1751">
+            <state line="17" column="5" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="561">
               <folding />
             </state>
           </provider>
@@ -76,10 +41,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Emma.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rumor/controllers/Emma.m">
+      <file leaf-file-name="AppGLView.m" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/rumor/view/AppGLView.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="16" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="612">
+            <state line="135" column="0" selection-start="3827" selection-end="3827" vertical-scroll-proportion="1.0853277" vertical-offset="1657" max-vertical-offset="2618">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="renderer.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rumor/shaders/renderer.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="9" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="5253">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mesh.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rumor/meshes+texture/mesh.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="14" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1326">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.vsh" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rumor/shaders/default.vsh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289">
               <folding />
             </state>
           </provider>
@@ -128,9 +120,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
+    <option name="x" value="52" />
     <option name="y" value="22" />
-    <option name="width" value="1916" />
+    <option name="width" value="1868" />
     <option name="height" value="1058" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -392,24 +384,6 @@
               <option name="myItemId" value="rumor" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="other" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -418,12 +392,12 @@
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="FullScreen" value="false" />
     <property name="OBJC.PRESERVED_TARGET_SELECTION" value="rumor" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Application.rumor">
     <configuration default="false" name="rumor" type="AppleRunConfiguration" factoryName="Application" temporary="true" SCHEME_NAME="rumor" PROJECT_NAME="rumor" TARGET_NAME="rumor" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" RUN_TARGET_PROJECT_NAME="rumor" RUN_TARGET_NAME="rumor" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
@@ -483,13 +457,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="22" width="1916" height="1058" extended-state="0" />
+    <frame x="52" y="22" width="1868" height="1058" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292517" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24984346" sideWeight="0.7679763" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15396659" sideWeight="0.8503539" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15364026" sideWeight="0.8503539" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.35510203" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="836" y="643" width="1033" height="397" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293371" sideWeight="0.4272109" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" weight="0.3292517" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" x="1710" y="53" width="186" height="215" />
@@ -575,13 +549,6 @@
         <state line="8" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rumor/shaders/default.vsh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rumor/controllers/chris.m">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="1" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
@@ -591,7 +558,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rumor/controllers/Emma.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="16" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+        <state line="17" column="5" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="561">
           <folding />
         </state>
       </provider>
@@ -612,7 +579,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rumor/view/AppGLView.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="1991" selection-end="1991" vertical-scroll-proportion="0.39854318" vertical-offset="790" max-vertical-offset="1751">
+        <state line="135" column="0" selection-start="3827" selection-end="3827" vertical-scroll-proportion="1.0853277" vertical-offset="1657" max-vertical-offset="2618">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rumor/shaders/default.vsh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <folding />
         </state>
       </provider>

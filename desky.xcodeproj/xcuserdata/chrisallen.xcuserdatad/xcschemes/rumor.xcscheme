@@ -15,8 +15,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "72AF1B0D83BF58C726478BDD"
                BuildableName = "rumor.app"
-               BlueprintName = "rumor"
-               ReferencedContainer = "container:rumor.xcodeproj">
+               BlueprintName = "desky"
+               ReferencedContainer = "container:desky.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,7 +30,7 @@
                BlueprintIdentifier = "72AF16D0A1B6C843A6317E71"
                BuildableName = "rumorTests"
                BlueprintName = "rumorTests"
-               ReferencedContainer = "container:rumor.xcodeproj">
+               ReferencedContainer = "container:desky.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,8 +47,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "72AF1B0D83BF58C726478BDD"
             BuildableName = "rumor.app"
-            BlueprintName = "rumor"
-            ReferencedContainer = "container:rumor.xcodeproj">
+            BlueprintName = "desky"
+            ReferencedContainer = "container:desky.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -66,8 +66,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "72AF1B0D83BF58C726478BDD"
             BuildableName = "rumor.app"
-            BlueprintName = "rumor"
-            ReferencedContainer = "container:rumor.xcodeproj">
+            BlueprintName = "desky"
+            ReferencedContainer = "container:desky.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

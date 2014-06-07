@@ -68,23 +68,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		72AF1042F698081DF1660915 /* appAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appAppDelegate.m; sourceTree = "<group>"; };
+		72AF1042F698081DF1660915 /* appAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appAppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
 		72AF118FFBCCBCEC7B26AC62 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		72AF11AD808DCCFF833C4E95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72AF128DA5A06EE92305716E /* appAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appAppDelegate.h; sourceTree = "<group>"; };
 		72AF12AD3D83846937D537FA /* default.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.vsh; sourceTree = "<group>"; };
 		72AF1353DC6398EF39932983 /* chris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chris.m; sourceTree = "<group>"; };
 		72AF136855377E4E09C2638D /* default.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.fsh; sourceTree = "<group>"; };
-		72AF13D31D0687192EC64940 /* rumor-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "rumor-Info.plist"; sourceTree = "<group>"; };
+		72AF13D31D0687192EC64940 /* desky-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "desky-Info.plist"; sourceTree = "<group>"; };
 		72AF144559629296821E05E9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		72AF14CDD204742277F25466 /* Emma.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emma.h; sourceTree = "<group>"; };
 		72AF15A63B2C0ADA6F5C7534 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
 		72AF15E382E5CFB115F3A38E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = rumor/Base.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		72AF160C61584BE3AA343E74 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
-		72AF1728AC4CD3A035E2EB97 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		72AF1728AC4CD3A035E2EB97 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../rumor/main.m; sourceTree = "<group>"; };
 		72AF1756FCF6BEDAF09E4A10 /* Emma.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emma.m; sourceTree = "<group>"; };
-		72AF17D2C51EA69B5B913618 /* rumor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rumor.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		72AF18D21E6E88E42E7CBABB /* rumor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "rumor-Prefix.pch"; sourceTree = "<group>"; };
+		72AF17D2C51EA69B5B913618 /* desky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = desky.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72AF18D21E6E88E42E7CBABB /* desky-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "desky-Prefix.pch"; sourceTree = "<group>"; };
 		72AF18F27E3CDC58BD7E60E3 /* AppGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppGLView.m; sourceTree = "<group>"; };
 		72AF196F0065B0BF8B317CF5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		72AF1A59195EC0913F051CBA /* plane_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plane_mesh.h; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 		72AF128A88F5682B7A3BB410 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				72AF17D2C51EA69B5B913618 /* rumor.app */,
+				72AF17D2C51EA69B5B913618 /* desky.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -277,10 +277,9 @@
 		72AF12929BAD15036CA86B7B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				72AF13D31D0687192EC64940 /* rumor-Info.plist */,
+				72AF13D31D0687192EC64940 /* desky-Info.plist */,
 				72AF183E8E4DD4BA995AE04D /* InfoPlist.strings */,
-				72AF1728AC4CD3A035E2EB97 /* main.m */,
-				72AF18D21E6E88E42E7CBABB /* rumor-Prefix.pch */,
+				72AF18D21E6E88E42E7CBABB /* desky-Prefix.pch */,
 				72AF1F7C52B8AF283C0E44A2 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -300,6 +299,7 @@
 		72AF16F3C0E558AFCD332A9A /* main */ = {
 			isa = PBXGroup;
 			children = (
+				72AF1728AC4CD3A035E2EB97 /* main.m */,
 				72AF1042F698081DF1660915 /* appAppDelegate.m */,
 				72AF128DA5A06EE92305716E /* appAppDelegate.h */,
 			);
@@ -497,9 +497,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		72AF1B0D83BF58C726478BDD /* rumor */ = {
+		72AF1B0D83BF58C726478BDD /* desky */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 72AF127DD316831B938D1738 /* Build configuration list for PBXNativeTarget "rumor" */;
+			buildConfigurationList = 72AF127DD316831B938D1738 /* Build configuration list for PBXNativeTarget "desky" */;
 			buildPhases = (
 				72AF16788CF78E42360E516F /* Sources */,
 				72AF1A00326B54A227D8091C /* Frameworks */,
@@ -509,9 +509,9 @@
 			);
 			dependencies = (
 			);
-			name = rumor;
+			name = desky;
 			productName = rumor;
-			productReference = 72AF17D2C51EA69B5B913618 /* rumor.app */;
+			productReference = 72AF17D2C51EA69B5B913618 /* desky.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -522,7 +522,7 @@
 			attributes = {
 				ORGANIZATIONNAME = "___FULLUSERNAME___";
 			};
-			buildConfigurationList = 72AF162AB783A6E18F0AAB05 /* Build configuration list for PBXProject "rumor" */;
+			buildConfigurationList = 72AF162AB783A6E18F0AAB05 /* Build configuration list for PBXProject "desky" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -534,7 +534,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				72AF1B0D83BF58C726478BDD /* rumor */,
+				72AF1B0D83BF58C726478BDD /* desky */,
 			);
 		};
 /* End PBXProject section */
@@ -646,8 +646,9 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "rumor/rumor-Prefix.pch";
-				INFOPLIST_FILE = "rumor/rumor-Info.plist";
+				GCC_PREFIX_HEADER = "rumor/desky-Prefix.pch";
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				INFOPLIST_FILE = "rumor/desky-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/chrisallen/Downloads/lua-5.2.3/src",
@@ -656,7 +657,7 @@
 					/Users/chrisallen/projects/lib,
 					"$(PROJECT_DIR)/other/src",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = desky;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -668,8 +669,9 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "rumor/rumor-Prefix.pch";
-				INFOPLIST_FILE = "rumor/rumor-Info.plist";
+				GCC_PREFIX_HEADER = "rumor/desky-Prefix.pch";
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				INFOPLIST_FILE = "rumor/desky-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/chrisallen/Downloads/lua-5.2.3/src",
@@ -678,7 +680,7 @@
 					/Users/chrisallen/projects/lib,
 					"$(PROJECT_DIR)/other/src",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = desky;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -756,7 +758,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		72AF127DD316831B938D1738 /* Build configuration list for PBXNativeTarget "rumor" */ = {
+		72AF127DD316831B938D1738 /* Build configuration list for PBXNativeTarget "desky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				72AF1916838894370F069D8D /* Release */,
@@ -765,7 +767,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		72AF162AB783A6E18F0AAB05 /* Build configuration list for PBXProject "rumor" */ = {
+		72AF162AB783A6E18F0AAB05 /* Build configuration list for PBXProject "desky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				72AF1E25CE272ACB42A023E0 /* Release */,
