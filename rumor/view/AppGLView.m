@@ -77,7 +77,6 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     // [NSOpenGLContext currentContext]; (the opengl context, what we use to
     // draw our own stuff)
     [self clearView];
-    NSLog( @"draw" );
 }
 
 - (void)reshape {

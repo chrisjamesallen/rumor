@@ -293,6 +293,7 @@
 #define lua_strlen(L,i)		lua_rawlen(L, (i))
 
 #define lua_objlen(L,i)		lua_rawlen(L, (i))
+#define luaL_getn(L,i)		lua_objlen(L,i)
 
 #define lua_equal(L,idx1,idx2)		lua_compare(L,(idx1),(idx2),LUA_OPEQ)
 #define lua_lessthan(L,idx1,idx2)	lua_compare(L,(idx1),(idx2),LUA_OPLT)

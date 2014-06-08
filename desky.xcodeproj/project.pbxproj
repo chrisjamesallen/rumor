@@ -24,6 +24,7 @@
 		72AF1CFCC850CA72EEE269F2 /* default.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 72AF136855377E4E09C2638D /* default.fsh */; };
 		72AF1DAC87E1E41FA5D12CCA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF1DF4C009A23351ADAA58 /* OpenGL.framework */; };
 		72AF1FE9C5EE931DF7440FB5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF196F0065B0BF8B317CF5 /* Cocoa.framework */; };
+		BC31462E1944A5A400F475AC /* luagl_util.c in Sources */ = {isa = PBXBuildFile; fileRef = BC31462C1944A5A400F475AC /* luagl_util.c */; };
 		BC438CA518FC982400AA5D15 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = BC438C4918FC982400AA5D15 /* lapi.c */; };
 		BC438CA718FC982400AA5D15 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = BC438C4C18FC982400AA5D15 /* lauxlib.c */; };
 		BC438CA918FC982400AA5D15 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = BC438C4F18FC982400AA5D15 /* lbaselib.c */; };
@@ -61,10 +62,12 @@
 		BC438CF418FC9E8100AA5D15 /* UKKQueue Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC438CED18FC9E8100AA5D15 /* UKKQueue Readme.txt */; };
 		BC438CF518FC9E8100AA5D15 /* UKKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC438CEF18FC9E8100AA5D15 /* UKKQueue.m */; };
 		BC438CF618FC9E8100AA5D15 /* UKMainThreadProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */; };
+		BC74ACA719449627006D8543 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = BC74ACA619449627006D8543 /* scripts */; };
 		BCDE08D018DDF05F002587B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */; };
 		BCDE08D218DDF07C002587B8 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08D118DDF07C002587B8 /* Quartz.framework */; };
 		BCDE08D418DDF0B6002587B8 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08D318DDF0B6002587B8 /* GLKit.framework */; };
 		BCDE08D518DDF0C4002587B8 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF144559629296821E05E9 /* AppKit.framework */; };
+		BCF7D6ED1944A4F600B7F453 /* luagl.c in Sources */ = {isa = PBXBuildFile; fileRef = BCF7D6EB1944A45C00B7F453 /* luagl.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +103,8 @@
 		72AF1EAE593CFB90B0A15129 /* mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mesh.m; sourceTree = "<group>"; };
 		72AF1EB80487E93A7DD0CD45 /* renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = renderer.m; sourceTree = "<group>"; };
 		72AF1EC6639600773CED5076 /* chris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chris.h; sourceTree = "<group>"; };
+		BC31462C1944A5A400F475AC /* luagl_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = luagl_util.c; sourceTree = "<group>"; };
+		BC31462D1944A5A400F475AC /* luagl_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luagl_util.h; sourceTree = "<group>"; };
 		BC438C3F18FC965F00AA5D15 /* a.out */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = a.out; path = ../testlua/a.out; sourceTree = "<group>"; };
 		BC438C4118FC96CD00AA5D15 /* lua */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = lua; path = ../../../../usr/local/bin/lua; sourceTree = "<group>"; };
 		BC438C4318FC978800AA5D15 /* lua */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = lua; path = ../bin/lua; sourceTree = "<group>"; };
@@ -203,9 +208,12 @@
 		BC438CF018FC9E8100AA5D15 /* UKMainThreadProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKMainThreadProxy.h; sourceTree = "<group>"; };
 		BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKMainThreadProxy.m; sourceTree = "<group>"; };
 		BC663FB918F9C7D3001DB2C3 /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = "../../Downloads/lua-5.2.3/src/liblua.a"; sourceTree = "<group>"; };
+		BC74ACA619449627006D8543 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCDE08D118DDF07C002587B8 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BCDE08D318DDF0B6002587B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		BCF7D6EB1944A45C00B7F453 /* luagl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = luagl.c; sourceTree = "<group>"; };
+		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luagl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +257,7 @@
 		72AF10C9025F77D679CB67FA = {
 			isa = PBXGroup;
 			children = (
+				BC74ACA619449627006D8543 /* scripts */,
 				72AF1D5E33684D7E53676F56 /* rumor */,
 				72AF1D9B43962BA9C3A73D3D /* other */,
 			);
@@ -383,9 +392,13 @@
 				BC438C4C18FC982400AA5D15 /* lauxlib.c */,
 				BC438C4D18FC982400AA5D15 /* lauxlib.h */,
 				BC438C4E18FC982400AA5D15 /* lauxlib.o */,
+				BCF7D6EB1944A45C00B7F453 /* luagl.c */,
 				BC438C4F18FC982400AA5D15 /* lbaselib.c */,
 				BC438C5018FC982400AA5D15 /* lbaselib.o */,
 				BC438C5118FC982400AA5D15 /* lbitlib.c */,
+				BC31462C1944A5A400F475AC /* luagl_util.c */,
+				BC31462D1944A5A400F475AC /* luagl_util.h */,
+				BCF7D6EE1944A55300B7F453 /* luagl.h */,
 				BC438C5218FC982400AA5D15 /* lbitlib.o */,
 				BC438C5318FC982400AA5D15 /* lcode.c */,
 				BC438C5418FC982400AA5D15 /* lcode.h */,
@@ -549,6 +562,7 @@
 				72AF196F30A00FA55C3CC9F4 /* Images.xcassets in Resources */,
 				72AF15B5CE93CAD0A1D8BEDF /* readme.txt in Resources */,
 				72AF1B4B7F02A1BEBD32BB06 /* app.xib in Resources */,
+				BC74ACA719449627006D8543 /* scripts in Resources */,
 				72AF14120CEA2A77EFBBF4E5 /* InfoPlist.strings in Resources */,
 				72AF16694FB538CED698330B /* Credits.rtf in Resources */,
 				72AF1CFCC850CA72EEE269F2 /* default.fsh in Resources */,
@@ -564,6 +578,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCF7D6ED1944A4F600B7F453 /* luagl.c in Sources */,
 				BC438CC818FC982400AA5D15 /* lmem.c in Sources */,
 				BC438CCE18FC982400AA5D15 /* lopcodes.c in Sources */,
 				BC438CCC18FC982400AA5D15 /* lobject.c in Sources */,
@@ -588,6 +603,7 @@
 				72AF13433173929534D04D3E /* chris.m in Sources */,
 				BC438CF318FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m in Sources */,
 				BC438CC218FC982400AA5D15 /* liolib.c in Sources */,
+				BC31462E1944A5A400F475AC /* luagl_util.c in Sources */,
 				BC438CE418FC982400AA5D15 /* lvm.c in Sources */,
 				BC438CCA18FC982400AA5D15 /* loadlib.c in Sources */,
 				BC438CA918FC982400AA5D15 /* lbaselib.c in Sources */,
