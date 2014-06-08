@@ -7,6 +7,9 @@
 
 const NSString *LUA_PATH = @"/Users/chrisallen/projects/desky/scripts/";
 const NSString *LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
+
+
+/*
 static int gl_enable( lua_State *L );
 static int gl_clearcolor( lua_State *L );
 void loadLuaMetaTable( lua_State *L, const luaL_Reg *table, const char *name ) {
@@ -45,6 +48,8 @@ static int gl_clearcolor( lua_State *L ) {
     glFlush();
     return 0;
 }
+ 
+ */
 
 @implementation Emma {
     chris *shape;
@@ -71,10 +76,7 @@ static int gl_clearcolor( lua_State *L ) {
     [self setupFileWatcher];
     // create global lua state
     L = luaL_newstate();
-     luaopen_luagl(L);
-     
- 
-    
+    luaopen_luagl(L);
     // execute lua file
     [self executeLuaFile];
 }

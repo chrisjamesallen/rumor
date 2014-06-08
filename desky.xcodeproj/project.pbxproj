@@ -212,7 +212,7 @@
 		BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCDE08D118DDF07C002587B8 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BCDE08D318DDF0B6002587B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		BCF7D6EB1944A45C00B7F453 /* luagl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = luagl.c; sourceTree = "<group>"; };
+		BCF7D6EB1944A45C00B7F453 /* luagl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = luagl.c; path = ../other/src/luagl.c; sourceTree = "<group>"; };
 		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luagl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -345,6 +345,7 @@
 				72AF16F3C0E558AFCD332A9A /* main */,
 				72AF1CC5D97BCA23032105B3 /* Images.xcassets */,
 				72AF1C8FF9A6E9203A597204 /* readme.txt */,
+				BCF7D6EB1944A45C00B7F453 /* luagl.c */,
 				72AF1C2A6460A0BC9E763974 /* controllers */,
 				72AF1F5189DBB137FB89F04E /* view */,
 				72AF1AA3564666A1B07A1B72 /* meshes+texture */,
@@ -386,13 +387,12 @@
 		BC438C4818FC982400AA5D15 /* lua */ = {
 			isa = PBXGroup;
 			children = (
-				BC438C4918FC982400AA5D15 /* lapi.c */,
 				BC438C4A18FC982400AA5D15 /* lapi.h */,
 				BC438C4B18FC982400AA5D15 /* lapi.o */,
 				BC438C4C18FC982400AA5D15 /* lauxlib.c */,
 				BC438C4D18FC982400AA5D15 /* lauxlib.h */,
+				BC438C4918FC982400AA5D15 /* lapi.c */,
 				BC438C4E18FC982400AA5D15 /* lauxlib.o */,
-				BCF7D6EB1944A45C00B7F453 /* luagl.c */,
 				BC438C4F18FC982400AA5D15 /* lbaselib.c */,
 				BC438C5018FC982400AA5D15 /* lbaselib.o */,
 				BC438C5118FC982400AA5D15 /* lbitlib.c */,

@@ -4702,22 +4702,48 @@ static const struct  luaL_Reg luagl_lib[] = {
   {NULL, NULL}
 };
 
+
+void stackDump (lua_State *L) {
+    int i;
+    int top = lua_gettop(L);
+    printf("lua stack trace: ");
+    for (i = 1; i <= top; i++) {  /* repeat for each level */
+        int t = lua_type(L, i);
+        switch (t) {
+                
+            case LUA_TSTRING:  /* strings */
+                printf("`%s'", lua_tostring(L, i));
+                break;
+                
+            case LUA_TBOOLEAN:  /* booleans */
+                printf(lua_toboolean(L, i) ? "true" : "false");
+                break;
+                
+            case LUA_TNUMBER:  /* numbers */
+                printf("%g", lua_tonumber(L, i));
+                break;
+                
+            default:  /* other values */
+                printf("%s", lua_typename(L, t));
+                break;
+                
+        }
+        printf("  ");  /* put a separator */
+    }
+    printf("\n");  /* end the listing */
+}
+
+
+
 int luaopen_luagl(lua_State *L) 
 {
-    
- 
- luaL_openlibs( L );
+    luaL_openlibs( L );
     luaL_newmetatable( L, "gl" );
     lua_setfield( L, -1, "__index" );
     lua_newtable( L );
     luaL_setfuncs( L, luagl_lib, 0 );
-    lua_setglobal( L, "gl" );
-    
-  //luaL_openlibs(L, "gl", luagl_lib, 0);
-    //lua_settop(L,0);
-  //luagl_initconst(L, luagl_const);
-
- 
-
+    stackDump(L);
+    lua_setglobal( L, "gl" );// note pops top from stack
+    luagl_initconst(L, luagl_const);
   return 1;
 }

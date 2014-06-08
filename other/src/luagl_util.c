@@ -315,10 +315,13 @@ unsigned int luagl_get_enum(lua_State *L, int index, const luaglConst* gl_const)
 
 void luagl_initconst(lua_State *L, const luaglConst *gl_const)
 {
+    luaL_getmetatable(L, "gl");
   for (; gl_const->str; gl_const++) 
   {
     lua_pushstring(L, gl_const->str);
-    lua_pushnumber(L, gl_const->value);
+    lua_pushnumber(L, (uint) gl_const->value);
+    printf("set gl consts: string %s number %d \n", gl_const->str);
     lua_settable(L, -3);
+    //lua_setfield(L, -1, gl_const->str);
   }
 }

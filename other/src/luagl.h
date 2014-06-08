@@ -38,6 +38,7 @@ int luaopen_luagl( lua_State *L );
 
 
 #endif
+extern void stackDump (lua_State *L);
 static const struct  luaL_Reg luagl_lib[];
 static int luagl_viewport(lua_State *L);
  
