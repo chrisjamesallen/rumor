@@ -89,7 +89,7 @@ static int gl_clearcolor( lua_State *L ) {
     // grab all lua files
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *bundleURL = [[NSBundle mainBundle] resourceURL];
-    NSURL *scriptURL = [NSURL URLWithString:@"scripts/" relativeToURL:bundleURL];
+    NSURL *scriptURL = [NSURL URLWithString:@"scripts/emma/" relativeToURL:bundleURL];
     NSArray *contents =
         [fileManager contentsOfDirectoryAtURL:scriptURL
                    includingPropertiesForKeys:@[]
@@ -121,7 +121,8 @@ static int gl_clearcolor( lua_State *L ) {
 - (void)executeLuaFile {
     const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
     if ( luaL_loadfile( L, c ) || lua_pcall( L, 0, 0, 0 ) ) {
-        luaL_error( L, "cannot run lua :( %s", lua_tostring( L, -1 ) );
+        printf("cannot run lua :( %s", lua_tostring( L, -1 ) );
+        //luaL_error( L, "cannot run lua :( %s", lua_tostring( L, -1 ) );
     }
 }
 
