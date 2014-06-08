@@ -7,16 +7,12 @@
 #import <OpenGL/OpenGL.h>
 #import <GLKit/GLKit.h>
 #import <QuartzCore/CVDisplayLink.h>
-#include "lua.h"
-#include "lauxlib.h"
-#import "UKKQueue.h"
+
 @class Emma;
 
-@interface AppGLView : NSOpenGLView <NSWindowDelegate, UKFileWatcher>{
+@interface AppGLView : NSOpenGLView <NSWindowDelegate> {
 @public
-    NSSize  windowSize;
-    lua_State *L;
-    UKKQueue * kqueue;
+  NSSize windowSize;
 }
 @property(nonatomic, retain) Emma *director;
 

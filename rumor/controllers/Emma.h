@@ -1,12 +1,14 @@
-//
-// Created by ChrisAllen on 22/03/2014.
-// Copyright (c) 2014 ___FULLUSERNAME___. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
+#include "lua.h"
+#include "lauxlib.h"
+#import "UKKQueue.h"
 
-
-@interface Emma : NSObject
+@interface Emma : NSObject <UKFileWatcher> {
+@public
+  lua_State *L;
+  UKKQueue *kqueue;
+}
 
 - (void)start;
+- (void)startUpLua;
 @end

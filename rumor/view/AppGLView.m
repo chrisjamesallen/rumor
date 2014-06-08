@@ -1,144 +1,144 @@
 #import "AppGLView.h"
 
-const NSString * LUA_PATH = @"/Users/chrisallen/projects/desky/scripts/";
-const NSString * LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
-static int gl_enable(lua_State *L);
-static int gl_clearcolor(lua_State *L);
-void loadLuaMetaTable(lua_State * L, const luaL_Reg *table, const char * name){
-    luaL_newmetatable(L, name);
-    lua_setfield(L, -1, "__index");
-    lua_newtable(L);
-    luaL_setfuncs(L, table, 0);
-    lua_setglobal(L, "gl");
-}
-static const struct luaL_Reg gl [] = {
-    {"blendMode", gl_enable},
-    {"enable", gl_enable},
-    {"disable", gl_enable},
-    {"clearColor", gl_clearcolor},
-    {"flush", gl_enable},
-    {NULL, NULL}
-};
+// c callbacks
+// This is the callback function for the display link.
+static CVReturn OpenGLViewCoreProfileCallBack(CVDisplayLinkRef displayLink,
+                                              const CVTimeStamp *now,
+                                              const CVTimeStamp *outputTime,
+                                              CVOptionFlags flagsIn,
+                                              CVOptionFlags *flagsOut,
+                                              void *displayLinkContext) {
+  @autoreleasepool {
+    AppGLView *view = (__bridge AppGLView *)displayLinkContext;
+    [view.openGLContext makeCurrentContext];
+    CGLLockContext(view.openGLContext.CGLContextObj); // This is needed because
+                                                      // this isn't running on
+                                                      // the main thread.
+    [view drawy:view.bounds]; // Draw the scene. This doesn't need to be in
 
-static int gl_enable(lua_State *L){
-    //get string
+    // the drawRect method.
+    CGLUnlockContext(view.openGLContext.CGLContextObj);
+    CGLFlushDrawable(
+        view.openGLContext.CGLContextObj); // This does glFlush() for you.
 
-    //set on gl enable...
-    return 0;
+    return kCVReturnSuccess;
+  }
 }
 
-static int gl_clearcolor(lua_State *L){
-    //get all four values
-    
-    //set on gl color...
-    glClearColor(1, 1, 0, 1);
-    glFlush();
-    return 0;
+/* : AppGLView
+ =================================================== */
+@interface AppGLView () {
+  CVDisplayLinkRef *dL;
+}
+@property(atomic, assign) CVDisplayLinkRef *displayLink;
+@end
+
+@implementation AppGLView {
 }
 
-@implementation AppGLView
+- (void)setup {
 
+  NSLog(@"setup app gl view");
+  // var
+  int aValue = 0;
+  NSOpenGLPixelFormat *format;
+  NSOpenGLContext *context;
 
-- (void)mouseUp:(NSEvent *)theEvent{
-    NSLog(@"mouseup");
-    [self startUpLua];
-	[self.director start];
-	[self.openGLContext flushBuffer];
-    
-    //lets read a file
+  NSOpenGLPixelFormatAttribute pixelFormats[] = {
+      NSOpenGLPFAColorSize,     32,
+      NSOpenGLPFADepthSize,     32,
+      NSOpenGLPFADoubleBuffer,  NSOpenGLPFAStencilSize,
+      8,                        NSOpenGLPFAAccelerated,
+      NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
+      0};
+  format = [[[NSOpenGLPixelFormat alloc]
+      initWithAttributes:pixelFormats] autorelease];
+  context = [[[NSOpenGLContext alloc] initWithFormat:format
+                                        shareContext:nil] autorelease];
+  [context setValues:&aValue forParameter:NSOpenGLCPSurfaceOpacity];
+
+  [self setOpenGLContext:context];
+  [self setPixelFormat:format];
+  [self.openGLContext makeCurrentContext];
 }
 
--(void)startUpLua {
-    L = luaL_newstate();
-    luaL_openlibs(L);
-    //add watcher support
-    kqueue = [UKKQueue sharedFileWatcher];
-    [kqueue addPath:LUA_MAIN];
-    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(fileWatch) name:UKFileWatcherRenameNotification object:nil];
-    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(fileWatch) name:UKFileWatcherAttributeChangeNotification object:nil];
-    //read main file...
-    loadLuaMetaTable(L, gl,"gl");
-
-    [self loadLuaFile];
-    //add open personal libraries
+- (void)drawy:(NSRect)dirtyRect {
+  //[self clearView];
+  [self.director draw];
 }
 
--(void)fileWatch{
-    NSLog(@"file watch!");
-    //reload scripts here
+- (void)drawRect:(NSRect)dirtyRect {
+  [super drawRect:dirtyRect];
+  // note: important to remember
+  // [NSGraphicsContext currentContext]; (the window context, what we need here
+  // to make window translucent)
+  // [NSOpenGLContext currentContext]; (the opengl context, what we use to draw
+  // our own stuff)
+  [self clearView];
+  NSLog(@"draw");
 }
 
--(void)loadLuaFile{
-    const char * c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
-    if(luaL_loadfile(L, c) || lua_pcall(L,0,0,0)){
-        luaL_error(L, "cannot run lua :( %s", lua_tostring(L, -1));
-    }
+- (void)reshape {
+  NSLog(@"reshape");
+  glViewport(0, 0, windowSize.width, windowSize.height);
 }
 
-- (void)drawRect:(NSRect)bounds {
-    NSLog(@"draw rect") ;
-	[self clearContent];
-    glViewport(0,0, windowSize.width, windowSize.height);
-	glEnable (GL_BLEND);
-	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    //glColorMask(FALSE, FALSE, FALSE, TRUE);//This ensures that only alpha will be effected
-    //glClearColor(0, 0, 0, 0.0);//alphaValue - Value to which you need to clear
-    glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
+- (void)mouseUp:(NSEvent *)theEvent {
+  NSLog(@"mouseup");
+  [self.openGLContext flushBuffer];
 }
 
-- (void)clearContent
-{
-	[[NSColor colorWithCalibratedRed: 0 green: 0 blue: 0 alpha:0.2] set];
-	NSRectFill([self bounds]);
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
+  windowSize = frameSize;
+  self.frame = CGRectMake(0, 0, frameSize.width, frameSize.height);
+  return frameSize;
 }
 
-- (void) setup {
-    NSLog(@"setup app gl view");
-    // create a new pixel format?
-    NSOpenGLPixelFormatAttribute pixelFormats[] = {
-            NSOpenGLPFAColorSize, 32,
-            NSOpenGLPFADepthSize, 32,
-			NSOpenGLPFADoubleBuffer,
-            NSOpenGLPFAStencilSize, 8,
-            NSOpenGLPFAAccelerated,
-            NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
-            0
-
-    };
-
-    NSOpenGLPixelFormat * format = [[[NSOpenGLPixelFormat alloc] initWithAttributes: pixelFormats] autorelease];
-    NSOpenGLContext * context = [[[NSOpenGLContext alloc] initWithFormat:format shareContext:nil] autorelease];
-    int aValue = 0;
-    [context setValues:&aValue forParameter:NSOpenGLCPSurfaceOpacity];
-	[[self window] setOpaque:NO];
-
-    [self setOpenGLContext:context];
-   [self.openGLContext makeCurrentContext];
-}
-
-
-- (void) reshape {
-    NSLog(@"reshape");
-    glViewport(0,0, windowSize.width, windowSize.height);
-}
-
--(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize{
-    windowSize = frameSize;
-    self.frame = CGRectMake(0, 0, frameSize.width, frameSize.height);
-    return frameSize;
+- (void)clearView {
+  [[NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0.2] set];
+  NSRectFill([self bounds]);
 }
 
 - (void)prepareOpenGL {
-    NSLog(@"prepareOpenGL >>> version %s", glGetString(GL_VERSION));
+  [super prepareOpenGL];
+  NSLog(@"prepareOpenGL >>> version %s", glGetString(GL_VERSION));
+  [self clearView];
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  glClear(GL_COLOR_BUFFER_BIT);
+  glFlush();
+  [self.director start];
+  [self startDrawLoop];
 }
 
+- (void)startDrawLoop {
 
+  GLint swapInt = 1;
+  [self.openGLContext setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
+
+  // Below creates the display link and tell it what function to call when it
+  // needs to draw a frame.
+  CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
+
+  // set callback function
+  CVDisplayLinkSetOutputCallback(_displayLink, &OpenGLViewCoreProfileCallBack,
+                                 self);
+
+  //
+  CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(
+      _displayLink, self.openGLContext.CGLContextObj,
+      self.pixelFormat.CGLPixelFormatObj);
+
+  // lets fire it up!
+  CVDisplayLinkStart(_displayLink);
+}
+
+- (void)stopDrawLoop {
+}
 
 - (void)dealloc {
-    [_director release];
-    [super dealloc];
+  [_director release];
+  [super dealloc];
 }
-
 
 @end
