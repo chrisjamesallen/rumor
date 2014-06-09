@@ -51,6 +51,37 @@ static int gl_clearcolor( lua_State *L ) {
  
  */
 
+
+void emma_call( lua_State * L, int args, int returns ){
+    if(lua_pcall(L,args,returns,0) !=0)
+        printf("emma:error calling function %s", lua_tostring(L, -1) );
+}
+
+void emma_draw( lua_State * L ){
+    lua_getglobal(L, "main");
+    lua_getfield(L,-1,"draw");
+    lua_pushvalue(L,-2);
+    lua_remove(L,-3);
+    emma_call(L,1,0);
+    //todo push time delays here...
+}
+
+//init lua emma
+void emma_init( lua_State * L ){
+    lua_settop(L,0);
+    lua_getglobal(L, "main");
+    lua_getfield(L, -1, "init");
+    lua_pushvalue(L, -2);
+    stackDump(L);
+    lua_remove(L,-3);
+    stackDump(L);
+    emma_call(L,1,0);
+    lua_settop(L,0);
+}
+
+
+lua_State *L;
+
 @implementation Emma {
     chris *shape;
 }
@@ -66,6 +97,7 @@ static int gl_clearcolor( lua_State *L ) {
 
 - (void)start {
     [self setupLua];
+    emma_init(L);
 }
 
 - (void)draw {

@@ -1,4 +1,5 @@
 #import "AppGLView.h"
+#import "Emma.h"
 
 // c callbacks
 // This is the callback function for the display link.
@@ -8,20 +9,19 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
                                                CVOptionFlags flagsIn,
                                                CVOptionFlags *flagsOut,
                                                void *displayLinkContext ) {
+    
     @autoreleasepool {
         AppGLView *view = (__bridge AppGLView *)displayLinkContext;
         [view.openGLContext makeCurrentContext];
-        CGLLockContext(
-            view.openGLContext.CGLContextObj ); // This is needed because
+        CGLLockContext(view.openGLContext.CGLContextObj ); // This is needed because
                                                 // this isn't running on
                                                 // the main thread.
-        [view drawy:view.bounds]; // Draw the scene. This doesn't need to be in
-
+        //call lua
+        emma_draw(L);
+        [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
         // the drawRect method.
         CGLUnlockContext( view.openGLContext.CGLContextObj );
-        CGLFlushDrawable(
-            view.openGLContext.CGLContextObj ); // This does glFlush() for you.
-
+        CGLFlushDrawable( view.openGLContext.CGLContextObj ); // This does glFlush() for you.
         return kCVReturnSuccess;
     }
 }
@@ -64,18 +64,23 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     [self.openGLContext makeCurrentContext];
 }
 
-- (void)drawy:(NSRect)dirtyRect {
+- (void)draw:(NSRect)dirtyRect {
     //[self clearView];
     [self.director draw];
+    //we need to call lua here
+    
+    //grab global main and call update
+    
 }
+
+// note: important to remember
+// [NSGraphicsContext currentContext]; (the window context, what we need
+// here to make window translucent)
+// [NSOpenGLContext currentContext]; (the opengl context, what we use to
+// draw our own stuff)
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    // note: important to remember
-    // [NSGraphicsContext currentContext]; (the window context, what we need
-    // here to make window translucent)
-    // [NSOpenGLContext currentContext]; (the opengl context, what we use to
-    // draw our own stuff)
     [self clearView];
 }
 
@@ -110,6 +115,9 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     glFlush();
     [self.director start];
     [self startDrawLoop];
+    
+ 
+    
 }
 
 - (void)startDrawLoop {

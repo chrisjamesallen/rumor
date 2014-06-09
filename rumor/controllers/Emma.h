@@ -4,12 +4,16 @@
 #include "luagl.h"
 #import "UKKQueue.h"
 
+extern lua_State *L;
+
 @interface Emma : NSObject <UKFileWatcher> {
-  @public
-    lua_State *L;
+  @public    
     UKKQueue *kqueue;
 }
 
 - (void)start;
 - (void)startUpLua;
 @end
+
+extern void emma_draw( lua_State * L );
+ 

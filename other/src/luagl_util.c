@@ -320,7 +320,7 @@ void luagl_initconst(lua_State *L, const luaglConst *gl_const)
   {
     lua_pushstring(L, gl_const->str);
     lua_pushnumber(L, (uint) gl_const->value);
-    printf("set gl consts: string %s number %d \n", gl_const->str);
+    //printf("set gl consts: string %s number %d \n", gl_const->str);
     lua_settable(L, -3);
     //lua_setfield(L, -1, gl_const->str);
   }
