@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "other/src/luagl.c"
-            timestampString = "423945508.261366"
+            timestampString = "424051370.606851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4741"
-            endingLineNumber = "4741"
+            startingLineNumber = "4742"
+            endingLineNumber = "4742"
             landmarkName = "luaopen_luagl()"
             landmarkType = "7">
          </BreakpointContent>

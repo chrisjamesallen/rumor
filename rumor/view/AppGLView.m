@@ -17,7 +17,8 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
                                                 // this isn't running on
                                                 // the main thread.
         //call lua
-        emma_draw(L);
+         emma_update(L);
+         emma_draw(L);
         [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
         // the drawRect method.
         CGLUnlockContext( view.openGLContext.CGLContextObj );

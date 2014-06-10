@@ -4737,13 +4737,14 @@ void stackDump (lua_State *L) {
 
 int luaopen_luagl(lua_State *L) 
 {
-    luaL_openlibs( L );
+    
+    //create gl table
     luaL_newmetatable( L, "gl" );
     lua_setfield( L, -1, "__index" );
     lua_newtable( L );
     luaL_setfuncs( L, luagl_lib, 0 );
-    stackDump(L);
     lua_setglobal( L, "gl" );// note pops top from stack
+    //add globals to gl...
     luagl_initconst(L, luagl_const);
   return 1;
 }

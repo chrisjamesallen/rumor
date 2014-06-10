@@ -7,8 +7,7 @@
 
 const NSString *LUA_PATH = @"/Users/chrisallen/projects/desky/scripts/";
 const NSString *LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
-
-
+int emma_test( lua_State * L );
 /*
 static int gl_enable( lua_State *L );
 static int gl_clearcolor( lua_State *L );
@@ -50,11 +49,45 @@ static int gl_clearcolor( lua_State *L ) {
 }
  
  */
+static int gl_enable( lua_State *L ) {
+    // get string
+    
+    // set on gl enable...
+    return 0;
+}
 
+
+
+static int foo_gc (lua_State* L) {
+    puts("__gc called");
+    return 0;
+}
+
+static int foo_new (lua_State* L) {
+    lua_newuserdata(L, 1);
+    luaL_getmetatable(L, "foo");
+    lua_setmetatable(L, -2);
+    return 1;
+}
+
+static const struct luaL_Reg foo[] = {
+    { "__gc",        foo_gc       },
+    {NULL, NULL}
+};
 
 void emma_call( lua_State * L, int args, int returns ){
     if(lua_pcall(L,args,returns,0) !=0)
         printf("emma:error calling function %s", lua_tostring(L, -1) );
+}
+
+
+void emma_update( lua_State * L ){
+    lua_getglobal(L, "main");
+    lua_getfield(L,-1,"update");
+    lua_pushvalue(L,-2);
+    lua_remove(L,-3);
+    emma_call(L,1,0);
+    //todo push time delays here...
 }
 
 void emma_draw( lua_State * L ){
@@ -66,21 +99,28 @@ void emma_draw( lua_State * L ){
     //todo push time delays here...
 }
 
+ 
+
 //init lua emma
 void emma_init( lua_State * L ){
+
+    
+    //call init on main
     lua_settop(L,0);
     lua_getglobal(L, "main");
     lua_getfield(L, -1, "init");
     lua_pushvalue(L, -2);
-    stackDump(L);
     lua_remove(L,-3);
-    stackDump(L);
     emma_call(L,1,0);
     lua_settop(L,0);
+
 }
 
 
 lua_State *L;
+
+
+
 
 @implementation Emma {
     chris *shape;
@@ -104,12 +144,24 @@ lua_State *L;
     [shape draw];
 }
 
+
+
 - (void)setupLua {
     [self setupFileWatcher];
     // create global lua state
     L = luaL_newstate();
+    luaL_openlibs( L );
     luaopen_luagl(L);
-    // execute lua file
+    
+    
+
+    luaL_newmetatable(L, "foo");
+    luaL_setfuncs(L, foo, 0);
+    // create constructor
+    lua_pushcfunction(L, foo_new);
+    lua_setglobal(L, "foo");
+    lua_settop(L,0);
+ 
     [self executeLuaFile];
 }
 
