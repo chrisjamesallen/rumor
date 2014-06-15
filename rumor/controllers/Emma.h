@@ -9,6 +9,7 @@ extern lua_State *L;
 @interface Emma : NSObject <UKFileWatcher> {
   @public    
     UKKQueue *kqueue;
+    NSURL *scriptURL;
 }
 
 - (void)start;

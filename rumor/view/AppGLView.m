@@ -17,8 +17,8 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
                                                 // this isn't running on
                                                 // the main thread.
         //call lua
-         emma_update(L);
-         emma_draw(L);
+        // emma_update(L);
+         //emma_draw(L);
         [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
         // the drawRect method.
         CGLUnlockContext( view.openGLContext.CGLContextObj );
@@ -40,7 +40,7 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 
 - (void)setup {
 
-    NSLog( @"setup app gl view" );
+    // NSLog( @"setup app gl view" );
     // var
     int aValue = 0;
     NSOpenGLPixelFormat *format;
@@ -86,7 +86,6 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 }
 
 - (void)reshape {
-    NSLog( @"reshape" );
     glViewport( 0, 0, windowSize.width, windowSize.height );
 }
 
@@ -108,7 +107,7 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 
 - (void)prepareOpenGL {
     [super prepareOpenGL];
-    NSLog( @"prepareOpenGL >>> version %s", glGetString( GL_VERSION ) );
+    //NSLog( @"prepareOpenGL >>> version %s", glGetString( GL_VERSION ) );
     [self clearView];
     glEnable( GL_BLEND );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );

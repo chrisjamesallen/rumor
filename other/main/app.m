@@ -38,7 +38,7 @@
   // set view dimensions
   self.glview->windowSize = window.frame.size;
   self.glview.frame =
-      CGRectMake(0, 0, window.frame.size.width, window.frame.size.height);
+      CGRectMake(300, 0, window.frame.size.width, window.frame.size.height);
 
   // create Emma
   self.emma = [[[Emma alloc] init] autorelease];

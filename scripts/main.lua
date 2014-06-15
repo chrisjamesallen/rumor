@@ -1,22 +1,18 @@
 -- so here we are going to require all the relevant libraries...
 package.path = "/Users/chrisallen/projects/desky/scripts/?.lua;" .. package.path
--- require some stuff
 require "base"
 require "emma"
-require "emma/app"
 
-
-
+ 
 
 -- Main
- 
 
 
 function main()
     --called from c..
-    print("main")
-    emma = Emma();
-    collect()
+    print("main ~ start")
+    require "emma/app"
+    app = App:new()
 end
 
 function update ()
@@ -30,6 +26,20 @@ function draw()
         app:draw()
     end
 end
+
+function destroy()
+    if(app~=nil) then
+        app:destroy()
+        app = nil
+        App = nil
+        collect()
+    end
+end
+
+function reload()
+    app = App:new()
+end
+
 
 function collect()
    collectgarbage('collect')

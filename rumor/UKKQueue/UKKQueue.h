@@ -76,12 +76,13 @@
 @interface UKKQueue : NSObject <UKFileWatcher>
 {
 	int				queueFD;			// The actual queue ID (Unix file descriptor).
-	NSMutableArray* watchedPaths;		// List of NSStrings containing the paths we're watching.
 	NSMutableArray* watchedFDs;			// List of NSNumbers containing the file descriptors we're watching.
 	id				delegate;			// Gets messages about changes instead of notification center, if specified.
 	id				delegateProxy;		// Proxy object to which we send messages so they reach delegate on the main thread.
 	BOOL			alwaysNotify;		// Send notifications even if we have a delegate? Defaults to NO.
 	BOOL			keepThreadRunning;	// Termination criterion of our thread.
+@public
+	NSMutableArray* watchedPaths;		// List of NSStrings containing the paths we're watching.
 }
 
 +(id)	sharedFileWatcher;      // Returns a singleton, a shared kqueue object Handy if you're subscribing to the notifications. Use this, or just create separate objects using alloc/init. Whatever floats your boat.
