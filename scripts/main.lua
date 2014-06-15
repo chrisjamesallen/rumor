@@ -9,48 +9,54 @@ require "emma/app"
 
 
 -- Main
-main = Class:extend()
+ 
 
-function main:init()
+
+function main()
     --called from c..
-    self.__super:init()
-    self.name = "main"
-    print("running main...")
-    app.delegate = self
-    app:ready()
-
+    print("main")
+    emma = Emma();
+    collect()
 end
 
-function main:update ()
+function update ()
     if(app~=nil) then
         app:update()
     end
 end
 
-function main:draw()
+function draw()
     if(app~=nil) then
         app:draw()
     end
 end
 
-function main:help()
-    collectgarbage()
-    --print(collectgarbage("count")*1024)
+function collect()
+   collectgarbage('collect')
 end
 
-function main:touchStarted(x,y)
+function  touchStarted(x,y)
 end
 
-function main:touchMoved(x,y)
+function  touchMoved(x,y)
 end
 
-function main:touchEnded(x,y)
+function  touchEnded(x,y)
 end
 
- 
+function sleep(n)
+    os.execute("sleep " .. tonumber(n))
+end
+local clock = os.clock
 
-local gcTest = foo();
-foo = nil
+function wait(n)  -- seconds
+    local t0 = clock()
+    while clock() - t0 <= n do end
+end
+
+
+
+
 
 
 
