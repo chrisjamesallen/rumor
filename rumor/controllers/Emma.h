@@ -15,6 +15,6 @@ extern lua_State *L;
 - (void)start;
 - (void)startUpLua;
 @end
-extern void emma_update( lua_State * L );
+extern void emma_update( lua_State * L, double delta, int64_t time);
 extern void emma_draw( lua_State * L );
  

@@ -22,8 +22,8 @@
 
 - (void)draw {
 
-    glClearColor(0, 0, 0, 0.0);//alphaValue - Value to which you need to clear
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    //glClearColor(0, 0, 0, 0.0);//alphaValue - Value to which you need to clear
+   // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //    glFlush();
 
 //    // set model view projection to mesh position

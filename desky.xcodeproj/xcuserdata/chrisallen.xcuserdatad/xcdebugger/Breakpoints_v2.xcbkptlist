@@ -10,13 +10,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "other/src/luagl.c"
-            timestampString = "424051370.606851"
+            timestampString = "424547401.1077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4742"
-            endingLineNumber = "4742"
-            landmarkName = "luaopen_luagl()"
-            landmarkType = "7">
+            startingLineNumber = "40"
+            endingLineNumber = "40">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "other/src/luagl.c"
+            timestampString = "424547529.68726"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4556"
+            endingLineNumber = "4556">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

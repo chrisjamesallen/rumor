@@ -20,6 +20,8 @@
   [self.window setOpaque:NO];
   NSColor *transparent = [NSColor colorWithCalibratedWhite:1.0 alpha:0.4];
   [self.window setBackgroundColor:transparent];
+  [self.window setLevel:kCGDesktopWindowLevel];
+  [self.window setFrame:[[NSScreen mainScreen] frame] display:YES];
 }
 
 - (void)setupDirector {
@@ -28,7 +30,7 @@
   NSWindow *window = self.window;
 
   // create glview
-  self.glview = [[AppGLView alloc] initWithFrame:CGRectMake(0, 0, 512, 512)];
+  self.glview = [[AppGLView alloc] initWithFrame:self.window.frame];
   [self.glview setup];
 
   // add to window
@@ -37,8 +39,7 @@
 
   // set view dimensions
   self.glview->windowSize = window.frame.size;
-  self.glview.frame =
-      CGRectMake(300, 0, window.frame.size.width, window.frame.size.height);
+    self.glview.frame = self.window.frame;
 
   // create Emma
   self.emma = [[[Emma alloc] init] autorelease];

@@ -2,28 +2,44 @@
 package.path = "/Users/chrisallen/projects/desky/scripts/?.lua;" .. package.path
 require "base"
 require "emma"
+require "emma/app"
 
- 
 
 -- Main
 
+runtime = 0;
+starttime = 0;
+drawtime = 0;
+fps = 60;
+screen = {}
 
 function main()
     --called from c..
     print("main ~ start")
-    require "emma/app"
     app = App:new()
+    screen = System.screen()
+    print("Screen Dimensions::", screen.width, screen.height)
 end
 
-function update ()
+function update (delta,runTime,pos)
+    
+    if(starttime <=0) then
+        starttime = runTime
+        runtime = starttime
+    end
     if(app~=nil) then
-        app:update()
+        
+        runtime = runTime - starttime  --Store game time
+        app:update(delta)
     end
 end
 
 function draw()
     if(app~=nil) then
+        --local b = System.time()
         app:draw()
+        --local a = System.time()
+        --drawtime = a - b
     end
 end
 
@@ -35,6 +51,8 @@ function destroy()
         collect()
     end
 end
+
+
 
 function reload()
     app = App:new()

@@ -25,7 +25,7 @@
 
 -(void) draw{
     //do anything positional or change values here
-    [self.mesh draw];
+ [self.mesh draw];
 }
 
 -(void) update{

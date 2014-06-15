@@ -17,8 +17,10 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
                                                 // this isn't running on
                                                 // the main thread.
         //call lua
-        // emma_update(L);
-         //emma_draw(L);
+         emma_update(L, outputTime->rateScalar, outputTime->videoTime);
+         emma_draw(L);
+        
+        
         [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
         // the drawRect method.
         CGLUnlockContext( view.openGLContext.CGLContextObj );
@@ -68,10 +70,6 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 - (void)draw:(NSRect)dirtyRect {
     //[self clearView];
     [self.director draw];
-    //we need to call lua here
-    
-    //grab global main and call update
-    
 }
 
 // note: important to remember

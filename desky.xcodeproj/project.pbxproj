@@ -213,7 +213,7 @@
 		BCDE08D118DDF07C002587B8 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BCDE08D318DDF0B6002587B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		BCF7D6EB1944A45C00B7F453 /* luagl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = luagl.c; path = ../other/src/luagl.c; sourceTree = "<group>"; };
-		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luagl.h; sourceTree = "<group>"; };
+		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luagl.h; path = ../other/src/luagl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +345,7 @@
 				72AF16F3C0E558AFCD332A9A /* main */,
 				72AF1CC5D97BCA23032105B3 /* Images.xcassets */,
 				72AF1C8FF9A6E9203A597204 /* readme.txt */,
+				BCF7D6EE1944A55300B7F453 /* luagl.h */,
 				BCF7D6EB1944A45C00B7F453 /* luagl.c */,
 				72AF1C2A6460A0BC9E763974 /* controllers */,
 				72AF1F5189DBB137FB89F04E /* view */,
@@ -398,7 +399,6 @@
 				BC438C5118FC982400AA5D15 /* lbitlib.c */,
 				BC31462C1944A5A400F475AC /* luagl_util.c */,
 				BC31462D1944A5A400F475AC /* luagl_util.h */,
-				BCF7D6EE1944A55300B7F453 /* luagl.h */,
 				BC438C5218FC982400AA5D15 /* lbitlib.o */,
 				BC438C5318FC982400AA5D15 /* lcode.c */,
 				BC438C5418FC982400AA5D15 /* lcode.h */,
