@@ -64,9 +64,9 @@ static int foo_gc (lua_State* L) {
 }
 
 static int foo_new (lua_State* L) {
-    lua_newuserdata(L, 1);
-    luaL_getmetatable(L, "foo");
-    lua_setmetatable(L, -2);
+    lua_newuserdata(L, 1);//create a new block
+    luaL_getmetatable(L, "foo");//fetch correct metatable
+    lua_setmetatable(L, -2);//pop and apply foo metatable to block, return block
     return 1;
 }
 

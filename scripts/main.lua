@@ -50,6 +50,7 @@ end
  
 
 local gcTest = foo();
-gcTest = nil
+foo = nil
+
 
 
