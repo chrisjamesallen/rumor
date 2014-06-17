@@ -22,15 +22,15 @@ function main()
 end
 
 function update (delta,runTime,pos)
-    
     if(starttime <=0) then
         starttime = runTime
         runtime = starttime
     end
     if(app~=nil) then
-        
         runtime = runTime - starttime  --Store game time
         app:update(delta)
+        mouse = System.mouse()
+        print("Move::", mouse.pressed, mouse.dragging)
     end
 end
 

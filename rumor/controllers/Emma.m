@@ -12,6 +12,14 @@ const NSString *LUA_APP = @"/Users/chrisallen/projects/desky/scripts/emma/app.lu
 int emma_test( lua_State *L );
 
 
+
+struct  appS {
+    BOOL pressed;
+    BOOL dragged;
+    // emma lua struct
+    // mouse position
+} AppState;
+
 static int emma_gc( lua_State *L ) {
     stackDump( L );
     puts( "__gc called" );
@@ -19,15 +27,15 @@ static int emma_gc( lua_State *L ) {
     return 0;
 }
 
-static const struct luaL_Reg emma[] = {
-    { "delete", emma_gc }, { "foo", emma_gc }, { "__gc", emma_gc }, { NULL, NULL }
-};
-
 
 void emma_call( lua_State *L, int args, int returns ) {
     if ( lua_pcall( L, args, returns, 0 ) != 0 )
         printf( "emma:error calling function %s", lua_tostring( L, -1 ) );
 }
+
+static const struct luaL_Reg emma[] = {
+    { "delete", emma_gc }, { "foo", emma_gc }, { "__gc", emma_gc }, { NULL, NULL }
+};
 
 
 static int emma_new( lua_State *L ) {
@@ -56,16 +64,7 @@ static int systemScreen( lua_State *L ) {
     lua_setfield( L, -2, "height" );
     return 1;
 }
-
-static const struct luaL_Reg sys[] = { { "time", systemTime },
-                                       { "screen", systemScreen },
-                                       { NULL, NULL } };
-
-
-void emma_update( lua_State *L, double delta, int64_t time ) {
-    lua_getglobal( L, "update" );
-    lua_pushnumber( L, delta );
-    lua_pushnumber( L, (long)time );
+static int systemMouse( lua_State *L ) {
     CGEventRef event = CGEventCreate( NULL );
     CGPoint cursor = CGEventGetLocation( event );
     CFRelease( event );
@@ -74,7 +73,23 @@ void emma_update( lua_State *L, double delta, int64_t time ) {
     lua_setfield( L, -2, "x" );
     lua_pushnumber( L, cursor.y );
     lua_setfield( L, -2, "y" );
-    emma_call( L, 3, 0 );
+    lua_pushboolean(L, AppState.pressed);
+    lua_setfield( L, -2, "pressed");
+    lua_pushboolean(L, AppState.dragged);
+    lua_setfield( L, -2, "dragging");
+    return 1;
+}
+
+static const struct luaL_Reg sys[] = { { "time", systemTime },
+                                       { "screen", systemScreen },
+                                       { "mouse", systemMouse },
+                                       { NULL, NULL } };
+
+void emma_update( lua_State *L, double delta, int64_t time ) {
+    lua_getglobal( L, "update" );
+    lua_pushnumber( L, delta );
+    lua_pushnumber( L, (long)time );
+    emma_call( L, 2, 0 );
 }
 
 void emma_draw( lua_State *L ) {
@@ -133,7 +148,29 @@ lua_State *L;
 
 - (void)start {
     [self setupLua];
+    [self setMouse];
     main_start( L );
+}
+
+- (void)setMouse {
+    const int maskDown = NSLeftMouseDownMask | NSRightMouseDown;
+    const int maskLift = NSLeftMouseUp | NSRightMouseUp;
+    const int maskDrag = NSLeftMouseDragged | NSRightMouseDragged;
+    // The global monitoring handler is *not* called for events sent to our application
+    [NSEvent addGlobalMonitorForEventsMatchingMask:maskDown handler:^(NSEvent* event) {
+        AppState.pressed  = YES;
+    }];
+    
+    [NSEvent addGlobalMonitorForEventsMatchingMask:maskLift handler:^(NSEvent* event) {
+        AppState.pressed = NO;
+        AppState.dragged = NO;
+    }];
+    
+    // The global monitoring handler is *not* called for events sent to our application
+    [NSEvent addGlobalMonitorForEventsMatchingMask:maskDrag handler:^(NSEvent* event) {
+        //get location here...
+        AppState.dragged = YES;
+    }];
 }
 
 - (void)draw {

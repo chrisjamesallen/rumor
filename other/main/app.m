@@ -22,12 +22,7 @@
   [self.window setBackgroundColor:transparent];
   [self.window setLevel:kCGDesktopWindowLevel];
   [self.window setFrame:[[NSScreen mainScreen] frame] display:YES];
-    const int mask = NSLeftMouseDownMask;
-    // The global monitoring handler is *not* called for events sent to our application
-    id monitorId = [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:^(NSEvent* event) {
-       //get location here...
-        
-    }];
+
 }
 
 - (void)setupDirector {
