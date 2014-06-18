@@ -25,6 +25,9 @@
 	#include <GL/gl.h>
 #endif
 
+#import <OpenGL/gl3.h>
+
+
 //#include <lua.h>
 //#include <lauxlib.h>
 
@@ -542,6 +545,9 @@ static const luaglConst luagl_const[] = {
   { "T2F_N3F_V3F"                     , GL_T2F_N3F_V3F                    },
   { "T2F_C4F_N3F_V3F"                 , GL_T2F_C4F_N3F_V3F                },
   { "T4F_C4F_N3F_V4F"                 , GL_T4F_C4F_N3F_V4F                },
+  { "VERTEX_SHADER"                    , GL_VERTEX_SHADER                 },
+  { "FRAGMENT_SHADER"                    , GL_FRAGMENT_SHADER             },
+   { "ARRAY_BUFFER"                    , GL_ARRAY_BUFFER             },
 #ifdef GL_EXT_vertex_array
   { "EXT_vertex_array"                , GL_EXT_vertex_array               },
 #endif
@@ -4552,6 +4558,177 @@ static int luagl_viewport(lua_State *L)
   return 0;
 }
 
+
+static int luagl_createShader(lua_State *L)
+{
+    GLuint shader;
+    shader = glCreateShader(GL_VERTEX_SHADER);
+    lua_pushunsigned(L, shader);
+    return 1;
+}
+
+
+
+
+static int luagl_attachShader(lua_State *L)
+{
+    GLuint shader, program;
+    program = lua_tounsigned(L, -2);
+    shader = lua_tounsigned(L, -1);
+    glAttachShader(program, shader);
+    return 0;
+}
+
+
+
+
+static int luagl_shaderSource(lua_State *L)
+{
+    /*  */
+    char * source;
+    GLuint shader;
+    shader = lua_tounsigned(L, -2);
+    source = lua_tostring(L, -1);
+    glShaderSource(shader, 1, &source, NULL);
+    return 0;
+}
+
+
+static int luagl_compileShader(lua_State *L)
+{
+    /*  */
+    GLuint shader;
+    shader = lua_tounsigned( L, -1);
+    glCompileShader( shader );
+    return 0;
+}
+
+static int luagl_deleteShader(lua_State *L)
+{
+    /*  */
+    GLuint shader;
+    shader = lua_tounsigned( L, -1);
+    glDeleteShader( shader );
+    return 0;
+}
+
+
+
+
+static int luagl_createProgram(lua_State *L)
+{
+    GLuint program;
+    program = glCreateProgram();
+    lua_pushunsigned(L, program);
+    return 1;
+}
+
+
+static int luagl_linkProgram(lua_State *L)
+{
+    GLuint program;
+    program = lua_tounsigned( L, -1);
+    glLinkProgram(program);
+    return 0;
+}
+
+static int luagl_deleteProgram(lua_State *L)
+{
+    GLuint program;
+    program = lua_tounsigned( L, -1);
+    glDeleteProgram(program);
+    return 0;
+}
+
+static int luagl_useProgram(lua_State *L)
+{
+    GLuint program;
+    glDeleteProgram(program);
+    return 0;
+}
+
+typedef struct yo {
+    GLuint foo;
+    GLfloat vertices [];
+} yo;
+
+GLuint vertexArray__;
+GLuint vertex_vbo;
+extern GLfloat vertices [] = {1.0, -1.0f, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1, 0};
+GLuint vertexArray;
+static int luagl_genVertexArrays(lua_State *L){
+    yo *va = (yo *)lua_newuserdata(L, sizeof(yo));
+    glGenVertexArrays(1, &va->foo );
+    return 1;
+}
+
+static int luagl_genBuffers(lua_State *L){
+    yo *vbo= (yo *)lua_newuserdata(L, sizeof(yo));
+     glGenBuffers(1, &vbo->foo);
+    return 1;
+}
+static int luagl_bindBuffer(lua_State *L){
+    GLuint bufferType;
+     bufferType = lua_tonumber(L, -2);
+     yo * vbo = (yo *)lua_touserdata(L, -1);
+    glBindBuffer(bufferType, vbo->foo);
+    return 0;
+}
+static int luagl_bufferData(lua_State *L){
+//    GLuint bufferType, size, drawType;
+//    bufferType = lua_tounsigned(L, -4);
+//    size = lua_tounsigned(L, -3);
+//    const GLvoid *data = lua_touserdata(L, -2);
+//    drawType = lua_tounsigned(L, -1);
+//    glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(GLfloat), &data, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(GLfloat), &vertices, GL_STATIC_DRAW);
+    return 0;
+}
+static int luagl_enableVertexAttribArray(lua_State *L){
+//    gluint pos;
+//    pos = lua_tounsigned(L, -1)l
+//    glEnableVertexAttribArray(pos);
+    glEnableVertexAttribArray(0);
+    return 0;
+}
+static int luagl_vertexAttribPointer(lua_State *L){
+    GLuint index;
+    GLint size;
+    GLenum type;
+    GLboolean normalized;
+    GLsizei stride;
+    const GLvoid * pointer;
+    
+//    pos = lua_tounsigned(L, -6);
+//    size = lua_tointeger(L, -5, NULL);
+//    type = lua_tointeger(L, -4, NULL);
+//    normalized = lua_toboolean(L, -3, NULL);
+//    stride = lua_tointeger(L, -2, NULL);
+//    pointer = lua_touserdata(L, -1);
+//    glVertexAttribPointer(index, size, type, normalize, stride, pointer);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    return 0;
+}
+static int luagl_bindVertexArray(lua_State *L){
+    //GLuint vertex_array__;
+//    vertex_array = lua_touserdata(L, -1);
+       yo * va = (yo *)lua_touserdata(L, -1);
+    glBindVertexArray(va->foo);
+   return 0;
+}
+static int luagl_drawArrays(lua_State *L){
+    GLenum mode;
+    GLint first;
+    GLsizei count;
+//      mode = lua_tointeger(L, -3, NULL);
+//       first = lua_tointeger(L, -2, NULL);
+//    count = lua_tointeger(L, -1, NULL);
+//    glDrawArrays (mode, first, count);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    return 0;
+}
+ 
+
 static const struct  luaL_Reg luagl_lib[] = {
   {"Accum", luagl_accum},
   {"AlphaFunc", luagl_alpha_func},
@@ -4699,6 +4876,23 @@ static const struct  luaL_Reg luagl_lib[] = {
   {"Vertex", luagl_vertex},
   {"VertexPointer", luagl_vertex_pointer},
   {"Viewport", luagl_viewport},
+  {"CreateShader", luagl_createShader},
+  {"ShaderSource", luagl_shaderSource},
+  {"CompileShader", luagl_compileShader},
+  {"DeleteShader", luagl_deleteShader},
+  {"AttachShader", luagl_attachShader},
+  {"LinkProgram", luagl_linkProgram},
+  {"CreateProgram", luagl_createProgram},
+  {"UseProgram", luagl_useProgram},
+  {"DeleteProgram", luagl_deleteProgram},
+    {"GenVertexArrays", luagl_genVertexArrays},
+    {"GenBuffers", luagl_genBuffers},
+    {"BindBuffer", luagl_bindBuffer},
+    {"BufferData", luagl_bufferData},
+    {"EnableVertexAttribArray", luagl_enableVertexAttribArray},
+    {"VertexAttribPointer", luagl_vertexAttribPointer},
+    {"BindVertexArray", luagl_bindVertexArray},
+    {"DrawArrays", luagl_drawArrays},
   {NULL, NULL}
 };
 

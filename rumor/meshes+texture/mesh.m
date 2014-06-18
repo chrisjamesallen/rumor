@@ -21,7 +21,6 @@
 }
 
 - (void)draw {
-
     //glClearColor(0, 0, 0, 0.0);//alphaValue - Value to which you need to clear
    // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //    glFlush();
@@ -35,7 +34,7 @@
 //    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, (4 * (3+3+2)), &planeVerts);
 //    glDrawArrays(GL_TRIANGLES, 0, planeNumVerts);
 //    glFlush()
-
+    return;
     GLfloat vertices [] = {1.0, -1.0f, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1, 0};
 
     [self.renderer use];

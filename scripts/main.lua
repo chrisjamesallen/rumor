@@ -3,7 +3,7 @@ package.path = "/Users/chrisallen/projects/desky/scripts/?.lua;" .. package.path
 require "base"
 require "emma"
 require "emma/app"
-
+require "emma/shader"
 
 -- Main
 
@@ -30,7 +30,7 @@ function update (delta,runTime,pos)
         runtime = runTime - starttime  --Store game time
         app:update(delta)
         mouse = System.mouse()
-        print("Move::", mouse.pressed, mouse.dragging)
+        --print("Move::", mouse.pressed, mouse.dragging)
     end
 end
 
