@@ -24,20 +24,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "other/src/luagl.c"
-            timestampString = "425142494.157688"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4848"
-            endingLineNumber = "4848">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "other/src/luagl.c"
             timestampString = "425138595.255252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

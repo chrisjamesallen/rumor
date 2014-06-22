@@ -30,7 +30,7 @@ static int emma_gc( lua_State *L ) {
 
 void emma_call( lua_State *L, int args, int returns ) {
     if ( lua_pcall( L, args, returns, 0 ) != 0 )
-        printf( "emma:error calling function %s", lua_tostring( L, -1 ) );
+        printf( "emma:error calling function %s\n", lua_tostring( L, -1 ) );
 }
 
 static const struct luaL_Reg emma[] = {

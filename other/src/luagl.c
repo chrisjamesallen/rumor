@@ -4734,6 +4734,7 @@ typedef struct vbo_ {
 } vbo_;
 
 typedef struct data_ {
+    long length;
     GLfloat * data;
 } data_;
 
@@ -4785,7 +4786,7 @@ static int luagl_copyVerts(lua_State *L){
         lua_pushunsigned(L, a);
         lua_gettable(L, -3);
         b = lua_tonumber(L, -1);
-        printf("vert is %f \n", b);
+        //printf("vert is %f \n", b);
         data[a-1] = b;
         lua_pop(L, 1);
     }
@@ -4826,8 +4827,12 @@ static int luagl_vertexAttribPointer(lua_State *L){
     return 0;
 }
 static int luagl_bindVertexArray(lua_State *L){
-    vao_ * p = (vao_ *)lua_touserdata(L, -1);
-    glBindVertexArray(p->val);
+    if(lua_isuserdata(L, -1)){
+        vao_ * p = (vao_ *)lua_touserdata(L, -1);
+        glBindVertexArray(p->val);
+    }else{
+        glBindVertexArray(0);
+    }
    return 0;
 }
 static int luagl_drawArrays( lua_State *L ) {
@@ -4841,10 +4846,133 @@ static int luagl_drawArrays( lua_State *L ) {
     //    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     return 0;
 }
- 
+
+static int luagl_get_attrib_location( lua_State * L) {
+    GLuint program;
+    char * name;
+    GLint loc;
+    name  = lua_tostring(L,-1);
+    program = lua_tonumberx(L, -2, NULL);
+    loc = glGetAttribLocation(program, name);
+    lua_pushinteger(L, loc);
+    return 1;
+}
+
+static int luagl_get_uniform_location( lua_State * L) {
+    GLuint program;
+    char * name;
+    GLint loc;
+    name  = lua_tostring(L,-1);
+    program = lua_tonumberx(L, -2, NULL);
+    loc = glGetUniformLocation(program, name);
+    lua_pushinteger(L, loc);
+    return 1;
+}
+
+
+// create new array for lua
+
+static int array_new (lua_State* L) {
+    GLfloat vert;
+    GLuint len;
+    uint i;
+    float b;
+    data_ * p;
+    uint DEFAULT_LENGTH;
+    stackDump(L);
+    DEFAULT_LENGTH = 100;
+    i = 0;
+    if(!lua_isnumber(L, -1)){
+        len = DEFAULT_LENGTH;
+        lua_pushnumber(L, len);
+    }else{
+        len = lua_tonumber(L, -1);
+    }
+    
+    if(!lua_istable(L, -2)){
+        lua_newtable(L);
+        lua_insert(L, -2);
+    }
+    
+    GLfloat * data = malloc(len * sizeof(GLfloat));
+    
+    while(len > i){
+        i++;
+        lua_pushunsigned(L, i);
+        lua_gettable(L, -3);
+        b = lua_tonumber(L, -1);
+        //printf("array is %f \n", b);
+        data[i-1] = b;
+        lua_pop(L, 1);
+    }
+    p= (data_ *)lua_newuserdata(L, sizeof(data_));
+    p->data = data;
+    p->length = len;
+    luaL_getmetatable(L, "array");
+    lua_setmetatable(L, -2);
+    return 1;
+}
+
+// metatable method for handling "array[index]"
+static int array_index (lua_State* L) {
+    data_* array = (data_*)luaL_checkudata(L, 1, "array");
+//    if(lua_isstring(L,-1)){
+//        char * str = lua_tostring(L, -1);
+//       luaL_getmetatable(L, "array");
+//       lua_getfield(L, -1, str);
+//       lua_pushvalue(L, -4);
+//       lua_pcall(L, 1, 1, 0);
+//       return 1;
+//    }
+     int index = luaL_checkint(L, 2);
+     lua_pushnumber(L, (float) array->data[index-1]);
+    return 1;
+}
+
+// metatable method for handle "array[index] = value"
+static int array_newindex (lua_State* L) {
+    data_* array = (data_*)luaL_checkudata(L, 1, "array");
+    int index = luaL_checkint(L, 2);
+    float value = lua_tonumberx(L, 3, NULL);
+    array->data[index-1] = value;
+    return 0;
+}
+// metatable method for retrieving length
+static int array_length (lua_State* L) {
+    data_* array = (data_*)lua_touserdata(L, -1);
+    lua_pushinteger(L, array->length);
+    return 1;
+}
+
+static int array_gc (lua_State* L) {
+    data_* array = (data_*)luaL_checkudata(L, 1, "array");
+    free(array->data);
+    return 0;
+}
+
+static const struct luaL_Reg array_[] = {
+    { "__index",  array_index  },
+    { "new",  array_new  },
+    { "__newindex",  array_newindex  },
+    { "__gc",  array_gc  },
+    { "len",  array_length  },
+    NULL, NULL
+};
+
+void createArrayType (lua_State* L) {
+    luaL_newmetatable(L, "array");
+    luaL_setfuncs( L, array_, 0 );
+    //lua_pushvalue(L, -1);
+    //lua_setfield( L, -2, "__index" );
+    lua_setglobal( L, "array" );// note pops top from stack
+}
+
 
 static const struct  luaL_Reg luagl_lib[] = {
-  {"Accum", luagl_accum},
+    {"GetAttribLocation", luagl_get_attrib_location},
+    {"GetUniformLocation", luagl_get_uniform_location},
+    
+    {"Accum", luagl_accum},
   {"AlphaFunc", luagl_alpha_func},
   {"AreTexturesResident", luagl_are_textures_resident},
   {"ArrayElement", luagl_array_element},
@@ -5056,6 +5184,7 @@ int luaopen_luagl(lua_State *L)
     lua_setglobal( L, "gl" );// note pops top from stack
     //add globals to gl...
     luagl_initconst(L, luagl_const);
+    createArrayType(L);
   return 1;
 }
 
