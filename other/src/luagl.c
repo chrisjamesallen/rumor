@@ -4738,15 +4738,13 @@ static int luagl_genVertexArrays(lua_State *L){
 }
 
 static int luagl_genBuffers(lua_State *L){
-    printf("bind buffer\n");
-    if(EMMA_FLUSHING) return 0;
+    //printf("bind buffer\n");
     yo *vbo= (yo *)lua_newuserdata(L, sizeof(yo));
      glGenBuffers(1, &vbo->foo);
     return 1;
 }
 static int luagl_bindBuffer(lua_State *L){
-    printf("bind buffer\n");
-    if(EMMA_FLUSHING) return 0;
+    //printf("bind buffer\n");
     GLuint bufferType;
      bufferType = lua_tonumber(L, -2);
      yo * vbo = (yo *)lua_touserdata(L, -1);
@@ -4754,8 +4752,7 @@ static int luagl_bindBuffer(lua_State *L){
     return 0;
 }
 static int luagl_bufferData(lua_State *L){
-    printf("bind buffer\n");
-    if(EMMA_FLUSHING) return 0;
+    //printf("bind buffer\n");
 //    GLuint bufferType, size, drawType;
 //    bufferType = lua_tounsigned(L, -4);
 //    size = lua_tounsigned(L, -3);
@@ -4766,8 +4763,7 @@ static int luagl_bufferData(lua_State *L){
     return 0;
 }
 static int luagl_enableVertexAttribArray(lua_State *L){
-    printf("bind buffer\n");
-    if(EMMA_FLUSHING) return 0;
+   // printf("bind buffer\n");
 //    gluint pos;
 //    pos = lua_tounsigned(L, -1)l
 //    glEnableVertexAttribArray(pos);
@@ -4775,8 +4771,7 @@ static int luagl_enableVertexAttribArray(lua_State *L){
     return 0;
 }
 static int luagl_vertexAttribPointer(lua_State *L){
-    printf("bind buffer\n");
-    if(EMMA_FLUSHING) return 0;
+    //printf("bind buffer\n");
     GLuint index;
     GLint size;
     GLenum type;
@@ -4795,8 +4790,7 @@ static int luagl_vertexAttribPointer(lua_State *L){
     return 0;
 }
 static int luagl_bindVertexArray(lua_State *L){
-    printf("bind buffer\n");
-    if(EMMA_FLUSHING) return 0;
+    //printf("bind buffer\n");
     //GLuint vertex_array__;
 //    vertex_array = lua_touserdata(L, -1);
        yo * va = (yo *)lua_touserdata(L, -1);
@@ -4804,8 +4798,7 @@ static int luagl_bindVertexArray(lua_State *L){
    return 0;
 }
 static int luagl_drawArrays(lua_State *L){
-    printf("bind buffer\n");
-    if(EMMA_FLUSHING) return 0;
+    //printf("bind buffer\n");
     GLenum mode;
     GLint first;
     GLsizei count;

@@ -48,7 +48,6 @@ function destroy()
         destroying = true;
         app:destroy()
         app = nil
-        App = nil
         collect()
         destroying = false;
     end
