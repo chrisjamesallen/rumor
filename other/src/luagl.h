@@ -21,7 +21,7 @@
 * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************************************************************/
-
+ 
 #ifndef __LUAGL_H__
 #define __LUAGL_H__
 
@@ -41,4 +41,7 @@ int luaopen_luagl( lua_State *L );
 extern void stackDump (lua_State *L);
 static const struct  luaL_Reg luagl_lib[];
 static int luagl_viewport(lua_State *L);
- 
+static int flushing_lu(lua_State *L);
+void luagl_flushing(lua_State *L);
+void luagl_flushing_done(lua_State *L);
+int EMMA_FLUSHING; 

@@ -86,10 +86,12 @@ static const struct luaL_Reg sys[] = { { "time", systemTime },
                                        { NULL, NULL } };
 
 void emma_update( lua_State *L, double delta, int64_t time ) {
+    lua_plock(L, "");
     lua_getglobal( L, "update" );
     lua_pushnumber( L, delta );
     lua_pushnumber( L, (long)time );
     emma_call( L, 2, 0 );
+    lua_punlock(L, "");
 }
 
 void emma_draw( lua_State *L ) {
@@ -141,7 +143,7 @@ lua_State *L;
 - (id)init;{
     self = [super init];
     if ( self != nil ) {
-        shape = [[chris alloc] init];
+      //  shape = [[chris alloc] init];
     }
     return self;
 }
@@ -174,7 +176,7 @@ lua_State *L;
 }
 
 - (void)draw {
-    [shape draw];
+//    [shape draw];
 }
 
 
@@ -236,7 +238,17 @@ lua_State *L;
 
 - (void)aFileHasBeenChanged {
     // NSLog( @"file change!" );
-    emma_destroy( L );
+    printf("file change");
+    [view->condition lock];
+        [view.openGLContext makeCurrentContext];
+        FLUSHING = YES;
+        emma_destroy( L );
+        FLUSHING = NO;
+    [view->condition signal];
+    [view->condition unlock];
+    
+    
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *contents =
         [fileManager contentsOfDirectoryAtURL:scriptURL

@@ -13,8 +13,12 @@
 @interface AppGLView : NSOpenGLView <NSWindowDelegate> {
 @public
   NSSize windowSize;
+    NSCondition* condition;
 }
 @property(nonatomic, retain) Emma *director;
 
 - (void)setup;
+- (void)stopDrawLoop;
 @end
+
+BOOL FLUSHING;

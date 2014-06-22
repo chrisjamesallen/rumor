@@ -4457,6 +4457,18 @@ static int luagl_translate(lua_State *L)
   return 0;
 }
 
+
+static void gl_status(GLint * logLength, GLuint * obj, char * str )
+{
+    
+    if (*logLength > 0) {
+        GLchar *log = (GLchar *)malloc(*logLength);
+        glGetShaderInfoLog((GLuint) *obj, *logLength, &logLength, log);
+        printf("%s log:\n%s", str, log);
+        free(log);
+    }
+}
+
 /*Vertex (x, y, [z, w]) -> none
 Vertex (v) -> none*/
 static int luagl_vertex(lua_State *L)
@@ -4559,10 +4571,26 @@ static int luagl_viewport(lua_State *L)
 }
 
 
+
+
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+//// ALL ME //////////// ALL ME ////////
+
 static int luagl_createShader(lua_State *L)
 {
-    GLuint shader;
-    shader = glCreateShader(GL_VERTEX_SHADER);
+    GLuint shader, type;
+    type = lua_tonumber(L, -1);
+    shader = glCreateShader(type);
     lua_pushunsigned(L, shader);
     return 1;
 }
@@ -4589,6 +4617,8 @@ static int luagl_shaderSource(lua_State *L)
     GLuint shader;
     shader = lua_tounsigned(L, -2);
     source = lua_tostring(L, -1);
+    //GLchar *log = (GLchar *)malloc(logLength);
+ 
     glShaderSource(shader, 1, &source, NULL);
     return 0;
 }
@@ -4597,9 +4627,21 @@ static int luagl_shaderSource(lua_State *L)
 static int luagl_compileShader(lua_State *L)
 {
     /*  */
-    GLuint shader;
-    shader = lua_tounsigned( L, -1);
-    glCompileShader( shader );
+    GLuint *shader;
+    *shader = lua_tounsigned( L, -1);
+    glCompileShader( *shader );
+    
+//    GLint logLength;
+//    glGetShaderiv(&shader, GL_INFO_LOG_LENGTH, &logLength);
+//    gl_status(&logLength, &shader, "Shader Compile");
+    GLint logLength;
+    glGetShaderiv(*shader, GL_INFO_LOG_LENGTH, &logLength);
+    if (logLength > 0) {
+        GLchar *log = (GLchar *)malloc(logLength);
+        glGetShaderInfoLog(*shader, logLength, &logLength, log);
+        printf("Shader compile log:\n%s", log);
+        free(log);
+    }
     return 0;
 }
 
@@ -4627,15 +4669,44 @@ static int luagl_createProgram(lua_State *L)
 static int luagl_linkProgram(lua_State *L)
 {
     GLuint program;
+    GLint status;
     program = lua_tounsigned( L, -1);
     glLinkProgram(program);
+    GLint logLength;
+    glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
+    if (logLength > 0) {
+        GLchar *log = (GLchar *)malloc(logLength);
+        glGetProgramInfoLog(program, logLength, &logLength, log);
+        printf("Program link log:\n%s", log);
+        free(log);
+    }else{
+        printf("Program Successfully linked");
+    }
+    
+    glGetProgramiv(program, GL_LINK_STATUS, &status);
+    if (status == 0) {
+        printf("Program bad status!");
+        return 0;
+    }
+    
     return 0;
 }
 
 static int luagl_deleteProgram(lua_State *L)
 {
     GLuint program;
+    char * error;
+    GLenum err = glGetError();
     program = lua_tounsigned( L, -1);
+    
+    switch(err) {
+        case GL_INVALID_OPERATION:      error="INVALID_OPERATION";      break;
+        case GL_INVALID_ENUM:           error="INVALID_ENUM";           break;
+        case GL_INVALID_VALUE:          error="INVALID_VALUE";          break;
+        case GL_OUT_OF_MEMORY:          error="OUT_OF_MEMORY";          break;
+        case GL_INVALID_FRAMEBUFFER_OPERATION:  error="INVALID_FRAMEBUFFER_OPERATION";  break;
+    }
+    printf("%s", error);
     glDeleteProgram(program);
     return 0;
 }
@@ -4643,9 +4714,12 @@ static int luagl_deleteProgram(lua_State *L)
 static int luagl_useProgram(lua_State *L)
 {
     GLuint program;
-    glDeleteProgram(program);
+    program = lua_tounsigned( L, -1);
+    glUseProgram(program);
     return 0;
 }
+
+
 
 typedef struct yo {
     GLuint foo;
@@ -4657,17 +4731,22 @@ GLuint vertex_vbo;
 extern GLfloat vertices [] = {1.0, -1.0f, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1, 0};
 GLuint vertexArray;
 static int luagl_genVertexArrays(lua_State *L){
+    if(EMMA_FLUSHING) return 0;
     yo *va = (yo *)lua_newuserdata(L, sizeof(yo));
     glGenVertexArrays(1, &va->foo );
     return 1;
 }
 
 static int luagl_genBuffers(lua_State *L){
+    printf("bind buffer\n");
+    if(EMMA_FLUSHING) return 0;
     yo *vbo= (yo *)lua_newuserdata(L, sizeof(yo));
      glGenBuffers(1, &vbo->foo);
     return 1;
 }
 static int luagl_bindBuffer(lua_State *L){
+    printf("bind buffer\n");
+    if(EMMA_FLUSHING) return 0;
     GLuint bufferType;
      bufferType = lua_tonumber(L, -2);
      yo * vbo = (yo *)lua_touserdata(L, -1);
@@ -4675,6 +4754,8 @@ static int luagl_bindBuffer(lua_State *L){
     return 0;
 }
 static int luagl_bufferData(lua_State *L){
+    printf("bind buffer\n");
+    if(EMMA_FLUSHING) return 0;
 //    GLuint bufferType, size, drawType;
 //    bufferType = lua_tounsigned(L, -4);
 //    size = lua_tounsigned(L, -3);
@@ -4685,6 +4766,8 @@ static int luagl_bufferData(lua_State *L){
     return 0;
 }
 static int luagl_enableVertexAttribArray(lua_State *L){
+    printf("bind buffer\n");
+    if(EMMA_FLUSHING) return 0;
 //    gluint pos;
 //    pos = lua_tounsigned(L, -1)l
 //    glEnableVertexAttribArray(pos);
@@ -4692,6 +4775,8 @@ static int luagl_enableVertexAttribArray(lua_State *L){
     return 0;
 }
 static int luagl_vertexAttribPointer(lua_State *L){
+    printf("bind buffer\n");
+    if(EMMA_FLUSHING) return 0;
     GLuint index;
     GLint size;
     GLenum type;
@@ -4710,6 +4795,8 @@ static int luagl_vertexAttribPointer(lua_State *L){
     return 0;
 }
 static int luagl_bindVertexArray(lua_State *L){
+    printf("bind buffer\n");
+    if(EMMA_FLUSHING) return 0;
     //GLuint vertex_array__;
 //    vertex_array = lua_touserdata(L, -1);
        yo * va = (yo *)lua_touserdata(L, -1);
@@ -4717,6 +4804,8 @@ static int luagl_bindVertexArray(lua_State *L){
    return 0;
 }
 static int luagl_drawArrays(lua_State *L){
+    printf("bind buffer\n");
+    if(EMMA_FLUSHING) return 0;
     GLenum mode;
     GLint first;
     GLsizei count;
@@ -4941,4 +5030,16 @@ int luaopen_luagl(lua_State *L)
     //add globals to gl...
     luagl_initconst(L, luagl_const);
   return 1;
+}
+
+void luagl_flushing(lua_State *L)
+{
+    EMMA_FLUSHING = 1;
+    
+}
+
+void luagl_flushing_done(lua_State *L)
+{
+    EMMA_FLUSHING = 0;
+    
 }

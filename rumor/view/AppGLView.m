@@ -12,19 +12,26 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     
     @autoreleasepool {
         AppGLView *view = (__bridge AppGLView *)displayLinkContext;
-        [view.openGLContext makeCurrentContext];
-        CGLLockContext(view.openGLContext.CGLContextObj ); // This is needed because
-                                                // this isn't running on
-                                                // the main thread.
-        //call lua
-         emma_update(L, outputTime->rateScalar, outputTime->videoTime);
-         emma_draw(L);
+        [view->condition lock];
         
-        
-        [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
-        // the drawRect method.
-        CGLUnlockContext( view.openGLContext.CGLContextObj );
-        CGLFlushDrawable( view.openGLContext.CGLContextObj ); // This does glFlush() for you.
+
+        if(FLUSHING == NO){
+            [view.openGLContext makeCurrentContext];
+            CGLLockContext(view.openGLContext.CGLContextObj ); // This is needed because
+            // this isn't running on
+            // the main thread.
+            //call lua
+            emma_update(L, outputTime->rateScalar, outputTime->videoTime);
+            emma_draw(L);
+            
+            
+            [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
+            // the drawRect method.
+            CGLUnlockContext( view.openGLContext.CGLContextObj );
+            CGLFlushDrawable( view.openGLContext.CGLContextObj ); // This does glFlush() for you.
+        }
+
+        [view->condition unlock];
         return kCVReturnSuccess;
     }
 }
@@ -47,7 +54,7 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     int aValue = 0;
     NSOpenGLPixelFormat *format;
     NSOpenGLContext *context;
-
+    NSCondition* condition = [[NSCondition alloc] init];
     NSOpenGLPixelFormatAttribute pixelFormats[] = {
         NSOpenGLPFAColorSize,     32,
         NSOpenGLPFADepthSize,     32,
@@ -141,6 +148,7 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 }
 
 - (void)stopDrawLoop {
+    CVDisplayLinkStop(_displayLink);
 }
 
 - (void)dealloc {

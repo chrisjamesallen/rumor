@@ -26,7 +26,7 @@ function update (delta,runTime,pos)
         starttime = runTime
         runtime = starttime
     end
-    if(app~=nil) then
+    if(app~=nil or destroying ~= true) then
         runtime = runTime - starttime  --Store game time
         app:update(delta)
         mouse = System.mouse()
@@ -35,7 +35,7 @@ function update (delta,runTime,pos)
 end
 
 function draw()
-    if(app~=nil) then
+    if(app~=nil or destroying ~= true) then
         --local b = System.time()
         app:draw()
         --local a = System.time()
@@ -45,10 +45,12 @@ end
 
 function destroy()
     if(app~=nil) then
+        destroying = true;
         app:destroy()
         app = nil
         App = nil
         collect()
+        destroying = false;
     end
 end
 

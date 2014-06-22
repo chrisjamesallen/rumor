@@ -1113,6 +1113,18 @@ LUA_API int lua_error (lua_State *L) {
 }
 
 
+LUA_API int lua_plock (lua_State *L, const char *fmt) {
+    lua_lock(L);
+    /* code unreachable; will unlock when control actually leaves the kernel */
+    return 0;  /* to avoid warnings */
+}
+
+LUA_API int lua_punlock (lua_State *L, const char *fmt) {
+    lua_unlock(L);
+    /* code unreachable; will unlock when control actually leaves the kernel */
+    return 0;  /* to avoid warnings */
+}
+
 LUA_API int lua_next (lua_State *L, int idx) {
   StkId t;
   int more;

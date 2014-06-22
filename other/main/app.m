@@ -3,6 +3,8 @@
  set window size and we are good to go!
  =================================================== */
 
+
+
 #import "app.h"
 #import "AppGLView.h"
 #import "Emma.h"
@@ -44,7 +46,7 @@
 
   // create Emma
   self.emma = [[[Emma alloc] init] autorelease];
-
+  self.emma->view  = self.glview;
   // assign emma to view
   self.glview.director = self.emma;
 
