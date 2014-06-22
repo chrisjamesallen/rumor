@@ -548,6 +548,10 @@ static const luaglConst luagl_const[] = {
   { "VERTEX_SHADER"                    , GL_VERTEX_SHADER                 },
   { "FRAGMENT_SHADER"                    , GL_FRAGMENT_SHADER             },
    { "ARRAY_BUFFER"                    , GL_ARRAY_BUFFER             },
+    
+       { "STATIC_DRAW"                    , GL_STATIC_DRAW             },
+       { "STREAM_DRAW"                    , GL_STREAM_DRAW             },
+           { "DYNAMIC_DRAW"                    , GL_DYNAMIC_DRAW             },
 #ifdef GL_EXT_vertex_array
   { "EXT_vertex_array"                , GL_EXT_vertex_array               },
 #endif
@@ -4721,92 +4725,120 @@ static int luagl_useProgram(lua_State *L)
 
 
 
-typedef struct yo {
-    GLuint foo;
-    GLfloat vertices [];
-} yo;
+typedef struct vao_ {
+    GLuint val;
+} vao_;
+
+typedef struct vbo_ {
+    GLuint val;
+} vbo_;
+
+typedef struct data_ {
+    GLfloat * data;
+} data_;
 
 GLuint vertexArray__;
 GLuint vertex_vbo;
-extern GLfloat vertices [] = {1.0, -1.0f, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1, 0};
+//extern GLfloat vertices [] = {1.0, -1.0f, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1, 0};
 GLuint vertexArray;
 static int luagl_genVertexArrays(lua_State *L){
-    if(EMMA_FLUSHING) return 0;
-    yo *va = (yo *)lua_newuserdata(L, sizeof(yo));
-    glGenVertexArrays(1, &va->foo );
+    vao_ *p = (data_ *)lua_newuserdata(L, sizeof(vao_));
+    glGenVertexArrays(1, &p->val );
     return 1;
 }
 
 static int luagl_genBuffers(lua_State *L){
-    //printf("bind buffer\n");
-    yo *vbo= (yo *)lua_newuserdata(L, sizeof(yo));
-     glGenBuffers(1, &vbo->foo);
+    vbo_ *p= (vbo_ *)lua_newuserdata(L, sizeof(vbo_));
+     glGenBuffers(1, &p->val);
     return 1;
 }
 static int luagl_bindBuffer(lua_State *L){
-    //printf("bind buffer\n");
     GLuint bufferType;
      bufferType = lua_tonumber(L, -2);
-     yo * vbo = (yo *)lua_touserdata(L, -1);
-    glBindBuffer(bufferType, vbo->foo);
+     vbo_ * p = (vbo_ *)lua_touserdata(L, -1);
+    glBindBuffer(bufferType, p->val);
     return 0;
 }
+
 static int luagl_bufferData(lua_State *L){
-    //printf("bind buffer\n");
-//    GLuint bufferType, size, drawType;
-//    bufferType = lua_tounsigned(L, -4);
-//    size = lua_tounsigned(L, -3);
-//    const GLvoid *data = lua_touserdata(L, -2);
-//    drawType = lua_tounsigned(L, -1);
-//    glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(GLfloat), &data, GL_STATIC_DRAW);
-    glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(GLfloat), &vertices, GL_STATIC_DRAW);
+    GLuint target, size, usage;
+    target = lua_tounsigned(L, -4);
+    size = lua_tounsigned(L, -3);
+    data_ * verts = (data_ *) lua_touserdata(L, -2);
+    usage = lua_tounsigned(L, -1);
+    glBufferData(target, size, verts->data, usage);
+    //glBufferData(GL_ARRAY_BUFFER, 4 * 3 * sizeof(GLfloat), &vertices, GL_STATIC_DRAW);
     return 0;
 }
+
+static int luagl_copyVerts(lua_State *L){
+    GLfloat vert;
+    GLuint len;
+    uint a;
+    float b;
+    data_ * p;
+    a = 0;
+    len = lua_tonumber(L, -1);
+    GLfloat * data = malloc(len * sizeof(GLfloat));
+    while(len > a){
+        a++;
+        lua_pushunsigned(L, a);
+        lua_gettable(L, -3);
+        b = lua_tonumber(L, -1);
+        printf("vert is %f \n", b);
+        data[a-1] = b;
+        lua_pop(L, 1);
+    }
+    p= (data_ *)lua_newuserdata(L, sizeof(data_));
+    p->data = data;
+    stackDump(L);
+    return 1;
+}
+
+static int luagl_clearData(lua_State * L){
+    data_ * p = (data_*)lua_touserdata(L, -1);
+    free(p->data);
+    return 0;
+}
+
+
 static int luagl_enableVertexAttribArray(lua_State *L){
-   // printf("bind buffer\n");
-//    gluint pos;
-//    pos = lua_tounsigned(L, -1)l
-//    glEnableVertexAttribArray(pos);
-    glEnableVertexAttribArray(0);
+    GLuint pos;
+    pos = lua_tounsigned(L, -1);
+    glEnableVertexAttribArray(pos);
     return 0;
 }
 static int luagl_vertexAttribPointer(lua_State *L){
-    //printf("bind buffer\n");
     GLuint index;
     GLint size;
     GLenum type;
-    GLboolean normalized;
+    GLint normalized;
     GLsizei stride;
     const GLvoid * pointer;
-    
-//    pos = lua_tounsigned(L, -6);
-//    size = lua_tointeger(L, -5, NULL);
-//    type = lua_tointeger(L, -4, NULL);
-//    normalized = lua_toboolean(L, -3, NULL);
-//    stride = lua_tointeger(L, -2, NULL);
-//    pointer = lua_touserdata(L, -1);
-//    glVertexAttribPointer(index, size, type, normalize, stride, pointer);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    index = lua_tounsigned(L, -6);
+    size = lua_tointegerx(L, -5, NULL);
+    type = lua_tointegerx(L, -4, NULL);
+    normalized = lua_tointegerx(L, -3, NULL);
+    stride = lua_tointegerx(L, -2, NULL);
+    pointer = lua_touserdata(L, -1);
+    glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+    //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
     return 0;
 }
 static int luagl_bindVertexArray(lua_State *L){
-    //printf("bind buffer\n");
-    //GLuint vertex_array__;
-//    vertex_array = lua_touserdata(L, -1);
-       yo * va = (yo *)lua_touserdata(L, -1);
-    glBindVertexArray(va->foo);
+    vao_ * p = (vao_ *)lua_touserdata(L, -1);
+    glBindVertexArray(p->val);
    return 0;
 }
-static int luagl_drawArrays(lua_State *L){
-    //printf("bind buffer\n");
+static int luagl_drawArrays( lua_State *L ) {
     GLenum mode;
     GLint first;
     GLsizei count;
-//      mode = lua_tointeger(L, -3, NULL);
-//       first = lua_tointeger(L, -2, NULL);
-//    count = lua_tointeger(L, -1, NULL);
-//    glDrawArrays (mode, first, count);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    mode = lua_tointegerx( L, -3, NULL );
+    first = lua_tointegerx( L, -2, NULL );
+    count = lua_tointegerx( L, -1, NULL );
+    glDrawArrays( mode, first, count );
+    //    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     return 0;
 }
  
@@ -4975,6 +5007,8 @@ static const struct  luaL_Reg luagl_lib[] = {
     {"VertexAttribPointer", luagl_vertexAttribPointer},
     {"BindVertexArray", luagl_bindVertexArray},
     {"DrawArrays", luagl_drawArrays},
+    {"CopyData", luagl_copyVerts},
+    {"ClearData", luagl_clearData},
   {NULL, NULL}
 };
 

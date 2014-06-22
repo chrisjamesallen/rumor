@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "other/src/luagl.c"
-            timestampString = "425055759.812329"
+            timestampString = "425142494.157688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4822"
-            endingLineNumber = "4822">
+            startingLineNumber = "4848"
+            endingLineNumber = "4848">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -38,11 +38,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "other/src/luagl.c"
-            timestampString = "425048436.260574"
+            timestampString = "425138595.255252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4653"
-            endingLineNumber = "4653"
+            startingLineNumber = "4657"
+            endingLineNumber = "4657"
             landmarkName = "luagl_deleteShader()"
             landmarkType = "7">
          </BreakpointContent>
@@ -54,123 +54,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "other/src/luagl.c"
-            timestampString = "425046565.879294"
+            timestampString = "425138595.255252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4576"
-            endingLineNumber = "4576">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "other/src/luagl.c"
-            timestampString = "425055759.812329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4742"
-            endingLineNumber = "4742"
-            landmarkName = "luagl_genBuffers()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "other/src/luagl.c"
-            timestampString = "425055759.812329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4749"
-            endingLineNumber = "4749"
-            landmarkName = "luagl_bindBuffer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "other/src/luagl.c"
-            timestampString = "425055759.812329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4758"
-            endingLineNumber = "4758"
-            landmarkName = "luagl_bufferData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "other/src/luagl.c"
-            timestampString = "425055759.812329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4770"
-            endingLineNumber = "4770"
-            landmarkName = "luagl_enableVertexAttribArray()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "other/src/luagl.c"
-            timestampString = "425055759.812329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4779"
-            endingLineNumber = "4779"
-            landmarkName = "luagl_vertexAttribPointer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "other/src/luagl.c"
-            timestampString = "425055759.812329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4799"
-            endingLineNumber = "4799"
-            landmarkName = "luagl_bindVertexArray()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "other/src/luagl.c"
-            timestampString = "425055759.812329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4808"
-            endingLineNumber = "4808"
-            landmarkName = "luagl_drawArrays()"
-            landmarkType = "7">
+            startingLineNumber = "4580"
+            endingLineNumber = "4580">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
