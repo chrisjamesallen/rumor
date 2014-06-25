@@ -4802,6 +4802,18 @@ static int luagl_clearData(lua_State * L){
     return 0;
 }
 
+static int luagl_UniformMatrix4fv(lua_State *L){
+    GLint location;
+    GLsizei count;
+    GLint transpose;
+    location = lua_tonumberx(L, -4, NULL);
+    count = lua_tonumberx(L, -3, NULL);
+    transpose = lua_tonumberx(L, -2, NULL);
+    lua_mat4 * p = (lua_mat4*)lua_touserdata(L, -1);
+    glUniformMatrix4fv(location, count, transpose, p->data);
+    return 0;
+}
+
 
 static int luagl_enableVertexAttribArray(lua_State *L){
     GLuint pos;
@@ -4876,7 +4888,7 @@ static int array_new (lua_State* L) {
     GLfloat vert;
     GLuint len;
     uint i;
-    float b;
+    float b; 
     data_ * p;
     uint DEFAULT_LENGTH;
     stackDump(L);
@@ -4916,14 +4928,6 @@ static int array_new (lua_State* L) {
 // metatable method for handling "array[index]"
 static int array_index (lua_State* L) {
     data_* array = (data_*)luaL_checkudata(L, 1, "array");
-//    if(lua_isstring(L,-1)){
-//        char * str = lua_tostring(L, -1);
-//       luaL_getmetatable(L, "array");
-//       lua_getfield(L, -1, str);
-//       lua_pushvalue(L, -4);
-//       lua_pcall(L, 1, 1, 0);
-//       return 1;
-//    }
      int index = luaL_checkint(L, 2);
      lua_pushnumber(L, (float) array->data[index-1]);
     return 1;
@@ -4943,6 +4947,8 @@ static int array_length (lua_State* L) {
     lua_pushinteger(L, array->length);
     return 1;
 }
+ 
+
 
 static int array_gc (lua_State* L) {
     data_* array = (data_*)luaL_checkudata(L, 1, "array");
@@ -5137,6 +5143,7 @@ static const struct  luaL_Reg luagl_lib[] = {
     {"DrawArrays", luagl_drawArrays},
     {"CopyData", luagl_copyVerts},
     {"ClearData", luagl_clearData},
+    {"UniformMatrix4fv", luagl_UniformMatrix4fv},
   {NULL, NULL}
 };
 

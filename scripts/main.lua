@@ -15,10 +15,10 @@ screen = {}
 
 function main()
     --called from c..
-    print("main ~ start")
+    --print("main ~ start")
     app = App:new()
     screen = System.screen()
-    print("Screen Dimensions::", screen.width, screen.height)
+    --print("Screen Dimensions::", screen.width, screen.height)
 end
 
 function update (delta,runTime,pos)
@@ -26,7 +26,7 @@ function update (delta,runTime,pos)
         starttime = runTime
         runtime = starttime
     end
-    if(app~=nil or destroying ~= true) then
+    if(app~=nil and destroying ~= true) then
         runtime = runTime - starttime  --Store game time
         app:update(delta)
         mouse = System.mouse()
@@ -35,7 +35,7 @@ function update (delta,runTime,pos)
 end
 
 function draw()
-    if(app~=nil or destroying ~= true) then
+    if(app~=nil and destroying ~= true) then
         --local b = System.time()
         app:draw()
         --local a = System.time()

@@ -67,7 +67,22 @@
 		BCDE08D218DDF07C002587B8 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08D118DDF07C002587B8 /* Quartz.framework */; };
 		BCDE08D418DDF0B6002587B8 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08D318DDF0B6002587B8 /* GLKit.framework */; };
 		BCDE08D518DDF0C4002587B8 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF144559629296821E05E9 /* AppKit.framework */; };
-		BCF7D6ED1944A4F600B7F453 /* luagl.c in Sources */ = {isa = PBXBuildFile; fileRef = BCF7D6EB1944A45C00B7F453 /* luagl.c */; };
+		BCE3FCCA195A21FE00A3A7FF /* aabb.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCAD195A21FE00A3A7FF /* aabb.c */; };
+		BCE3FCCB195A21FE00A3A7FF /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE3FCAF195A21FE00A3A7FF /* CMakeLists.txt */; };
+		BCE3FCCC195A21FE00A3A7FF /* mat4stack.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCB1195A21FE00A3A7FF /* mat4stack.c */; };
+		BCE3FCCD195A21FE00A3A7FF /* matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCB3195A21FE00A3A7FF /* matrix.c */; };
+		BCE3FCCE195A21FE00A3A7FF /* mat3.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCB6195A21FE00A3A7FF /* mat3.c */; };
+		BCE3FCCF195A21FE00A3A7FF /* mat4.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCB8195A21FE00A3A7FF /* mat4.c */; };
+		BCE3FCD0195A21FE00A3A7FF /* plane.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCBA195A21FE00A3A7FF /* plane.c */; };
+		BCE3FCD1195A21FE00A3A7FF /* quaternion.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCBC195A21FE00A3A7FF /* quaternion.c */; };
+		BCE3FCD2195A21FE00A3A7FF /* ray2.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCBE195A21FE00A3A7FF /* ray2.c */; };
+		BCE3FCD3195A21FE00A3A7FF /* ray3.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCC0195A21FE00A3A7FF /* ray3.c */; };
+		BCE3FCD4195A21FE00A3A7FF /* utility.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCC2195A21FE00A3A7FF /* utility.c */; };
+		BCE3FCD5195A21FE00A3A7FF /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCC4195A21FE00A3A7FF /* vec2.c */; };
+		BCE3FCD6195A21FE00A3A7FF /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCC6195A21FE00A3A7FF /* vec3.c */; };
+		BCE3FCD7195A21FE00A3A7FF /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCC8195A21FE00A3A7FF /* vec4.c */; };
+		BCE3FCDA195A222300A3A7FF /* emma_math.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCD9195A222300A3A7FF /* emma_math.m */; };
+		BCF7D6ED1944A4F600B7F453 /* luagl.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7D6EB1944A45C00B7F453 /* luagl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,7 +227,37 @@
 		BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCDE08D118DDF07C002587B8 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BCDE08D318DDF0B6002587B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		BCF7D6EB1944A45C00B7F453 /* luagl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = luagl.c; path = ../other/src/luagl.c; sourceTree = "<group>"; };
+		BCE3FCAD195A21FE00A3A7FF /* aabb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aabb.c; sourceTree = "<group>"; };
+		BCE3FCAE195A21FE00A3A7FF /* aabb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aabb.h; sourceTree = "<group>"; };
+		BCE3FCAF195A21FE00A3A7FF /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		BCE3FCB1195A21FE00A3A7FF /* mat4stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mat4stack.c; sourceTree = "<group>"; };
+		BCE3FCB2195A21FE00A3A7FF /* mat4stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mat4stack.h; sourceTree = "<group>"; };
+		BCE3FCB3195A21FE00A3A7FF /* matrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = matrix.c; sourceTree = "<group>"; };
+		BCE3FCB4195A21FE00A3A7FF /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		BCE3FCB5195A21FE00A3A7FF /* kazmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kazmath.h; sourceTree = "<group>"; };
+		BCE3FCB6195A21FE00A3A7FF /* mat3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mat3.c; sourceTree = "<group>"; };
+		BCE3FCB7195A21FE00A3A7FF /* mat3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mat3.h; sourceTree = "<group>"; };
+		BCE3FCB8195A21FE00A3A7FF /* mat4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mat4.c; sourceTree = "<group>"; };
+		BCE3FCB9195A21FE00A3A7FF /* mat4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mat4.h; sourceTree = "<group>"; };
+		BCE3FCBA195A21FE00A3A7FF /* plane.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = plane.c; sourceTree = "<group>"; };
+		BCE3FCBB195A21FE00A3A7FF /* plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plane.h; sourceTree = "<group>"; };
+		BCE3FCBC195A21FE00A3A7FF /* quaternion.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = quaternion.c; sourceTree = "<group>"; };
+		BCE3FCBD195A21FE00A3A7FF /* quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quaternion.h; sourceTree = "<group>"; };
+		BCE3FCBE195A21FE00A3A7FF /* ray2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ray2.c; sourceTree = "<group>"; };
+		BCE3FCBF195A21FE00A3A7FF /* ray2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ray2.h; sourceTree = "<group>"; };
+		BCE3FCC0195A21FE00A3A7FF /* ray3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ray3.c; sourceTree = "<group>"; };
+		BCE3FCC1195A21FE00A3A7FF /* ray3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ray3.h; sourceTree = "<group>"; };
+		BCE3FCC2195A21FE00A3A7FF /* utility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utility.c; sourceTree = "<group>"; };
+		BCE3FCC3195A21FE00A3A7FF /* utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utility.h; sourceTree = "<group>"; };
+		BCE3FCC4195A21FE00A3A7FF /* vec2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec2.c; sourceTree = "<group>"; };
+		BCE3FCC5195A21FE00A3A7FF /* vec2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec2.h; sourceTree = "<group>"; };
+		BCE3FCC6195A21FE00A3A7FF /* vec3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec3.c; sourceTree = "<group>"; };
+		BCE3FCC7195A21FE00A3A7FF /* vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
+		BCE3FCC8195A21FE00A3A7FF /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
+		BCE3FCC9195A21FE00A3A7FF /* vec4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec4.h; sourceTree = "<group>"; };
+		BCE3FCD8195A222300A3A7FF /* emma_math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emma_math.h; sourceTree = "<group>"; };
+		BCE3FCD9195A222300A3A7FF /* emma_math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emma_math.m; sourceTree = "<group>"; };
+		BCF7D6EB1944A45C00B7F453 /* luagl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = luagl.m; path = ../other/src/luagl.m; sourceTree = "<group>"; };
 		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luagl.h; path = ../other/src/luagl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,6 +378,8 @@
 			children = (
 				72AF14CDD204742277F25466 /* Emma.h */,
 				72AF1756FCF6BEDAF09E4A10 /* Emma.m */,
+				BCE3FCD8195A222300A3A7FF /* emma_math.h */,
+				BCE3FCD9195A222300A3A7FF /* emma_math.m */,
 				72AF1EC6639600773CED5076 /* chris.h */,
 				72AF1353DC6398EF39932983 /* chris.m */,
 			);
@@ -346,7 +393,7 @@
 				72AF1CC5D97BCA23032105B3 /* Images.xcassets */,
 				72AF1C8FF9A6E9203A597204 /* readme.txt */,
 				BCF7D6EE1944A55300B7F453 /* luagl.h */,
-				BCF7D6EB1944A45C00B7F453 /* luagl.c */,
+				BCF7D6EB1944A45C00B7F453 /* luagl.m */,
 				72AF1C2A6460A0BC9E763974 /* controllers */,
 				72AF1F5189DBB137FB89F04E /* view */,
 				72AF1AA3564666A1B07A1B72 /* meshes+texture */,
@@ -503,10 +550,54 @@
 		BC663EB018F9C0B8001DB2C3 /* libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BCE3FCAC195A21FE00A3A7FF /* kazmath */,
 				BC438CE818FC9E8100AA5D15 /* UKKQueue */,
 			);
 			name = libraries;
 			path = ../rumor;
+			sourceTree = "<group>";
+		};
+		BCE3FCAC195A21FE00A3A7FF /* kazmath */ = {
+			isa = PBXGroup;
+			children = (
+				BCE3FCAD195A21FE00A3A7FF /* aabb.c */,
+				BCE3FCAE195A21FE00A3A7FF /* aabb.h */,
+				BCE3FCAF195A21FE00A3A7FF /* CMakeLists.txt */,
+				BCE3FCB0195A21FE00A3A7FF /* GL */,
+				BCE3FCB5195A21FE00A3A7FF /* kazmath.h */,
+				BCE3FCB6195A21FE00A3A7FF /* mat3.c */,
+				BCE3FCB7195A21FE00A3A7FF /* mat3.h */,
+				BCE3FCB8195A21FE00A3A7FF /* mat4.c */,
+				BCE3FCB9195A21FE00A3A7FF /* mat4.h */,
+				BCE3FCBA195A21FE00A3A7FF /* plane.c */,
+				BCE3FCBB195A21FE00A3A7FF /* plane.h */,
+				BCE3FCBC195A21FE00A3A7FF /* quaternion.c */,
+				BCE3FCBD195A21FE00A3A7FF /* quaternion.h */,
+				BCE3FCBE195A21FE00A3A7FF /* ray2.c */,
+				BCE3FCBF195A21FE00A3A7FF /* ray2.h */,
+				BCE3FCC0195A21FE00A3A7FF /* ray3.c */,
+				BCE3FCC1195A21FE00A3A7FF /* ray3.h */,
+				BCE3FCC2195A21FE00A3A7FF /* utility.c */,
+				BCE3FCC3195A21FE00A3A7FF /* utility.h */,
+				BCE3FCC4195A21FE00A3A7FF /* vec2.c */,
+				BCE3FCC5195A21FE00A3A7FF /* vec2.h */,
+				BCE3FCC6195A21FE00A3A7FF /* vec3.c */,
+				BCE3FCC7195A21FE00A3A7FF /* vec3.h */,
+				BCE3FCC8195A21FE00A3A7FF /* vec4.c */,
+				BCE3FCC9195A21FE00A3A7FF /* vec4.h */,
+			);
+			path = kazmath;
+			sourceTree = "<group>";
+		};
+		BCE3FCB0195A21FE00A3A7FF /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				BCE3FCB1195A21FE00A3A7FF /* mat4stack.c */,
+				BCE3FCB2195A21FE00A3A7FF /* mat4stack.h */,
+				BCE3FCB3195A21FE00A3A7FF /* matrix.c */,
+				BCE3FCB4195A21FE00A3A7FF /* matrix.h */,
+			);
+			path = GL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -563,6 +654,7 @@
 				72AF15B5CE93CAD0A1D8BEDF /* readme.txt in Resources */,
 				72AF1B4B7F02A1BEBD32BB06 /* app.xib in Resources */,
 				BC74ACA719449627006D8543 /* scripts in Resources */,
+				BCE3FCCB195A21FE00A3A7FF /* CMakeLists.txt in Resources */,
 				72AF14120CEA2A77EFBBF4E5 /* InfoPlist.strings in Resources */,
 				72AF16694FB538CED698330B /* Credits.rtf in Resources */,
 				72AF1CFCC850CA72EEE269F2 /* default.fsh in Resources */,
@@ -578,10 +670,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF7D6ED1944A4F600B7F453 /* luagl.c in Sources */,
+				BCE3FCD3195A21FE00A3A7FF /* ray3.c in Sources */,
+				BCE3FCD5195A21FE00A3A7FF /* vec2.c in Sources */,
+				BCF7D6ED1944A4F600B7F453 /* luagl.m in Sources */,
 				BC438CC818FC982400AA5D15 /* lmem.c in Sources */,
 				BC438CCE18FC982400AA5D15 /* lopcodes.c in Sources */,
 				BC438CCC18FC982400AA5D15 /* lobject.c in Sources */,
+				BCE3FCD6195A21FE00A3A7FF /* vec3.c in Sources */,
 				BC438CBB18FC982400AA5D15 /* lfunc.c in Sources */,
 				BC438CDC18FC982400AA5D15 /* ltablib.c in Sources */,
 				BC438CE618FC982400AA5D15 /* lzio.c in Sources */,
@@ -595,17 +690,25 @@
 				BC438CF618FC9E8100AA5D15 /* UKMainThreadProxy.m in Sources */,
 				BC438CB318FC982400AA5D15 /* ldblib.c in Sources */,
 				BC438CDE18FC982400AA5D15 /* ltm.c in Sources */,
+				BCE3FCD2195A21FE00A3A7FF /* ray2.c in Sources */,
 				BC438CAD18FC982400AA5D15 /* lcode.c in Sources */,
+				BCE3FCCA195A21FE00A3A7FF /* aabb.c in Sources */,
 				BC438CBD18FC982400AA5D15 /* lgc.c in Sources */,
+				BCE3FCCE195A21FE00A3A7FF /* mat3.c in Sources */,
 				72AF1240C254A3A66F10107A /* Emma.m in Sources */,
 				BC438CA718FC982400AA5D15 /* lauxlib.c in Sources */,
 				BC438CDA18FC982400AA5D15 /* ltable.c in Sources */,
 				72AF13433173929534D04D3E /* chris.m in Sources */,
+				BCE3FCCC195A21FE00A3A7FF /* mat4stack.c in Sources */,
 				BC438CF318FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m in Sources */,
+				BCE3FCD1195A21FE00A3A7FF /* quaternion.c in Sources */,
+				BCE3FCD4195A21FE00A3A7FF /* utility.c in Sources */,
 				BC438CC218FC982400AA5D15 /* liolib.c in Sources */,
 				BC31462E1944A5A400F475AC /* luagl_util.c in Sources */,
 				BC438CE418FC982400AA5D15 /* lvm.c in Sources */,
+				BCE3FCCD195A21FE00A3A7FF /* matrix.c in Sources */,
 				BC438CCA18FC982400AA5D15 /* loadlib.c in Sources */,
+				BCE3FCCF195A21FE00A3A7FF /* mat4.c in Sources */,
 				BC438CA918FC982400AA5D15 /* lbaselib.c in Sources */,
 				BC438CC418FC982400AA5D15 /* llex.c in Sources */,
 				BC438CAF18FC982400AA5D15 /* lcorolib.c in Sources */,
@@ -613,6 +716,7 @@
 				72AF1141A1EDD2938130CE7A /* mesh.m in Sources */,
 				72AF10E2869F8E60ED3B18E3 /* renderer.m in Sources */,
 				BC438CB118FC982400AA5D15 /* lctype.c in Sources */,
+				BCE3FCD0195A21FE00A3A7FF /* plane.c in Sources */,
 				BC438CB518FC982400AA5D15 /* ldebug.c in Sources */,
 				BC438CD618FC982400AA5D15 /* lstring.c in Sources */,
 				BC438CAB18FC982400AA5D15 /* lbitlib.c in Sources */,
@@ -621,8 +725,10 @@
 				BC438CC018FC982400AA5D15 /* linit.c in Sources */,
 				BC438CF518FC9E8100AA5D15 /* UKKQueue.m in Sources */,
 				BC438CF218FC9E8100AA5D15 /* UKFileWatcher.m in Sources */,
+				BCE3FCDA195A222300A3A7FF /* emma_math.m in Sources */,
 				BC438CB718FC982400AA5D15 /* ldo.c in Sources */,
 				BC438CA518FC982400AA5D15 /* lapi.c in Sources */,
+				BCE3FCD7195A21FE00A3A7FF /* vec4.c in Sources */,
 				72AF18B8D92EF49D61111960 /* app.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,12 +766,18 @@
 		72AF1457015191393041A30D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "rumor/desky-Prefix.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = (
+					.,
+					GLM,
+				);
 				INFOPLIST_FILE = "rumor/desky-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -683,12 +795,18 @@
 		72AF1916838894370F069D8D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "rumor/desky-Prefix.pch";
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = (
+					.,
+					GLM,
+				);
 				INFOPLIST_FILE = "rumor/desky-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -723,6 +841,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -735,6 +854,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					.GLM,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -762,12 +886,18 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					.GLM,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};

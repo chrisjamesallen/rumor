@@ -6,6 +6,7 @@
 #import <QuartzCore/CVDisplayLink.h>
 #include <time.h>
 
+
 const NSString *LUA_PATH = @"/Users/chrisallen/projects/desky/";
 const NSString *LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
 const NSString *LUA_APP = @"/Users/chrisallen/projects/desky/scripts/emma/app.lua";
@@ -186,6 +187,7 @@ lua_State *L;
     L = luaL_newstate();
     luaL_openlibs( L );
     luaopen_luagl( L );
+    lua_initMat4( L );
     main_init( L );
     [self executeLuaFile];
 }

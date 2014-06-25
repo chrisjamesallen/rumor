@@ -24,12 +24,13 @@
  
 #ifndef __LUAGL_H__
 #define __LUAGL_H__
-
+ 
 #ifdef __cplusplus
 extern "C" {
 #endif
 #import "lua.h"
 #import "lauxlib.h"
+#import "emma_math.h"
 int luaopen_luagl( lua_State *L );
 
 #ifdef __cplusplus

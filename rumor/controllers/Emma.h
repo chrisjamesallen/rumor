@@ -4,6 +4,7 @@
 #include "luagl.h"
 #import "UKKQueue.h"
 #import "AppGLView.h"
+#import "emma_math.h"
 
 extern lua_State *L;
 
