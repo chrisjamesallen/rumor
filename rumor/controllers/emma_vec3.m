@@ -38,6 +38,11 @@ static int vec3_areequal( lua_State* L );
 static int vec3_zero( lua_State* L );
 static int vec3_gethorizontalangle( lua_State* L );
 static int vec3_rotationtodirection( lua_State* L );
+static int vec3_mulmat4( lua_State* L );
+static int vec3_transformnormal( lua_State* L );
+static int vec3_transformcoord( lua_State* L );
+static int vec3_inversetransform( lua_State* L );
+static int vec3_inversetransformnormal( lua_State* L );
 
 
 float getVec( lua_vec3* vec, float i, char* key );
@@ -61,6 +66,11 @@ static const struct luaL_Reg luavec3Lib[] = {
     { "zero", vec3_zero },
     { "gethorizontalangle", vec3_gethorizontalangle },
     { "rotationToDirection", vec3_rotationtodirection },
+    { "multiplyMat4", vec3_mulmat4 },
+    { "transformNormal", vec3_transformnormal },
+    { "transformCoord", vec3_transformcoord },
+    { "inverseTransform", vec3_inversetransform },
+    { "inverseTransformNormal", vec3_inversetransformnormal },
     { NULL, NULL }
 };
 
@@ -238,41 +248,51 @@ static int vec3_normalize( lua_State* L ) {
 };
 
 // static int vec3_mulmat3 ( lua_State* L ){
-//    kmVec3 *pOut, const kmVec3 *pV, const struct kmMat3* pM;
+//
 //    lua_vec3* pOut = vec3_userdatap( L, -2 );
 //    lua_vec3* vec3R = vec3_userdatap( L, -1 );
 //    kmVec3MultiplyMat3(pOut, const kmVec3 *pV, const struct kmMat3* pM);
 //    return 1;
 //};
 
-// static int vec3_mulmat4( lua_State* L ) {
-//    kmVec3* pOut, const kmVec3* pV, const struct kmMat4* pM;
-//    pOut = vec3_userdatap( L, -3 );
-//    pV = vec3_userdatap( L, -2 );
-//    pM = vec3_userdatap( L, -2 );
-//    kmVec3MultiplyMat4( kmVec3 * pOut, const kmVec3* pV, const struct kmMat4* pM );
-//};
-// static int vec3_transform( lua_State* L ) {
-//    kmVec3* pOut, const kmVec3* pV1, const struct kmMat4* pM;
-//    kmVec3Transform( kmVec3 * pOut, const kmVec3* pV1,
-//                     const struct kmMat4*
-//                         pM ); /** Transforms a vector (assuming w=1) by a given matrix
-//                         */
-//};
-// static int vec3_transformnormal( lua_State* L ) {
-//    kmVec3* pOut, const kmVec3* pV, const struct kmMat4* pM;
-//    kmVec3TransformNormal(
-//        kmVec3 * pOut, const kmVec3* pV,
-//        const struct kmMat4* pM ); /**Transforms a 3D normal by a given matrix */
-//};
-// static int vec3_transformcoord( lua_State* L ) {
-//    kmVec3* pOut, const kmVec3* pV, const struct kmMat4* pM;
-//    kmVec3TransformCoord(
-//        kmVec3 * pOut, const kmVec3* pV,
-//        const struct kmMat4* pM ); /**Transforms a 3D vector by a given matrix,
-//                                      projecting the result back into w = 1. */
-//};
+static int vec3_mulmat4( lua_State* L ) {
+    lua_vec3* pOut;
+    lua_vec3* pV;
+    lua_mat4* pM;
+    pOut = vec3_userdatap( L, -3 );
+    pV = vec3_userdatap( L, -2 );
+    pM = mat4_userdatap( L, -1 );
+    kmVec3MultiplyMat4( pOut->data, pV->data, pM->data );
+    lua_pushvalue( L, 1 );
+    return 1;
+};
 
+
+static int vec3_transformnormal( lua_State* L ) {
+    lua_vec3* pOut;
+    lua_vec3* pV;
+    lua_mat4* pM;
+    pOut = vec3_userdatap( L, -3 );
+    pV = vec3_userdatap( L, -2 );
+    pM = mat4_userdatap( L, -1 );
+    kmVec3TransformNormal( pOut->data, pV->data,
+                           pM->data ); /**Transforms a 3D normal by a given matrix */
+    lua_pushvalue( L, 1 );
+    return 1;
+};
+static int vec3_transformcoord( lua_State* L ) {
+    lua_vec3* pOut;
+    lua_vec3* pV;
+    lua_mat4* pM;
+    pOut = vec3_userdatap( L, -3 );
+    pV = vec3_userdatap( L, -2 );
+    pM = mat4_userdatap( L, -1 );
+    kmVec3TransformCoord( pOut->data, pV->data,
+                          pM->data ); /**Transforms a 3D vector by a given
+                                         matrix,projecting the result back into w = 1. */
+    lua_pushvalue( L, 1 );
+    return 1;
+};
 
 static int vec3_scale( lua_State* L ) {
     lua_vec3* v1;
@@ -291,15 +311,28 @@ static int vec3_areequal( lua_State* L ) {
     kmVec3AreEqual( v1->data, v2->data );
     return 1;
 };
-// static int vec3_inversetransform( lua_State* L ) {
-//    kmVec3* pOut, const kmVec3* pV, const struct kmMat4* pM;
-//    kmVec3InverseTransform( kmVec3 * pOut, const kmVec3* pV, const struct kmMat4* pM );
-//};
-// static int vec3_inversetransformnormal( lua_State* L ) {
-//    kmVec3* pOut, const kmVec3* pVect, const struct kmMat4* pM;
-//    kmVec3InverseTransformNormal( kmVec3 * pOut, const kmVec3* pVect,
-//                                  const struct kmMat4* pM );
-//};
+static int vec3_inversetransform( lua_State* L ) {
+    lua_vec3* pOut;
+    lua_vec3* pV;
+    lua_mat4* pM;
+    pOut = vec3_userdatap( L, -3 );
+    pV = vec3_userdatap( L, -2 );
+    pM = mat4_userdatap( L, -1 );
+    kmVec3InverseTransform( pOut->data, pV->data, pM->data );
+    lua_pushvalue( L, 1 );
+    return 1;
+};
+static int vec3_inversetransformnormal( lua_State* L ) {
+    lua_vec3* pOut;
+    lua_vec3* pV;
+    lua_mat4* pM;
+    pOut = vec3_userdatap( L, -3 );
+    pV = vec3_userdatap( L, -2 );
+    pM = mat4_userdatap( L, -1 );
+    kmVec3InverseTransformNormal( pOut->data, pV->data, pM->data );
+    lua_pushvalue( L, 1 );
+    return 1;
+};
 
 static int vec3_zero( lua_State* L ) {
     lua_vec3* vec3 = vec3_create( L );

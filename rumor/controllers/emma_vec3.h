@@ -17,3 +17,5 @@ typedef struct lua_vec3 {
 } lua_vec3;
 void lua_initVec3( lua_State* L );
 static char lua_vec3T = { 'x', 'y', 'z' };
+lua_vec3* vec3_userdatap( lua_State* L, int pos );
+lua_vec3* vec3_create( lua_State* L );

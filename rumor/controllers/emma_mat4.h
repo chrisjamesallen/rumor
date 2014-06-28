@@ -14,4 +14,6 @@ typedef struct lua_mat4 {
     long length;
     kmMat4* data;
 } lua_mat4;
-void lua_initMat4 ( lua_State * L);
+void lua_initMat4( lua_State* L );
+lua_mat4* mat4_userdatap( lua_State* L, int pos );
+lua_mat4* mat4_create( lua_State* L );
