@@ -81,7 +81,8 @@
 		BCE3FCD5195A21FE00A3A7FF /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCC4195A21FE00A3A7FF /* vec2.c */; };
 		BCE3FCD6195A21FE00A3A7FF /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCC6195A21FE00A3A7FF /* vec3.c */; };
 		BCE3FCD7195A21FE00A3A7FF /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCC8195A21FE00A3A7FF /* vec4.c */; };
-		BCE3FCDA195A222300A3A7FF /* emma_math.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCD9195A222300A3A7FF /* emma_math.m */; };
+		BCE3FCDA195A222300A3A7FF /* emma_mat4.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCD9195A222300A3A7FF /* emma_mat4.m */; };
+		BCE3FCE0195EFA9700A3A7FF /* emma_vec3.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3FCDF195EFA9700A3A7FF /* emma_vec3.m */; };
 		BCF7D6ED1944A4F600B7F453 /* luagl.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7D6EB1944A45C00B7F453 /* luagl.m */; };
 /* End PBXBuildFile section */
 
@@ -255,8 +256,10 @@
 		BCE3FCC7195A21FE00A3A7FF /* vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
 		BCE3FCC8195A21FE00A3A7FF /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
 		BCE3FCC9195A21FE00A3A7FF /* vec4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec4.h; sourceTree = "<group>"; };
-		BCE3FCD8195A222300A3A7FF /* emma_math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emma_math.h; sourceTree = "<group>"; };
-		BCE3FCD9195A222300A3A7FF /* emma_math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emma_math.m; sourceTree = "<group>"; };
+		BCE3FCD8195A222300A3A7FF /* emma_mat4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emma_mat4.h; sourceTree = "<group>"; };
+		BCE3FCD9195A222300A3A7FF /* emma_mat4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emma_mat4.m; sourceTree = "<group>"; };
+		BCE3FCDE195EFA9700A3A7FF /* emma_vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emma_vec3.h; sourceTree = "<group>"; };
+		BCE3FCDF195EFA9700A3A7FF /* emma_vec3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emma_vec3.m; sourceTree = "<group>"; };
 		BCF7D6EB1944A45C00B7F453 /* luagl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = luagl.m; path = ../other/src/luagl.m; sourceTree = "<group>"; };
 		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luagl.h; path = ../other/src/luagl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -378,8 +381,10 @@
 			children = (
 				72AF14CDD204742277F25466 /* Emma.h */,
 				72AF1756FCF6BEDAF09E4A10 /* Emma.m */,
-				BCE3FCD8195A222300A3A7FF /* emma_math.h */,
-				BCE3FCD9195A222300A3A7FF /* emma_math.m */,
+				BCE3FCD8195A222300A3A7FF /* emma_mat4.h */,
+				BCE3FCD9195A222300A3A7FF /* emma_mat4.m */,
+				BCE3FCDE195EFA9700A3A7FF /* emma_vec3.h */,
+				BCE3FCDF195EFA9700A3A7FF /* emma_vec3.m */,
 				72AF1EC6639600773CED5076 /* chris.h */,
 				72AF1353DC6398EF39932983 /* chris.m */,
 			);
@@ -691,6 +696,7 @@
 				BC438CB318FC982400AA5D15 /* ldblib.c in Sources */,
 				BC438CDE18FC982400AA5D15 /* ltm.c in Sources */,
 				BCE3FCD2195A21FE00A3A7FF /* ray2.c in Sources */,
+				BCE3FCE0195EFA9700A3A7FF /* emma_vec3.m in Sources */,
 				BC438CAD18FC982400AA5D15 /* lcode.c in Sources */,
 				BCE3FCCA195A21FE00A3A7FF /* aabb.c in Sources */,
 				BC438CBD18FC982400AA5D15 /* lgc.c in Sources */,
@@ -725,7 +731,7 @@
 				BC438CC018FC982400AA5D15 /* linit.c in Sources */,
 				BC438CF518FC9E8100AA5D15 /* UKKQueue.m in Sources */,
 				BC438CF218FC9E8100AA5D15 /* UKFileWatcher.m in Sources */,
-				BCE3FCDA195A222300A3A7FF /* emma_math.m in Sources */,
+				BCE3FCDA195A222300A3A7FF /* emma_mat4.m in Sources */,
 				BC438CB718FC982400AA5D15 /* ldo.c in Sources */,
 				BC438CA518FC982400AA5D15 /* lapi.c in Sources */,
 				BCE3FCD7195A21FE00A3A7FF /* vec4.c in Sources */,

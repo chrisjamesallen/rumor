@@ -5,7 +5,7 @@
 #import <GLKit/GLKit.h>
 #import <QuartzCore/CVDisplayLink.h>
 #include <time.h>
-
+#import "emma_vec3.h"
 
 const NSString *LUA_PATH = @"/Users/chrisallen/projects/desky/";
 const NSString *LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
@@ -13,8 +13,7 @@ const NSString *LUA_APP = @"/Users/chrisallen/projects/desky/scripts/emma/app.lu
 int emma_test( lua_State *L );
 
 
-
-struct  appS {
+struct appS {
     BOOL pressed;
     BOOL dragged;
     // emma lua struct
@@ -74,10 +73,10 @@ static int systemMouse( lua_State *L ) {
     lua_setfield( L, -2, "x" );
     lua_pushnumber( L, cursor.y );
     lua_setfield( L, -2, "y" );
-    lua_pushboolean(L, AppState.pressed);
-    lua_setfield( L, -2, "pressed");
-    lua_pushboolean(L, AppState.dragged);
-    lua_setfield( L, -2, "dragging");
+    lua_pushboolean( L, AppState.pressed );
+    lua_setfield( L, -2, "pressed" );
+    lua_pushboolean( L, AppState.dragged );
+    lua_setfield( L, -2, "dragging" );
     return 1;
 }
 
@@ -87,12 +86,12 @@ static const struct luaL_Reg sys[] = { { "time", systemTime },
                                        { NULL, NULL } };
 
 void emma_update( lua_State *L, double delta, int64_t time ) {
-    lua_plock(L, "");
+    lua_plock( L, "" );
     lua_getglobal( L, "update" );
     lua_pushnumber( L, delta );
     lua_pushnumber( L, (long)time );
     emma_call( L, 2, 0 );
-    lua_punlock(L, "");
+    lua_punlock( L, "" );
 }
 
 void emma_draw( lua_State *L ) {
@@ -141,10 +140,11 @@ lua_State *L;
     chris *shape;
 }
 
-- (id)init;{
+- (id)init;
+{
     self = [super init];
     if ( self != nil ) {
-      //  shape = [[chris alloc] init];
+        //  shape = [[chris alloc] init];
     }
     return self;
 }
@@ -160,24 +160,27 @@ lua_State *L;
     const int maskLift = NSLeftMouseUp | NSRightMouseUp;
     const int maskDrag = NSLeftMouseDragged | NSRightMouseDragged;
     // The global monitoring handler is *not* called for events sent to our application
-    [NSEvent addGlobalMonitorForEventsMatchingMask:maskDown handler:^(NSEvent* event) {
-        AppState.pressed  = YES;
-    }];
-    
-    [NSEvent addGlobalMonitorForEventsMatchingMask:maskLift handler:^(NSEvent* event) {
-        AppState.pressed = NO;
-        AppState.dragged = NO;
-    }];
-    
+    [NSEvent addGlobalMonitorForEventsMatchingMask:maskDown
+                                           handler:^( NSEvent *event ) {
+                                               AppState.pressed = YES;
+                                           }];
+
+    [NSEvent addGlobalMonitorForEventsMatchingMask:maskLift
+                                           handler:^( NSEvent *event ) {
+                                               AppState.pressed = NO;
+                                               AppState.dragged = NO;
+                                           }];
+
     // The global monitoring handler is *not* called for events sent to our application
-    [NSEvent addGlobalMonitorForEventsMatchingMask:maskDrag handler:^(NSEvent* event) {
-        //get location here...
-        AppState.dragged = YES;
-    }];
+    [NSEvent addGlobalMonitorForEventsMatchingMask:maskDrag
+                                           handler:^( NSEvent *event ) {
+                                               // get location here...
+                                               AppState.dragged = YES;
+                                           }];
 }
 
 - (void)draw {
-//    [shape draw];
+    //    [shape draw];
 }
 
 
@@ -188,6 +191,7 @@ lua_State *L;
     luaL_openlibs( L );
     luaopen_luagl( L );
     lua_initMat4( L );
+    lua_initVec3( L );
     main_init( L );
     [self executeLuaFile];
 }
@@ -240,17 +244,16 @@ lua_State *L;
 
 - (void)aFileHasBeenChanged {
     // NSLog( @"file change!" );
-    printf("file change");
+    printf( "file change" );
     [view->condition lock];
-        [view.openGLContext makeCurrentContext];
-        FLUSHING = YES;
-        emma_destroy( L );
-        FLUSHING = NO;
+    [view.openGLContext makeCurrentContext];
+    FLUSHING = YES;
+    emma_destroy( L );
+    FLUSHING = NO;
     [view->condition signal];
     [view->condition unlock];
-    
-    
-    
+
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *contents =
         [fileManager contentsOfDirectoryAtURL:scriptURL

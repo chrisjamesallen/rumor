@@ -7,7 +7,7 @@
 //
 
 #include <stdio.h>
-#import "emma_math.h"
+#import "emma_mat4.h"
 #include "lua.h"
 #include "lauxlib.h"
 
@@ -17,6 +17,7 @@
 #include <GL/gl.h>
 #endif
 #import <OpenGL/gl3.h>
+#import "emma_vec3.h"
 
 static int mat4_index( lua_State* L );
 static int mat4_newindex( lua_State* L );
@@ -32,7 +33,7 @@ static int mat4_add( lua_State* L );
 static int mat4_translate( lua_State* L );
 static int mat4_identity( lua_State* L );
 static int mat4_assign( lua_State* L );
-
+static int mat4_lookat( lua_State* L );
 static const struct luaL_Reg luamat4Lib[] = { { "__index", mat4_index },
                                               { "__newindex", mat4_newindex },
                                               { "__call", mat4_call },
@@ -47,6 +48,7 @@ static const struct luaL_Reg luamat4Lib[] = { { "__index", mat4_index },
                                               { "multiply", mat4_multiply },
                                               { "translate", mat4_translate },
                                               { "assign", mat4_assign },
+                                              { "lookAt", mat4_lookat },
                                               { NULL, NULL } };
 
 void lua_initMat4( lua_State* L ) {
@@ -57,6 +59,16 @@ void lua_initMat4( lua_State* L ) {
     luaL_setmetatable( L, "mat4" );
     lua_setglobal( L, "mat4" );
 }
+
+// lua_mat4* mat4_userdatap( lua_State* L, int pos ) {
+//    lua_pushvalue( L, pos ); // put table to top
+//    lua_pushstring( L, "__ud" );
+//    lua_rawget( L, -2 );
+//    lua_remove( L, -2 );
+//    lua_vec3* ud = (lua_vec3*)lua_touserdata( L, -1 );
+//    lua_remove( L, -1 );
+//    return ud;
+//};
 
 static int mat4_index( lua_State* L ) {
     if ( lua_isstring( L, -1 ) ) {
@@ -247,5 +259,22 @@ static int mat4_multiply( lua_State* L ) {
 
     // as we self assigned the left hand matrix, push for result
     lua_pushvalue( L, -2 );
+    return 1;
+};
+
+
+static int mat4_lookat( lua_State* L ) {
+    lua_mat4* mat1;
+    lua_vec3* pEye;
+    lua_vec3* pCenter;
+    lua_vec3* pUp;
+
+    mat1 = (lua_mat4*)luaL_checkudata( L, -4, "mat4" );
+    pEye = (lua_vec3*)lua_touserdata( L, -3 );
+    pCenter = (lua_vec3*)lua_touserdata( L, -2 );
+    pUp = (lua_vec3*)lua_touserdata( L, -1 );
+
+    kmMat4LookAt( mat1, pEye->data, pCenter->data, pUp->data );
+    lua_pushvalue( L, -4 );
     return 1;
 };

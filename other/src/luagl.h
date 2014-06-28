@@ -30,7 +30,7 @@ extern "C" {
 #endif
 #import "lua.h"
 #import "lauxlib.h"
-#import "emma_math.h"
+#import "emma_mat4.h"
 int luaopen_luagl( lua_State *L );
 
 #ifdef __cplusplus

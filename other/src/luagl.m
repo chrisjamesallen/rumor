@@ -4972,6 +4972,9 @@ void stackDump( lua_State *L ) {
                 printf( "%g", lua_tonumber( L, i ) );
                 break;
 
+            case LUA_TUSERDATA: /* usre data */
+                printf( "%userdata" );
+                break;
             default: /* other values */
                 printf( "%s", lua_typename( L, t ) );
                 break;
