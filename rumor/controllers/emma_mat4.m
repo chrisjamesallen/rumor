@@ -139,7 +139,7 @@ static int mat4_gc( lua_State* L ) {
     // dump shit here
     lua_mat4* mat4 = mat4_userdatap( L, 1 );
     free( mat4->data );
-    printf( "deleted it" );
+    // printf( "deleted it" );
     return 1;
 }
 

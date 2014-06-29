@@ -19,7 +19,7 @@ function matrix:set(state)
         self.curState = self.state.proj
     end
     return self.curState
-end
+end 
 
 function matrix:get(state)
     local s
@@ -34,4 +34,4 @@ function matrix:get(state)
 end
 
 matrix:init()
- 
+return matrix

@@ -5,6 +5,7 @@ start with sun, gradient background, gradient floor, with ripple effect?
 need event handler and tweening library
 
 --]]
+require "emma/emma"  
 require "emma/_shader"
 require "emma/_matrix"
 
@@ -12,12 +13,18 @@ require "emma/_matrix"
 App = Class()
 
 function App:init()
-   print("\n\n\napp:init::::::::")
+   print("\n\n\napp:init: ")
    self.objects = {}
  
-   local triangle = Em:new()
-   table.insert(self.objects, triangle);
+--create default program
+   local p = shader('default');--its ok this isnt released
+   p:setAttribute('position');
+   p:setUniform('modelViewProjectionMatrix');
+   p.inputs.mvpm = p:getUniform('modelViewProjectionMatrix')
  
+  local triangle = Em:new()
+  table.insert(self.objects, triangle);
+    
 end
  
 
@@ -30,19 +37,23 @@ function App:update(delta)
   gl.Clear( gl.COLOR_BUFFER_BIT );
    local triangle = self.objects[1]
     triangle = self.objects[1]
-  triangle:update(delta) 
+  triangle:update(delta)
  
 end
  
 function App:draw()
   -- lets draw objects 
       local triangle = self.objects[1]
-    triangle:draw()
+   triangle:draw()
 end
 
 
 function App:destroy()
-    print('app:destroy');
+    --_.each(_.keys(package.loaded), print)          
+    package.loaded['emma/emma'] = nil
+    package.loaded['emma/_shader'] = nil
+    package.loaded['emma/_matrix'] = nil 
+    self.objects = nil
 end
  
   

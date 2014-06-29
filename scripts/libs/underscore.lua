@@ -380,6 +380,14 @@ function Underscore.funcs.curry(func, argument)
 	end
 end
 
+function Underscore.funcs.bind(target, func)
+    local s = {}
+    s.__index = target;
+    setmetatable(s, target);
+    s.fn = func
+    return s.fn
+end
+
 function Underscore.functions() 
 	return Underscore.keys(Underscore.funcs)
 end
@@ -396,6 +404,7 @@ Underscore.funcs.every = Underscore.funcs.all
 Underscore.funcs.some = Underscore.funcs.any
 Underscore.funcs.head = Underscore.funcs.first
 Underscore.funcs.tail = Underscore.funcs.rest
+Underscore.funcs.bind = Underscore.funcs.bind
 
 local function wrap_functions_for_oo_support()
 	local function value_and_chained(value_or_self)

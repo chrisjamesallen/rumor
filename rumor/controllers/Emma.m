@@ -216,6 +216,7 @@ lua_State *L;
 
     // add paths to file watcher object
     for ( NSURL *fileURL in [contents filteredArrayUsingPredicate:predicate] ) {
+        NSLog( @"path %@", [fileURL path] );
         [kqueue addPath:[fileURL path]];
     }
 
@@ -236,7 +237,7 @@ lua_State *L;
 
 - (void)executeLuaFile {
     const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
-    if ( luaL_loadfile( L, c ) || lua_pcall( L, 0, 0, 0 ) ) {
+    if ( luaL_dofile( L, c ) ) {
         printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
         // luaL_error( L, "cannot run lua :( %s", lua_tostring( L, -1 ) );
     }
@@ -244,7 +245,7 @@ lua_State *L;
 
 - (void)aFileHasBeenChanged {
     // NSLog( @"file change!" );
-    printf( "file change" );
+    printf( "\nfile change\n" );
     [view->condition lock];
     [view.openGLContext makeCurrentContext];
     FLUSHING = YES;
@@ -278,7 +279,7 @@ lua_State *L;
     }
 
     const char *c = [LUA_APP cStringUsingEncoding:NSUTF8StringEncoding];
-    if ( luaL_loadfile( L, c ) || lua_pcall( L, 0, 0, 0 ) ) {
+    if ( luaL_dofile( L, c ) ) {
         printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
     }
     emma_reload( L );

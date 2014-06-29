@@ -375,7 +375,7 @@ static int vec3_gc( lua_State* L ) {
     // dump shit here
     lua_vec3* vec3 = vec3_userdata( L );
     free( vec3->data );
-    printf( "deleted it" );
+    //printf( "deleted it" );
     return 1;
 }
 

@@ -45,4 +45,14 @@ function tablelength(T)
   return count
 end
 
+function bind(target, func)
+    local s = {}
+    setmetatable(s, target);
+    s.__index = target;
+    s.test = func
+    return function()
+        s:test()
+    end
+end
+
 

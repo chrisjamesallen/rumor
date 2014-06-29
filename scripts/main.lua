@@ -5,8 +5,6 @@ Tween = require "libs/tween"
 _ = require "libs/underscore"
 
 require "emma/app"
-require "emma/emma"  
- 
 
 -- Main
 runtime = 0;
@@ -53,6 +51,7 @@ function destroy()
 end
 
 function reload()
+    print('reload')
     app = App:new()
 end
 

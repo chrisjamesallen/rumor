@@ -1,28 +1,29 @@
 
 --Shader Class Object
-
+--Class
+Shader = Class()
+Shader.programs = {}
+ 
 --Constructor
 function shader(type)
     local program = Shader.programs[type];
-    ---if(program){
-     -- return program
-    --}
+    if(program ~= nil) then
+      print('should return early!\n')   
+      do return program end
+    end
+    print('create shader');
     program = Shader:new()
     program:create("default", VERTSTR, FRAGSTR);
+    _.push(Shader.programs, program);
     return program;
 end
-
---Class
-
-Shader= Class()
-Shader.programs = {}
 
 function Shader:init()
     local b = self.__index
     b.__gc = self.destroy
     setmetatable(self, b)
     self.inputs = {}
-end
+end 
 
 function Shader:create(name, vert, frag)
     -- create and compile shader
@@ -73,7 +74,7 @@ function Shader:draw()
 end
 
 function Shader:destroy()
-    --print("destroy:shader");
+    print("destroy:shader\n"); 
     gl.DeleteProgram(self.program)
 end
 
@@ -104,6 +105,10 @@ void main()
 }
 
 ]]
+
+
+return Shader;
+
 
 
 

@@ -4614,7 +4614,7 @@ static int luagl_UniformMatrix4fv( lua_State *L ) {
     count = lua_tonumberx( L, -3, NULL );
     transpose = lua_tonumberx( L, -2, NULL );
     lua_mat4 *p = mat4_userdatap( L, -1 );
-    glUniformMatrix4fv( location, count, transpose, p->data );
+    glUniformMatrix4fv( location, count, transpose, p->data->mat );
     return 0;
 }
 
