@@ -1,33 +1,32 @@
 -- so here we are going to require all the relevant libraries...
 package.path = "/Users/chrisallen/projects/desky/scripts/?.lua;" .. package.path
 require "base"
-require "emma"
+Tween = require "libs/tween"
+_ = require "libs/underscore"
+
 require "emma/app"
-require "emma/shader"
+require "emma/emma"  
+ 
 
 -- Main
-
 runtime = 0;
 starttime = 0;
 drawtime = 0;
 fps = 60;
-screen = {}
+SCREEN = {}
 
 function main()
-    --called from c..
-    --print("main ~ start")
+    SCREEN = System.screen()
     app = App:new()
-    screen = System.screen()
-    --print("Screen Dimensions::", screen.width, screen.height)
 end
 
 function update (delta,runTime,pos)
     if(starttime <=0) then
         starttime = runTime
-        runtime = starttime
+        RUNTIME = starttime
     end
     if(app~=nil and destroying ~= true) then
-        runtime = runTime - starttime  --Store game time
+        RUNTIME = runTime - starttime  --Store game time
         app:update(delta)
         mouse = System.mouse()
         --print("Move::", mouse.pressed, mouse.dragging)
@@ -53,12 +52,9 @@ function destroy()
     end
 end
 
-
-
 function reload()
     app = App:new()
 end
-
 
 function collect()
    collectgarbage('collect')
@@ -76,6 +72,7 @@ end
 function sleep(n)
     os.execute("sleep " .. tonumber(n))
 end
+
 local clock = os.clock
 
 function wait(n)  -- seconds

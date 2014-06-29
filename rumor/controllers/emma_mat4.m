@@ -82,7 +82,7 @@ lua_mat4* mat4_create( lua_State* L ) {
 }
 
 static int mat4_index( lua_State* L ) {
-    if ( lua_isstring( L, -2 ) ) {
+    if ( lua_isstring( L, -1 ) ) {
         char* key = lua_tostring( L, -1 );
         luaL_getmetatable( L, "mat4" );
         lua_getfield( L, -1, key );
@@ -236,11 +236,11 @@ static int mat4_multiply( lua_State* L ) {
 
     mat1 = mat4_userdatap( L, 1 );
 
-    if ( lua_isuserdata( L, -1 ) ) {
+    if ( !lua_isnumber( L, -1 ) ) {
         mat2 = mat4_userdatap( L, 2 );
         kmMat4Multiply( mat1->data, mat1->data, mat2->data );
 
-    } else if ( lua_isnumber( L, -1 ) ) {
+    } else {
         float scale = lua_tonumberx( L, -1, NULL );
         kmMat4Scaling( &scaling, scale, scale, scale );
         kmMat4Multiply( mat1->data, mat1->data, &scaling );

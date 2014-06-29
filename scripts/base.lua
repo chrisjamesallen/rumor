@@ -13,9 +13,9 @@ end
 
 function Obj:new (o)
     o = o or {}
-    --print(self.name)
-    setmetatable(o, self)
     self.__index = self
+    self.__gc = self.destroy
+    setmetatable(o, self)
     o:init()
     return o
 end
@@ -36,8 +36,10 @@ function Obj:destroy ()
      print("Obj_:destroy")
 end
 
- 
- function tablelength(T)
+
+-- other helper methods
+
+function tablelength(T)
   local count = 0
   for _ in pairs(T) do count = count + 1 end
   return count

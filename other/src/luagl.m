@@ -4443,9 +4443,6 @@ static int luagl_compileShader( lua_State *L ) {
     *shader = lua_tounsigned( L, -1 );
     glCompileShader( *shader );
 
-    //    GLint logLength;
-    //    glGetShaderiv(&shader, GL_INFO_LOG_LENGTH, &logLength);
-    //    gl_status(&logLength, &shader, "Shader Compile");
     GLint logLength;
     glGetShaderiv( *shader, GL_INFO_LOG_LENGTH, &logLength );
     if ( logLength > 0 ) {
@@ -4616,7 +4613,7 @@ static int luagl_UniformMatrix4fv( lua_State *L ) {
     location = lua_tonumberx( L, -4, NULL );
     count = lua_tonumberx( L, -3, NULL );
     transpose = lua_tonumberx( L, -2, NULL );
-    lua_mat4 *p = (lua_mat4 *)lua_touserdata( L, -1 );
+    lua_mat4 *p = mat4_userdatap( L, -1 );
     glUniformMatrix4fv( location, count, transpose, p->data );
     return 0;
 }
