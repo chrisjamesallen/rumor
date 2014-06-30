@@ -4484,7 +4484,7 @@ static int luagl_linkProgram( lua_State *L ) {
         printf( "Program link log:\n%s", log );
         free( log );
     } else {
-        printf( "Program Successfully linked" );
+      printf( "Program √" );
     }
 
     glGetProgramiv( program, GL_LINK_STATUS, &status );
@@ -4596,7 +4596,6 @@ static int luagl_copyVerts( lua_State *L ) {
     }
     p = (data_ *)lua_newuserdata( L, sizeof( data_ ) );
     p->data = data;
-    stackDump( L );
     return 1;
 }
 
@@ -4695,7 +4694,7 @@ static int array_new( lua_State *L ) {
     float b;
     data_ *p;
     uint DEFAULT_LENGTH;
-    stackDump( L );
+
     DEFAULT_LENGTH = 100;
     i = 0;
     if ( !lua_isnumber( L, -1 ) ) {

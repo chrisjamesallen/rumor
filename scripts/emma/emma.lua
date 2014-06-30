@@ -2,7 +2,7 @@
 Em = Class()
 
 function Em:init()
-    print('\nEMMA!\n') 
+
     self.vbo = {};
     self.vao = {};
     self.inputs = {}; 
@@ -17,7 +17,6 @@ function Em:init()
     -- create geometry
     self.geometry = {}
     self.geometry.mv = mat4();
-    print(SCREEN.height/SCREEN.width)
     self.geometry.pr = mat4:CreateProjection(150, SCREEN.height/SCREEN.width, 0,1000);
 end
 
@@ -58,7 +57,7 @@ function Em:update(delta)
     local m = matrix:get('mv');
     local p = matrix:get('proj');
     m:assign(self.geometry.mv) 
-    m:translate(0,0, -(100*s) )--
+    m:translate(0,0, -(100*s) )
     p:assign(self.geometry.pr)
     p:multiply(m)
 end
@@ -67,15 +66,13 @@ function Em:draw()
     -- use correct shader
     --print(tablelength(self.programs))
     local program = _.first(self.programs);
- program:use()
- -- bind vao
- gl.BindVertexArray(self.vao[1])
- gl.UniformMatrix4fv(program.inputs.mvpm, 1, 0, matrix:get('proj'));
- -- draw data
- gl.DrawArrays(gl.TRIANGLE_STRIP,0,4)
- 
+    program:use()
+    -- bind vao
+    gl.BindVertexArray(self.vao[1])
+    gl.UniformMatrix4fv(program.inputs.mvpm, 1, 0, matrix:get('proj'));
+    -- draw data
+    gl.DrawArrays(gl.TRIANGLE_STRIP,0,4)
  --_.each(self.programs,function(program)
-
  --  end)
 
 

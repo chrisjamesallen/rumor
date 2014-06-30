@@ -8,10 +8,10 @@ Shader.programs = {}
 function shader(type)
     local program = Shader.programs[type];
     if(program ~= nil) then
-      print('should return early!\n')   
+      --print('should return early!\n')
       do return program end
     end
-    print('create shader');
+    --print('create shader');
     program = Shader:new()
     program:create("default", VERTSTR, FRAGSTR);
     _.push(Shader.programs, program);
