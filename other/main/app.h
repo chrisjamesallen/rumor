@@ -10,7 +10,9 @@
 @class AppGLView;
 @class Emma;
 
-@interface App : NSObject <NSApplicationDelegate>
+@interface App : NSObject <NSApplicationDelegate>{
+    CGRect frame;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 

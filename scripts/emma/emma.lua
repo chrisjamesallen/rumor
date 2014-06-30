@@ -39,7 +39,7 @@ function Em:setVertexArray()
     self.verts = gl.CopyData(data, array.len(data));
     
     -- attach data
-    gl.BufferData(gl.ARRAY_BUFFER, 4 * 3 * 4, self.verts, gl.STATIC_DRAW);
+    gl.BufferData(gl.ARRAY_BUFFER, 4 * 3 * 4, self.verts, gl.DYNAMIC_DRAW);
     
     -- point data to attrib input
     local p = self.programs[1];
@@ -57,7 +57,7 @@ function Em:update(delta)
     local m = matrix:get('mv');
     local p = matrix:get('proj');
     m:assign(self.geometry.mv) 
-    m:translate(0,0, -(100*s) )
+    m:translate(0,0, -10) ---(100*s) 
     p:assign(self.geometry.pr)
     p:multiply(m)
 end

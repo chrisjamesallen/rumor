@@ -11,7 +11,7 @@ const NSString *LUA_PATH = @"/Users/chrisallen/projects/desky/";
 const NSString *LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
 const NSString *LUA_APP = @"/Users/chrisallen/projects/desky/scripts/emma/app.lua";
 int emma_test( lua_State *L );
-
+CGRect frame;
 
 struct appS {
     BOOL pressed;
@@ -56,7 +56,7 @@ static int systemTime( lua_State *L ) {
     return 1;
 }
 static int systemScreen( lua_State *L ) {
-    NSRect frame = [[NSScreen mainScreen] frame];
+    // NSRect frame = [[NSScreen mainScreen] frame];
     lua_newtable( L );
     lua_pushnumber( L, frame.size.width );
     lua_setfield( L, -2, "width" );
@@ -144,12 +144,12 @@ lua_State *L;
 {
     self = [super init];
     if ( self != nil ) {
-        //  shape = [[chris alloc] init];
     }
     return self;
 }
 
 - (void)start {
+    frame = view.frame;
     [self setupLua];
     [self setMouse];
     main_start( L );
