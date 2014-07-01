@@ -45,14 +45,10 @@ function tablelength(T)
   return count
 end
 
-function bind(target, func)
-    local s = {}
-    setmetatable(s, target);
-    s.__index = target;
-    s.test = func
-    return function()
-        s:test()
-    end
+
+function string:split(sep)
+local sep, fields=sep or ":", {}
+local pattern=string.format("([^%s]+)", sep) self:gsub(pattern, function(c) fields[#fields+1]=c end) return fields
 end
 
 

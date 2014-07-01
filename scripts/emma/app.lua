@@ -51,6 +51,7 @@ end
 function App:destroy()
     --_.each(_.keys(package.loaded), print)          
     package.loaded['emma/emma'] = nil
+    Em = nil  
     package.loaded['emma/_shader'] = nil
     package.loaded['emma/_matrix'] = nil 
     self.objects = nil
