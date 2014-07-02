@@ -3,6 +3,7 @@ package.path = "/Users/chrisallen/projects/desky/scripts/?.lua;" .. package.path
 require "base"
 Tween = require "libs/tween"
 _ = require "libs/underscore"
+inspect = require "libs/inspect"
 
 require "emma/app"
 
@@ -45,6 +46,7 @@ function destroy()
         destroying = true;
         app:destroy()
         app = nil
+        package.loaded['emma/app']  = nil
         collect()
         destroying = false;
     end
