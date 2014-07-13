@@ -24,6 +24,8 @@
 		72AF1CFCC850CA72EEE269F2 /* default.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 72AF136855377E4E09C2638D /* default.fsh */; };
 		72AF1DAC87E1E41FA5D12CCA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF1DF4C009A23351ADAA58 /* OpenGL.framework */; };
 		72AF1FE9C5EE931DF7440FB5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AF196F0065B0BF8B317CF5 /* Cocoa.framework */; };
+		BC14100B1972E0CD00CBA0E2 /* lgpc.c in Sources */ = {isa = PBXBuildFile; fileRef = BC14100A1972E0CD00CBA0E2 /* lgpc.c */; };
+		BC14100E1972E33000CBA0E2 /* gpc.c in Sources */ = {isa = PBXBuildFile; fileRef = BC14100C1972E33000CBA0E2 /* gpc.c */; };
 		BC31462E1944A5A400F475AC /* luagl_util.c in Sources */ = {isa = PBXBuildFile; fileRef = BC31462C1944A5A400F475AC /* luagl_util.c */; };
 		BC438CA518FC982400AA5D15 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = BC438C4918FC982400AA5D15 /* lapi.c */; };
 		BC438CA718FC982400AA5D15 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = BC438C4C18FC982400AA5D15 /* lauxlib.c */; };
@@ -119,6 +121,10 @@
 		72AF1EAE593CFB90B0A15129 /* mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mesh.m; sourceTree = "<group>"; };
 		72AF1EB80487E93A7DD0CD45 /* renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = renderer.m; sourceTree = "<group>"; };
 		72AF1EC6639600773CED5076 /* chris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chris.h; sourceTree = "<group>"; };
+		BC14100A1972E0CD00CBA0E2 /* lgpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgpc.c; path = ../rumor/controllers/lgpc.c; sourceTree = "<group>"; };
+		BC14100C1972E33000CBA0E2 /* gpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpc.c; path = ../rumor/controllers/gpc.c; sourceTree = "<group>"; };
+		BC14100D1972E33000CBA0E2 /* gpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpc.h; path = ../rumor/controllers/gpc.h; sourceTree = "<group>"; };
+		BC1410101972E41F00CBA0E2 /* lgpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lgpc.h; path = rumor/vendor/gpc/lgpc.h; sourceTree = SOURCE_ROOT; };
 		BC31462C1944A5A400F475AC /* luagl_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = luagl_util.c; sourceTree = "<group>"; };
 		BC31462D1944A5A400F475AC /* luagl_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luagl_util.h; sourceTree = "<group>"; };
 		BC438C3F18FC965F00AA5D15 /* a.out */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = a.out; path = ../testlua/a.out; sourceTree = "<group>"; };
@@ -260,8 +266,8 @@
 		BCE3FCD9195A222300A3A7FF /* emma_mat4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emma_mat4.m; sourceTree = "<group>"; };
 		BCE3FCDE195EFA9700A3A7FF /* emma_vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emma_vec3.h; sourceTree = "<group>"; };
 		BCE3FCDF195EFA9700A3A7FF /* emma_vec3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emma_vec3.m; sourceTree = "<group>"; };
-		BCF7D6EB1944A45C00B7F453 /* luagl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = luagl.m; path = ../other/src/luagl.m; sourceTree = "<group>"; };
-		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luagl.h; path = ../other/src/luagl.h; sourceTree = "<group>"; };
+		BCF7D6EB1944A45C00B7F453 /* luagl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = luagl.m; path = ../../other/src/luagl.m; sourceTree = "<group>"; };
+		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luagl.h; path = ../../other/src/luagl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,11 +382,13 @@
 			path = "meshes+texture";
 			sourceTree = "<group>";
 		};
-		72AF1C2A6460A0BC9E763974 /* controllers */ = {
+		72AF1C2A6460A0BC9E763974 /* lua-binders */ = {
 			isa = PBXGroup;
 			children = (
 				72AF14CDD204742277F25466 /* Emma.h */,
 				72AF1756FCF6BEDAF09E4A10 /* Emma.m */,
+				BCF7D6EE1944A55300B7F453 /* luagl.h */,
+				BCF7D6EB1944A45C00B7F453 /* luagl.m */,
 				BCE3FCD8195A222300A3A7FF /* emma_mat4.h */,
 				BCE3FCD9195A222300A3A7FF /* emma_mat4.m */,
 				BCE3FCDE195EFA9700A3A7FF /* emma_vec3.h */,
@@ -388,6 +396,7 @@
 				72AF1EC6639600773CED5076 /* chris.h */,
 				72AF1353DC6398EF39932983 /* chris.m */,
 			);
+			name = "lua-binders";
 			path = controllers;
 			sourceTree = "<group>";
 		};
@@ -397,9 +406,7 @@
 				72AF16F3C0E558AFCD332A9A /* main */,
 				72AF1CC5D97BCA23032105B3 /* Images.xcassets */,
 				72AF1C8FF9A6E9203A597204 /* readme.txt */,
-				BCF7D6EE1944A55300B7F453 /* luagl.h */,
-				BCF7D6EB1944A45C00B7F453 /* luagl.m */,
-				72AF1C2A6460A0BC9E763974 /* controllers */,
+				72AF1C2A6460A0BC9E763974 /* lua-binders */,
 				72AF1F5189DBB137FB89F04E /* view */,
 				72AF1AA3564666A1B07A1B72 /* meshes+texture */,
 				72AF11DBDF650C58E496D960 /* shaders */,
@@ -410,10 +417,9 @@
 		72AF1D9B43962BA9C3A73D3D /* other */ = {
 			isa = PBXGroup;
 			children = (
+				BC1410091972E07900CBA0E2 /* vendor */,
 				72AF128A88F5682B7A3BB410 /* Products */,
 				72AF104082EBD70AC73DFE58 /* Frameworks */,
-				BC438C4818FC982400AA5D15 /* lua */,
-				BC663EB018F9C0B8001DB2C3 /* libraries */,
 				72AF12929BAD15036CA86B7B /* Supporting Files */,
 			);
 			path = other;
@@ -427,6 +433,28 @@
 				72AF134F9D30135C8ACF058A /* app.xib */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		BC1410091972E07900CBA0E2 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				BC14100F1972E33600CBA0E2 /* gpc */,
+				BCE3FCAC195A21FE00A3A7FF /* kazmath */,
+				BC438CE818FC9E8100AA5D15 /* UKKQueue */,
+				BC438C4818FC982400AA5D15 /* lua */,
+			);
+			name = vendor;
+			sourceTree = "<group>";
+		};
+		BC14100F1972E33600CBA0E2 /* gpc */ = {
+			isa = PBXGroup;
+			children = (
+				BC14100C1972E33000CBA0E2 /* gpc.c */,
+				BC14100D1972E33000CBA0E2 /* gpc.h */,
+				BC14100A1972E0CD00CBA0E2 /* lgpc.c */,
+				BC1410101972E41F00CBA0E2 /* lgpc.h */,
+			);
+			name = gpc;
 			sourceTree = "<group>";
 		};
 		BC438C4518FC979B00AA5D15 /* 5.2 */ = {
@@ -549,17 +577,8 @@
 				BC438CF018FC9E8100AA5D15 /* UKMainThreadProxy.h */,
 				BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */,
 			);
-			path = UKKQueue;
-			sourceTree = "<group>";
-		};
-		BC663EB018F9C0B8001DB2C3 /* libraries */ = {
-			isa = PBXGroup;
-			children = (
-				BCE3FCAC195A21FE00A3A7FF /* kazmath */,
-				BC438CE818FC9E8100AA5D15 /* UKKQueue */,
-			);
-			name = libraries;
-			path = ../rumor;
+			name = UKKQueue;
+			path = ../rumor/UKKQueue;
 			sourceTree = "<group>";
 		};
 		BCE3FCAC195A21FE00A3A7FF /* kazmath */ = {
@@ -591,7 +610,8 @@
 				BCE3FCC8195A21FE00A3A7FF /* vec4.c */,
 				BCE3FCC9195A21FE00A3A7FF /* vec4.h */,
 			);
-			path = kazmath;
+			name = kazmath;
+			path = ../rumor/kazmath;
 			sourceTree = "<group>";
 		};
 		BCE3FCB0195A21FE00A3A7FF /* GL */ = {
@@ -705,6 +725,7 @@
 				BC438CA718FC982400AA5D15 /* lauxlib.c in Sources */,
 				BC438CDA18FC982400AA5D15 /* ltable.c in Sources */,
 				72AF13433173929534D04D3E /* chris.m in Sources */,
+				BC14100E1972E33000CBA0E2 /* gpc.c in Sources */,
 				BCE3FCCC195A21FE00A3A7FF /* mat4stack.c in Sources */,
 				BC438CF318FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m in Sources */,
 				BCE3FCD1195A21FE00A3A7FF /* quaternion.c in Sources */,
@@ -714,6 +735,7 @@
 				BC438CE418FC982400AA5D15 /* lvm.c in Sources */,
 				BCE3FCCD195A21FE00A3A7FF /* matrix.c in Sources */,
 				BC438CCA18FC982400AA5D15 /* loadlib.c in Sources */,
+				BC14100B1972E0CD00CBA0E2 /* lgpc.c in Sources */,
 				BCE3FCCF195A21FE00A3A7FF /* mat4.c in Sources */,
 				BC438CA918FC982400AA5D15 /* lbaselib.c in Sources */,
 				BC438CC418FC982400AA5D15 /* llex.c in Sources */,

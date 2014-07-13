@@ -6,6 +6,8 @@
 #import <QuartzCore/CVDisplayLink.h>
 #include <time.h>
 #import "emma_vec3.h"
+#import "lgpc.h"
+
 
 const NSString *LUA_PATH = @"/Users/chrisallen/projects/desky/";
 const NSString *LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
@@ -137,7 +139,6 @@ lua_State *L;
 
 
 @implementation Emma {
-    chris *shape;
 }
 
 - (id)init;
@@ -180,7 +181,6 @@ lua_State *L;
 }
 
 - (void)draw {
-    //    [shape draw];
 }
 
 
@@ -192,6 +192,7 @@ lua_State *L;
     luaopen_luagl( L );
     lua_initMat4( L );
     lua_initVec3( L );
+    luaopen_gpc( L );
     main_init( L );
     [self executeLuaFile];
 }

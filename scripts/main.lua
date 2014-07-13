@@ -4,7 +4,6 @@ require "base"
 Tween = require "libs/tween"
 _ = require "libs/underscore"
 inspect = require "libs/inspect"
-
 require "emma/app"
 
 -- Main
@@ -13,6 +12,7 @@ starttime = 0;
 drawtime = 0;
 fps = 60;
 SCREEN = {}
+
 
 function main()
     SCREEN = System.screen()
@@ -34,10 +34,7 @@ end
 
 function draw()
     if(app~=nil and destroying ~= true) then
-        --local b = System.time()
         app:draw()
-        --local a = System.time()
-        --drawtime = a - b
     end
 end
 

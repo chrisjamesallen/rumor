@@ -23,8 +23,8 @@
     [self.window setBackgroundColor:transparent];
     frame = CGRectMake( 0, 0, 500, 500 );
     [self.window setFrame:frame display:YES];
-    [self.window setLevel:kCGFloatingWindowLevelKey];
-    [self.window setIgnoresMouseEvents:YES];
+    // [self.window setLevel:kCGFloatingWindowLevelKey];
+    //[self.window setIgnoresMouseEvents:YES];
     // todo reapply frame
     //[self.window setLevel:kCGDesktopWindowLevel];
     //[self.window setFrame:[[NSScreen mainScreen] frame] display:YES];

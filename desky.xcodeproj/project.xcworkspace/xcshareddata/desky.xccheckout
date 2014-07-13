@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>06186EFF-29C4-406F-A4C2-91ABFC18D268</string>
+	<key>IDESourceControlProjectName</key>
+	<string>desky</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E2758FD5-421D-49E4-AB4E-88F88C7CC790</key>
+		<string>ssh://github.com/chrisjamesallen/rumor.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>desky.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E2758FD5-421D-49E4-AB4E-88F88C7CC790</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/chrisjamesallen/rumor.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E2758FD5-421D-49E4-AB4E-88F88C7CC790</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E2758FD5-421D-49E4-AB4E-88F88C7CC790</string>
+			<key>IDESourceControlWCCName</key>
+			<string>desky</string>
+		</dict>
+	</array>
+</dict>
+</plist>

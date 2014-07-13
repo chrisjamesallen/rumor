@@ -4484,7 +4484,7 @@ static int luagl_linkProgram( lua_State *L ) {
         printf( "Program link log:\n%s", log );
         free( log );
     } else {
-      printf( "Program √" );
+        printf( "Program √" );
     }
 
     glGetProgramiv( program, GL_LINK_STATUS, &status );
@@ -4590,7 +4590,7 @@ static int luagl_copyVerts( lua_State *L ) {
         lua_pushunsigned( L, a );
         lua_gettable( L, -3 );
         b = lua_tonumber( L, -1 );
-         printf("vert is %f \n", b);
+        // printf("vert is %f \n", b);
         data[a - 1] = b;
         lua_pop( L, 1 );
     }

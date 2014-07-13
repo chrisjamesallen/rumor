@@ -43,7 +43,7 @@ end
  
 function App:draw()
   -- lets draw objects 
-      local triangle = self.objects[1]
+   local triangle = self.objects[1]
    triangle:draw()
 end
 
