@@ -7,27 +7,40 @@
 #import "app.h"
 #import "AppGLView.h"
 #import "Emma.h"
+#import <WebKit/WebKit.h>
 
 @implementation App
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self configureWindow];
-    [self setupDirector];
+   // [self setupDirector];
 }
 
 - (void)configureWindow {
 
     // make translucent
     [self.window setOpaque:NO];
-    NSColor *transparent = [NSColor colorWithCalibratedWhite:1.0 alpha:0.4];
+    NSColor *transparent = [NSColor colorWithCalibratedWhite:1.0 alpha:0.0];
     [self.window setBackgroundColor:transparent];
     // frame = CGRectMake( 0, 0, 500, 500 );
     //[self.window setFrame:frame display:YES];
     [self.window setLevel:kCGFloatingWindowLevelKey];
-    //[self.window setIgnoresMouseEvents:YES];
+    
+    
+    WebView * view = [[WebView alloc] initWithFrame: self.window.frame frameName:@"" groupName:@""];
+    
+    NSURL *url = [NSURL URLWithString:@"http://localhost:3000"];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [[view mainFrame] loadRequest:urlRequest];
+    [self.window setContentView:view];
+    [self.window setIgnoresMouseEvents:YES];
+    [view setDrawsBackground:NO];
+    // = [UIColor clearColor];
+    
+    
     // todo reapply frame
-    //[self.window setLevel:kCGDesktopWindowLevel];
-    //[self.window setFrame:[[NSScreen mainScreen] frame] display:YES];
+    [self.window setLevel:kCGDesktopWindowLevelKey];
+   //[self.window setFrame:[[NSScreen mainScreen] frame] display:YES];
 }
 
 - (void)setupDirector {
