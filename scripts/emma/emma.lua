@@ -54,9 +54,11 @@ function Em:setVertexArray()
     gl.BindBuffer(gl.ARRAY_BUFFER, self.vbo[1])
     
     -- copy verts
-    self:useSvg();
-    --data = array.new({1.0, -1.0, 1.0,  1.0, -1.0, 1.0,  1.0, 1.0, 1.0,  -1.0, 1.0, 1,  0}, 50);
-    data = array.new(self.data_, 500); 
+    --self:useSvg();
+    --local data = array.new({1.0, -1.0, 1.0,  1.0, -1.0, 1.0,  1.0, 1.0, 1.0,  -1.0, 1.0, 1,  0}, 50);
+    local data, obj = self:useGPC();  
+    --print(inspect(data));
+    data = array.new(data, 500);
     self.verts = gl.CopyData(data, array.len(data));
     
     -- attach data
@@ -83,37 +85,12 @@ function Em:update(delta)
     local m = matrix:get('mv');
     local p = matrix:get('proj');
     m:assign(self.geometry.mv)
-    m:multiply(0.5)  
-    m:translate(0,0, 0) ---(100*s) 
+    m:multiply(3.0)   
+    m:translate(-0.2,0.2, 0) ---(100*s)
+    --m:translate(0,0, -100)-- (100*s)) ---
     p:assign(self.geometry.pr)
     p:multiply(m)
 end 
- 
-function Em:draw()
-    -- use correct shader
-    --print(tablelength(self.programs))
-    local program = _.first(self.programs);
-    program:use()
-    -- bind vao
-    gl.BindVertexArray(self.vao[1])
-    gl.UniformMatrix4fv(program.inputs.mvpm, 1, 0, matrix:get('mv'));
-    -- draw data
-    gl.PointSize(5) 
-    gl.DrawArrays( gl.POINTS ,0,40) 
- --_.each(self.programs,function(program)
- --  end)
-end
-
-function Em:useSvg()
-    self.data_ = {};
-    self.pos = {};
-    self.pos.x = 0
-    self.pos.y = 0
-    self.startPos = {};
-    local svg= self:extractSvg();
-    self:convertSvg(svg);
-    self:closePath();
-end
 
 function Em:extractSvg()
     
@@ -122,7 +99,7 @@ function Em:extractSvg()
     -- Mesh: Circle
     str = "M137.6,0c0,0,-110.1,298.9,-20.1,352.1 C229.1,418.1,419.6,193.9,137.6,0z"
     -- Mesh: wierd blob
-    str = "M597.3,561.9l-213.9-62.1 l-172.5,141 l-7-222.7 L16.5,297.6 l209.6-75.5 L282.7,6.7 c0,0,70.2,125.1,136.6,176 L641.7,170 L516.5,354.3 L597.3,561.9z"
+    --str = "M597.3,561.9l-213.9-62.1 l-172.5,141 l-7-222.7 L16.5,297.6 l209.6-75.5 L282.7,6.7 c0,0,70.2,125.1,136.6,176 L641.7,170 L516.5,354.3 L597.3,561.9z"
  
     --split operations by spliting by letters
     local pattern = "(%D)(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*)%s?"
@@ -149,145 +126,39 @@ function Em:extractSvg()
     return operations;
 end
 
-function Em:convertSvg(operations)
-    _.each(operations , function(i)
-           if i.command == 'M' then self:moveTo(i[1],i[2]) end
-           --lineto
-           if i.command == 'L' then self:lineTo(i[1],i[2], i.command) end
-           if i.command == 'i' then self:lineToRelative(i[1],i[2],i.command) end
-           --h line
-           if i.command == 'h' then self:lineToRelative(i[1],0,i.command) end
-           if i.command == 'H' then self:lineTo(i[1],self.pos.y,i.command) end -- y param
-           -- v line
-           if i.command == 'v' then self:lineToRelative(0,i[1],i.command) end
-           if i.command == 'V' then self:lineTo(self.pos.x,i[1],i.command) end -- x param
-           -- Cubic curveto C (c)
-           if i.command == 'c' then self:curveToRelative(i[1],i[2],i[3],i[4],i[5],i[6]) end
-           if i.command == 'C' then self:curveTo(i[1],i[2],i[3],i[4],i[5],i[6]) end
-           -- Cubic shorthand curveto S (s)
-           if i.command == 's' then self:smoothCurveToRelative(0,i[1],i.command) end
-           if i.command == 'S' then self:smoothCurveTo(self.pos.x,i[1],i.command) end
-           end)
-end
-
--- convert svg to points at first
--- create triangles for each quadratic curve
-
-function Em:curveTo(x1,y1,x2,y2,x3,y3)
-    local x,y = 0
-    _.push(self.data_,{self.pos.x, self.pos.y, 0}) 
-    x =  x1
-    y =  y1
-    _.push(self.data_,{x, y, 0}) 
-    x =  x2
-    y =  y2
-    _.push(self.data_,{x, y, 0})
-    x =  x3
-    y =  y3
-    _.push(self.data_,{x, y, 0})
-    self.pos.x = x3
-    self.pos.y = y3       
-end
-
-function Em:curveToRelative(x1,y1,x2,y2,x3,y3)
-    local x,y = 0
-    -- end point 1
-    _.push(self.data_,{self.pos.x, self.pos.y, 0})
-
-    -- control point 1
-    x = self.pos.x  + x1
-    y = self.pos.y + y1
-    _.push(self.data_,{x, y, 0})
-
-    -- control point 2
-    x = self.pos.x  + x2
-    y = self.pos.y + y2
-    _.push(self.data_,{x, y, 0})
-
-    -- end point 2
-    x = self.pos.x  + x3
-    y = self.pos.y + y3
-    _.push(self.data_,{x, y, 0})
-
-    self.pos.x = x3 
-    self.pos.y = y3
-end
-
-function Em:smoothToRelative(x1,y1,x2,y2,x3,y3,x4,y4)
-    local x,y = 0
-    -- end point 1
-    _.push(self.data_,{self.pos.x, self.pos.y, 0}) 
-
-    -- control point 1
-    x = self.pos.x  + x1
-    y = self.pos.y + y1
-    _.push(self.data_,{x, y, 0})
-
-    -- control point 2
-    x = self.pos.x  + x1
-    y = self.pos.y + y1
-    _.push(self.data_,{x, y, 0})
-
-    -- end point 2
-    x = self.pos.x  + x3
-    y = self.pos.y + y3
-    _.push(self.data_,{x, y, 0})
-
-    self.pos.x = x2
-    self.pos.y = y2
-end
 
 
-function Em:moveTo(x,y)
-    if(self.pos.started == nil) then
-        self.pos.started = true
-        self.startPos.x = x;
-        self.startPos.y = y;
+function plottri(f,p, r,g,b, command)
+    --if command=="stroke" then output(f,0,"setlinewidth") end
+    --output(f,r,g,b,"setrgbcolor")
+    for c=1,p:get() do
+        local n=p:get(c)
+        local x1,y1=p:get(c,1)
+        local x2,y2=p:get(c,2)
+        for i=3,n do
+            local x,y=p:get(c,i)
+            output(f,x1,y1,"moveto")
+            output(f,x2,y2,"lineto")
+            output(f,x,y,"lineto")
+            --output(f,"closepath")
+            x1,y1,x2,y2=x2,y2,x,y
+        end
     end
-    self.pos.x = x;
-    self.pos.y = y;
-    self:lineTo(x,y)
 end
 
-function Em:lineTo(x,y,r)
-    --print(r,x,y)
-    --print('\npoint',r,x,y)
-    _.push(self.data_,{x, y, 0})
-    self.pos.x = x;
-    self.pos.y = y;
+function output(data, x, y, command)
+      _.push(data, x)
+      _.push(data, y)
+      _.push(data, 0)
 end
 
-function Em:lineToRelative(x,y,r)
-    -- print('\nrel',r,x,y)
-    --print(r,x,y)
-    self.pos.x = self.pos.x + x
-    self.pos.y = self.pos.y + y
-    _.push(self.data_,{self.pos.x, self.pos.y, 0})
-end
-
-
-
-function Em:smoothCurveToRelative(x1,y1,x2,y2,x3,y3,x4,y4)
-    
-    
-end
-
-function Em:smoothCurveTo(x1,y1,x2,y2,x3,y3,x4,y4)
-    
-    
-end
-
-
-function Em:closePath()
-    --close path
-    self:lineTo(self.startPos.x,self.startPos.y)
-    print('data before normalize:', inspect(self.data_))
-    self.data_ = _.flatten(self.data_)
-    local maxX = 800
-    local maxY = 800 
+function normalizeOutput(data, w, h)
+    -- normalize here
+    local maxX = w or 800
+    local maxY = h or 800
     local min  = 0
     -- inverse to follow top left origin
-    for k,v in pairs(self.data_) do
+    for k,v in pairs(data) do
         local n = v --between 0 and 1
         if(k%3==1) then
             n = (v-min)/(maxX-min)
@@ -300,13 +171,42 @@ function Em:closePath()
             -- so zero y should be -1
         end
         
-        self.data_[k] = n
-        --print(k,self.data_[k])
+        data[k] = n
     end
-    print('data>>>')
-    
 end
 
+
+function Em:useGPC()
+    local verts = {
+        1315 , 1282 ,
+        1315 , 1329 ,
+        1300 , 1314 ,
+        1284 , 1345 ,
+        1253 , 1312 ,
+        1284 , 1298 ,
+        1268 , 1282 ,
+        1315 , 1282  
+    };
+     self:extractSvg()
+    local obj = gpc.new():add(verts);
+    local data = {};
+    plottri(data, obj:strip(),0,0,0,0);
+    normalizeOutput(data, 2000, 2000);
+    return data, obj;
+end
+
+function Em:draw()
+   
+   local program = _.first(self.programs)
+   program:use()
+   
+   gl.BindVertexArray(self.vao[1])
+   gl.UniformMatrix4fv(program.inputs.mvpm, 1, 0, matrix:get('mv'));
+   -- draw data
+   gl.PointSize(4)
+   gl.DrawArrays( gl.TRIANGLES ,0,80)
+   
+end
 
 
 
