@@ -231,6 +231,7 @@
 		BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKMainThreadProxy.m; sourceTree = "<group>"; };
 		BC663FB918F9C7D3001DB2C3 /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = "../../Downloads/lua-5.2.3/src/liblua.a"; sourceTree = "<group>"; };
 		BC74ACA619449627006D8543 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
+		BC8795461972EB4800C50ED8 /* svg.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = svg.lua; path = scripts/emma/svg.lua; sourceTree = "<group>"; };
 		BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCDE08D118DDF07C002587B8 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BCDE08D318DDF0B6002587B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -311,6 +312,7 @@
 		72AF10C9025F77D679CB67FA = {
 			isa = PBXGroup;
 			children = (
+				BC8795461972EB4800C50ED8 /* svg.lua */,
 				BC74ACA619449627006D8543 /* scripts */,
 				72AF1D5E33684D7E53676F56 /* rumor */,
 				72AF1D9B43962BA9C3A73D3D /* other */,

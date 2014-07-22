@@ -21,9 +21,9 @@
     [self.window setOpaque:NO];
     NSColor *transparent = [NSColor colorWithCalibratedWhite:1.0 alpha:0.4];
     [self.window setBackgroundColor:transparent];
-    frame = CGRectMake( 0, 0, 500, 500 );
-    [self.window setFrame:frame display:YES];
-    // [self.window setLevel:kCGFloatingWindowLevelKey];
+    // frame = CGRectMake( 0, 0, 500, 500 );
+    //[self.window setFrame:frame display:YES];
+    [self.window setLevel:kCGFloatingWindowLevelKey];
     //[self.window setIgnoresMouseEvents:YES];
     // todo reapply frame
     //[self.window setLevel:kCGDesktopWindowLevel];
@@ -44,10 +44,7 @@
     [window setContentView:self.glview];
 
     // set view dimensions
-    self.glview->windowSize = frame.size;
-    self.glview.frame = frame;
-    //    self.glview->windowSize = window.frame.size;
-    //    self.glview.frame = self.window.frame;
+    self.glview->windowSize = window.frame.size;
 
     // create Emma
     self.emma = [[[Emma alloc] init] autorelease];

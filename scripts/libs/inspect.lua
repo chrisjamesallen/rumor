@@ -226,7 +226,7 @@ function inspect.inspect(rootObject, options)
       local mt                = getmetatable(t)
       local to_string_result  = getToStringResultSafely(t, mt)
 
-      puts('{')
+      puts('\n{')
       down(function()
         if to_string_result then
           puts(' -- ', escape(to_string_result))
@@ -262,7 +262,7 @@ function inspect.inspect(rootObject, options)
         puts(' ')
       end
 
-      puts('}')
+      puts('}\n')
     end
 
   end

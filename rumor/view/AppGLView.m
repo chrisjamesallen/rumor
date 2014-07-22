@@ -9,26 +9,27 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
                                                CVOptionFlags flagsIn,
                                                CVOptionFlags *flagsOut,
                                                void *displayLinkContext ) {
-    
+
     @autoreleasepool {
         AppGLView *view = (__bridge AppGLView *)displayLinkContext;
         [view->condition lock];
-        
 
-        if(FLUSHING == NO){
+
+        if ( FLUSHING == NO ) {
             [view.openGLContext makeCurrentContext];
-            CGLLockContext(view.openGLContext.CGLContextObj ); // This is needed because
-            // this isn't running on
-            // the main thread.
-            //call lua
-            emma_update(L, outputTime->rateScalar, outputTime->videoTime);
-            emma_draw(L);
-            
-            
+            CGLLockContext( view.openGLContext.CGLContextObj ); // This is needed because
+                                                                // this isn't running on
+                                                                // the main thread.
+            // call lua
+            emma_update( L, outputTime->rateScalar, outputTime->videoTime );
+            emma_draw( L );
+
+
             [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
             // the drawRect method.
             CGLUnlockContext( view.openGLContext.CGLContextObj );
-            CGLFlushDrawable( view.openGLContext.CGLContextObj ); // This does glFlush() for you.
+            CGLFlushDrawable(
+                view.openGLContext.CGLContextObj ); // This does glFlush() for you.
         }
 
         [view->condition unlock];
@@ -54,19 +55,16 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     int aValue = 0;
     NSOpenGLPixelFormat *format;
     NSOpenGLContext *context;
-    NSCondition* condition = [[NSCondition alloc] init];
+    NSCondition *condition = [[NSCondition alloc] init];
     NSOpenGLPixelFormatAttribute pixelFormats[] = {
-        NSOpenGLPFAColorSize,     32,
-        NSOpenGLPFADepthSize,     32,
-        NSOpenGLPFADoubleBuffer,  NSOpenGLPFAStencilSize,
-        8,                        NSOpenGLPFAAccelerated,
-        NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
-        0
+        NSOpenGLPFAColorSize,          32,                      NSOpenGLPFADepthSize,
+        32,                            NSOpenGLPFADoubleBuffer, NSOpenGLPFAStencilSize,
+        8,                             NSOpenGLPFAAccelerated,  NSOpenGLPFAOpenGLProfile,
+        NSOpenGLProfileVersion3_2Core, 0
     };
-    format = [[[NSOpenGLPixelFormat alloc]
-        initWithAttributes:pixelFormats] autorelease];
-    context = [[[NSOpenGLContext alloc] initWithFormat:format
-                                          shareContext:nil] autorelease];
+    format = [[[NSOpenGLPixelFormat alloc] initWithAttributes:pixelFormats] autorelease];
+    context =
+        [[[NSOpenGLContext alloc] initWithFormat:format shareContext:nil] autorelease];
     [context setValues:&aValue forParameter:NSOpenGLCPSurfaceOpacity];
 
     [self setOpenGLContext:context];
@@ -91,7 +89,7 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 }
 
 - (void)reshape {
-    glViewport( 0, 0, windowSize.width, windowSize.height );
+    //   glViewport( 0, 0, windowSize.width, windowSize.height );
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
@@ -99,11 +97,11 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     [self.openGLContext flushBuffer];
 }
 
-- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-    windowSize = frameSize;
-    self.frame = CGRectMake( 0, 0, frameSize.width, frameSize.height );
-    return frameSize;
-}
+//- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
+//    windowSize = frameSize;
+//    //self.frame = CGRectMake( 0, 0, frameSize.width, frameSize.height );
+//    return frameSize;
+//}
 
 - (void)clearView {
     [[NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0.0] set];
@@ -112,7 +110,7 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 
 - (void)prepareOpenGL {
     [super prepareOpenGL];
-    //NSLog( @"prepareOpenGL >>> version %s", glGetString( GL_VERSION ) );
+    // NSLog( @"prepareOpenGL >>> version %s", glGetString( GL_VERSION ) );
     [self clearView];
     glEnable( GL_BLEND );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
@@ -120,9 +118,6 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     glFlush();
     [self.director start];
     [self startDrawLoop];
-    
- 
-    
 }
 
 - (void)startDrawLoop {
@@ -135,8 +130,7 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     CVDisplayLinkCreateWithActiveCGDisplays( &_displayLink );
 
     // set callback function
-    CVDisplayLinkSetOutputCallback( _displayLink,
-                                    &OpenGLViewCoreProfileCallBack, self );
+    CVDisplayLinkSetOutputCallback( _displayLink, &OpenGLViewCoreProfileCallBack, self );
 
     //
     CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(
@@ -148,7 +142,7 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 }
 
 - (void)stopDrawLoop {
-    CVDisplayLinkStop(_displayLink);
+    CVDisplayLinkStop( _displayLink );
 }
 
 - (void)dealloc {
