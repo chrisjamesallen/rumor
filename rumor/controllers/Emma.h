@@ -10,14 +10,15 @@
 extern lua_State *L;
 
 @interface Emma : NSObject <UKFileWatcher> {
-  @public    
+  @public
     UKKQueue *kqueue;
     NSURL *scriptURL;
-    AppGLView * view;
+    AppGLView *view;
 }
 
 - (void)start;
 - (void)startUpLua;
 @end
-extern void emma_update( lua_State * L, double delta, int64_t time);
-extern void emma_draw( lua_State * L );
+extern void emma_update( lua_State *L, double delta, int64_t time );
+extern void emma_draw( lua_State *L );
+BOOL fucked;

@@ -88,17 +88,21 @@ static const struct luaL_Reg sys[] = { { "time", systemTime },
                                        { NULL, NULL } };
 
 void emma_update( lua_State *L, double delta, int64_t time ) {
-    lua_plock( L, "" );
-    lua_getglobal( L, "update" );
-    lua_pushnumber( L, delta );
-    lua_pushnumber( L, (long)time );
-    emma_call( L, 2, 0 );
-    lua_punlock( L, "" );
+    if ( !fucked ) {
+        lua_plock( L, "" );
+        lua_getglobal( L, "update" );
+        lua_pushnumber( L, delta );
+        lua_pushnumber( L, (long)time );
+        emma_call( L, 2, 0 );
+        lua_punlock( L, "" );
+    }
 }
 
 void emma_draw( lua_State *L ) {
-    lua_getglobal( L, "draw" );
-    emma_call( L, 0, 0 );
+    if ( !fucked ) {
+        lua_getglobal( L, "draw" );
+        emma_call( L, 0, 0 );
+    }
 }
 
 void emma_reload( lua_State *L ) {
@@ -239,8 +243,11 @@ lua_State *L;
 - (void)executeLuaFile {
     const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
     if ( luaL_dofile( L, c ) ) {
+        fucked = true;
         printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
         // luaL_error( L, "cannot run lua :( %s", lua_tostring( L, -1 ) );
+    } else {
+        fucked = false;
     }
 }
 
@@ -281,7 +288,10 @@ lua_State *L;
 
     const char *c = [LUA_APP cStringUsingEncoding:NSUTF8StringEncoding];
     if ( luaL_dofile( L, c ) ) {
+        fucked = true;
         printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
+    } else {
+        fucked = false;
     }
     emma_reload( L );
 }

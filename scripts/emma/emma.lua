@@ -131,7 +131,11 @@ end
 function plottri(f,p, r,g,b, command)
     --if command=="stroke" then output(f,0,"setlinewidth") end
     --output(f,r,g,b,"setrgbcolor")
+    
+
+    
     for c=1,p:get() do
+        
         local n=p:get(c)
         local x1,y1=p:get(c,1)
         local x2,y2=p:get(c,2)
@@ -185,7 +189,7 @@ function Em:useGPC()
         1253 , 1312 ,
         1284 , 1298 ,
         1268 , 1282 ,
-        1315 , 1282  
+        1315 , 1282 
     };
      self:extractSvg()
     local obj = gpc.new():add(verts);

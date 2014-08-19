@@ -20,16 +20,18 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
             CGLLockContext( view.openGLContext.CGLContextObj ); // This is needed because
                                                                 // this isn't running on
                                                                 // the main thread.
-            // call lua
-            emma_update( L, outputTime->rateScalar, outputTime->videoTime );
-            emma_draw( L );
+            if ( !fucked ) {
+                // call lua
+                emma_update( L, outputTime->rateScalar, outputTime->videoTime );
+                emma_draw( L );
 
 
-            [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
-            // the drawRect method.
-            CGLUnlockContext( view.openGLContext.CGLContextObj );
-            CGLFlushDrawable(
-                view.openGLContext.CGLContextObj ); // This does glFlush() for you.
+                [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
+                // the drawRect method.
+                CGLUnlockContext( view.openGLContext.CGLContextObj );
+                CGLFlushDrawable(
+                    view.openGLContext.CGLContextObj ); // This does glFlush() for you.
+            }
         }
 
         [view->condition unlock];
