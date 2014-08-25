@@ -15,8 +15,8 @@ App = Class()
 function App:init()
    print("\n\n\napp:init: ")
    self.objects = {}
- 
---create default program
+
+   --create default program
    local p = shader('default');--its ok this isnt released
    p:setAttribute('position');
    p:setUniform('modelViewProjectionMatrix');

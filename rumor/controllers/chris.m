@@ -5,7 +5,7 @@
 #import <GLKit/GLKit.h>
 #import <OpenGL/OpenGL.h>
 #import "chris.h"
-#import "mesh.h"
+ 
 #import "renderer.h"
  
 
@@ -14,7 +14,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.mesh = [[mesh alloc] init];
+  
         self.renderer = [renderer default];
         [self.mesh assignRender:self.renderer];
 
@@ -25,7 +25,7 @@
 
 -(void) draw{
     //do anything positional or change values here
- [self.mesh draw];
+ 
 }
 
 -(void) update{

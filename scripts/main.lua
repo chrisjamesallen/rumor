@@ -15,6 +15,7 @@ SCREEN = {}
 
 
 function main()
+    print("yo yo!")
     SCREEN = System.screen()
     app = App:new()
 end

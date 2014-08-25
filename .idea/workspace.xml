@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb5cf8b-8075-4104-9fff-6b1fd006eee3" name="Default" comment="" />
+    <list default="true" id="cdb5cf8b-8075-4104-9fff-6b1fd006eee3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desky.xcodeproj/project.xcworkspace/xcuserdata/chrisallen.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/desky.xcodeproj/project.xcworkspace/xcuserdata/chrisallen.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/emma/app.lua" afterPath="$PROJECT_DIR$/scripts/emma/app.lua" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/emma/emma.lua" afterPath="$PROJECT_DIR$/scripts/emma/emma.lua" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/main.lua" afterPath="$PROJECT_DIR$/scripts/main.lua" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rumor.iml" afterPath="$PROJECT_DIR$/.idea/rumor.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/xcode.xml" afterPath="$PROJECT_DIR$/.idea/xcode.xml" />
+    </list>
     <ignored path="rumor.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,55 +32,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Emma.m" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Emma.m" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rumor/controllers/Emma.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="5" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="561">
+            <state line="245" column="0" selection-start="7130" selection-end="7130" vertical-scroll-proportion="0.4555874" vertical-offset="4442" max-vertical-offset="5940">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chris.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rumor/controllers/chris.m">
+      <file leaf-file-name="app.lua" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/emma/app.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="1" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="697">
+            <state line="21" column="12" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="1320">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppGLView.m" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/rumor/view/AppGLView.m">
+      <file leaf-file-name="emma.lua" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/emma/emma.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="135" column="0" selection-start="3827" selection-end="3827" vertical-scroll-proportion="1.0853277" vertical-offset="1657" max-vertical-offset="2618">
+            <state line="23" column="4" selection-start="312" selection-end="328" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="7720">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="renderer.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rumor/shaders/renderer.m">
+      <file leaf-file-name="main.lua" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/main.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="9" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="5253">
+            <state line="17" column="4" selection-start="367" selection-end="382" vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="1860">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mesh.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rumor/meshes+texture/mesh.m">
+      <file leaf-file-name="base.lua" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/base.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="14" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1326">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.vsh" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rumor/shaders/default.vsh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289">
+            <state line="35" column="9" selection-start="488" selection-end="488" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
               <folding />
             </state>
           </provider>
@@ -100,9 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/rumor/view/texture.m" />
-        <option value="$PROJECT_DIR$/rumor/shaders/renderer.h" />
-        <option value="$PROJECT_DIR$/rumor/meshes+texture/mesh.h" />
         <option value="$PROJECT_DIR$/rumor/view/AppGLView.h" />
         <option value="$PROJECT_DIR$/rumor/main/appAppDelegate.m" />
         <option value="$PROJECT_DIR$/other/main/appAppDelegate.m" />
@@ -116,13 +113,16 @@
         <option value="$PROJECT_DIR$/rumor/controllers/Emma.m" />
         <option value="$PROJECT_DIR$/rumor/meshes+texture/mesh.m" />
         <option value="$PROJECT_DIR$/rumor/view/AppGLView.m" />
+        <option value="$PROJECT_DIR$/scripts/main.lua" />
+        <option value="$PROJECT_DIR$/scripts/emma/emma.lua" />
+        <option value="$PROJECT_DIR$/scripts/emma/app.lua" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="52" />
+    <option name="x" value="20" />
     <option name="y" value="22" />
-    <option name="width" value="1868" />
+    <option name="width" value="1797" />
     <option name="height" value="1058" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -197,66 +197,6 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="en.lproj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Base.lproj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="ProjectPane">
@@ -267,7 +207,49 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
+              <option name="myItemId" value="desky" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="desky" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="desky" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="emma" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="desky" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -281,7 +263,7 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
+              <option name="myItemId" value="desky" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -299,7 +281,7 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
+              <option name="myItemId" value="desky" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -317,7 +299,7 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
+              <option name="myItemId" value="desky" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -335,7 +317,7 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
+              <option name="myItemId" value="desky" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -343,46 +325,8 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Products" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="other" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rumor" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -393,19 +337,40 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="options.lastSelected" value="com.sylvanaar.idea.Lua.options.LuaOptionsPanel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="OBJC.PRESERVED_TARGET_SELECTION" value="rumor" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Application.rumor">
-    <configuration default="false" name="rumor" type="AppleRunConfiguration" factoryName="Application" temporary="true" SCHEME_NAME="rumor" PROJECT_NAME="rumor" TARGET_NAME="rumor" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" RUN_TARGET_PROJECT_NAME="rumor" RUN_TARGET_NAME="rumor" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <configuration default="false" name="main.lua" type="#com.sylvanaar.idea.Lua.run.LuaConfigurationType" factoryName="Lua Script" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="ALTERNATE_INTERPRETER" value="false" />
       <envs />
-      <RunnerSettings RunnerId="AppRunner" />
-      <RunnerSettings RunnerId="InstrumentsRunner" />
-      <ConfigurationWrapper RunnerId="AppRunner" />
-      <ConfigurationWrapper RunnerId="InstrumentsRunner" />
+      <module name="rumor" />
+      <option name="SCRIPT_NAME" value="main.lua" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="com.sylvanaar.idea.Lua.run.LuaRunner" />
+      <ConfigurationWrapper RunnerId="com.sylvanaar.idea.Lua.run.LuaRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="main.lua (1)" type="#com.sylvanaar.idea.Lua.run.LuaConfigurationType" factoryName="Lua Script" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="ALTERNATE_INTERPRETER" value="false" />
+      <envs />
+      <module name="rumor" />
+      <option name="SCRIPT_NAME" value="main.lua" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="com.sylvanaar.idea.Lua.run.LuaRunner" />
+      <ConfigurationWrapper RunnerId="com.sylvanaar.idea.Lua.run.LuaRunner" />
       <method />
     </configuration>
     <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PROJECT_NAME="rumor" TARGET_NAME="rumor" CONFIG_NAME="Debug" PASS_PARENT_ENVS="FALSE" RUN_TARGET_PROJECT_NAME="rumor" RUN_TARGET_NAME="rumor" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
@@ -420,12 +385,33 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
+    <configuration default="true" type="#com.sylvanaar.idea.Lua.run.LuaConfigurationType" factoryName="Lua Script">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="ALTERNATE_INTERPRETER" value="false" />
+      <envs />
+      <module name="rumor" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="false" name="rumor" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="rumor" PROJECT_NAME="desky" TARGET_NAME="desky" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" RUN_TARGET_PROJECT_NAME="desky" RUN_TARGET_NAME="desky" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <RunnerSettings RunnerId="AppRunner" />
+      <ConfigurationWrapper RunnerId="AppRunner" />
+      <method />
+    </configuration>
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.rumor" />
+      <item index="1" class="java.lang.String" itemvalue="Lua Script.main.lua" />
+      <item index="2" class="java.lang.String" itemvalue="Lua Script.main.lua (1)" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.rumor" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Lua Script.main.lua (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Lua Script.main.lua" />
       </list>
     </recent_temporary>
   </component>
@@ -457,24 +443,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="52" y="22" width="1868" height="1058" extended-state="6" />
-    <editor active="false" />
+    <frame x="20" y="22" width="1797" height="1058" extended-state="6" />
+    <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1496461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292517" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24984346" sideWeight="0.7679763" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15364026" sideWeight="0.8503539" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.35510203" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="836" y="643" width="1033" height="397" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.163606" sideWeight="0.73407483" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.35510203" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="821" y="661" width="1033" height="397" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293371" sideWeight="0.4272109" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="true" weight="0.3292517" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" x="1710" y="53" width="186" height="215" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.3292517" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" x="1710" y="53" width="186" height="215" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26592517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4195882" sideWeight="0.73407483" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="898" y="462" width="772" height="377" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32987398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1496461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -495,35 +482,10 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="17" />
+      <option name="time" value="19" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSView.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="23" selection-start="12381" selection-end="12396" vertical-scroll-proportion="0.3487437" vertical-offset="3909" max-vertical-offset="10128" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/other/main/appAppDelegate.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="4" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="1120" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rumor/view/AppGLView.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="7" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="352" />
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="8" selection-start="6490" selection-end="6490" vertical-scroll-proportion="0.33266333" vertical-offset="2373" max-vertical-offset="46704" />
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/GLKit.framework/Headers/GLKMatrix4.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="8" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14224" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rumor/meshes+texture/plane_mesh.h">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="80" selection-start="475" selection-end="475" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="848" />
@@ -549,23 +511,9 @@
         <state line="8" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rumor/controllers/chris.m">
+    <entry file="file://$PROJECT_DIR$/others.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="1" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rumor/controllers/Emma.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="561">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rumor/meshes+texture/mesh.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="14" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="472" max-vertical-offset="1170">
+        <state line="1" column="4" selection-start="29" selection-end="29" vertical-scroll-proportion="0.020811655" vertical-offset="0" max-vertical-offset="961">
           <folding />
         </state>
       </provider>
@@ -577,16 +525,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rumor/view/AppGLView.m">
+    <entry file="file://$PROJECT_DIR$/rumor/meshes+texture/mesh.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="0" selection-start="3827" selection-end="3827" vertical-scroll-proportion="1.0853277" vertical-offset="1657" max-vertical-offset="2618">
+        <state line="22" column="14" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="472" max-vertical-offset="1170">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rumor/shaders/default.vsh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+        <state line="10" column="0" selection-start="124" selection-end="124" vertical-scroll-proportion="0.20811655" vertical-offset="0" max-vertical-offset="961">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rumor/view/AppGLView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="0" selection-start="4497" selection-end="4497" vertical-scroll-proportion="0.47257385" vertical-offset="2252" max-vertical-offset="3200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rumor/controllers/chris.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="1" selection-start="454" selection-end="454" vertical-scroll-proportion="0.47866806" vertical-offset="0" max-vertical-offset="961">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/base.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="9" selection-start="488" selection-end="488" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/main.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="4" selection-start="367" selection-end="382" vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="1860">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/emma/emma.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="4" selection-start="312" selection-end="328" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="7720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/emma/app.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="12" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="1320">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rumor/controllers/Emma.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="245" column="0" selection-start="7130" selection-end="7130" vertical-scroll-proportion="0.4555874" vertical-offset="4442" max-vertical-offset="5940">
           <folding />
         </state>
       </provider>

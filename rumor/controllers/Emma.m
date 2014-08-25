@@ -1,4 +1,3 @@
-
 #import "Emma.h"
 #import "chris.h"
 #import <OpenGL/OpenGL.h>
@@ -8,24 +7,22 @@
 #import "emma_vec3.h"
 #import "lgpc.h"
 
-
+// CONSTS
 const NSString *LUA_PATH = @"/Users/chrisallen/projects/desky/";
 const NSString *LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
 const NSString *LUA_APP = @"/Users/chrisallen/projects/desky/scripts/emma/app.lua";
 int emma_test( lua_State *L );
 CGRect frame;
-
 struct appS {
     BOOL pressed;
     BOOL dragged;
-    // emma lua struct
-    // mouse position
 } AppState;
 
+/* : Emma
+=================================================== */
 static int emma_gc( lua_State *L ) {
     stackDump( L );
     puts( "__gc called" );
-    // call obj destroy method
     return 0;
 }
 
@@ -35,21 +32,44 @@ void emma_call( lua_State *L, int args, int returns ) {
         printf( "emma:error calling function %s\n", lua_tostring( L, -1 ) );
 }
 
-static const struct luaL_Reg emma[] = {
-    { "delete", emma_gc }, { "foo", emma_gc }, { "__gc", emma_gc }, { NULL, NULL }
-};
+static const struct luaL_Reg emma[] = { { "delete", emma_gc },
+                                        { "__gc", emma_gc },
+                                        { NULL, NULL } };
 
 
 static int emma_new( lua_State *L ) {
     lua_getglobal( L, "newObject" );
     emma_call( L, 0, 0 );
-    //    lua_newtable( L );
-    //    lua_newtable( L );
-    //    luaL_getmetatable(L,"_Emma");
-    //    lua_setfield( L, -2, "__index" );
-    //    lua_setmetatable(L, -2);//pop and apply foo metatable to block, return block
     return 1;
 }
+
+void emma_update( lua_State *L, double delta, int64_t time ) {
+    lua_plock( L, "" );
+    lua_getglobal( L, "update" );
+    lua_pushnumber( L, delta );
+    lua_pushnumber( L, (long)time );
+    emma_call( L, 2, 0 );
+    lua_punlock( L, "" );
+}
+
+void emma_draw( lua_State *L ) {
+    lua_getglobal( L, "draw" );
+    emma_call( L, 0, 0 );
+}
+
+void emma_reload( lua_State *L ) {
+    lua_getglobal( L, "reload" );
+    emma_call( L, 0, 0 );
+}
+
+void emma_destroy( lua_State *L ) {
+    lua_getglobal( L, "destroy" );
+    emma_call( L, 0, 0 );
+}
+
+
+/* : System
+=================================================== */
 
 static int systemTime( lua_State *L ) {
     clock_t clock_t;
@@ -87,37 +107,8 @@ static const struct luaL_Reg sys[] = { { "time", systemTime },
                                        { "mouse", systemMouse },
                                        { NULL, NULL } };
 
-void emma_update( lua_State *L, double delta, int64_t time ) {
-    if ( !fucked ) {
-        lua_plock( L, "" );
-        lua_getglobal( L, "update" );
-        lua_pushnumber( L, delta );
-        lua_pushnumber( L, (long)time );
-        emma_call( L, 2, 0 );
-        lua_punlock( L, "" );
-    }
-}
-
-void emma_draw( lua_State *L ) {
-    if ( !fucked ) {
-        lua_getglobal( L, "draw" );
-        emma_call( L, 0, 0 );
-    }
-}
-
-void emma_reload( lua_State *L ) {
-    lua_getglobal( L, "reload" );
-    emma_call( L, 0, 0 );
-}
-
-void emma_destroy( lua_State *L ) {
-    lua_getglobal( L, "destroy" );
-    emma_call( L, 0, 0 );
-}
 
 void main_init( lua_State *L ) {
-    // set obj global
-    // assign constructor init and destroy
     luaL_newmetatable( L, "_Emma" );
     luaL_setfuncs( L, emma, 0 );
     // create constructor
@@ -130,8 +121,7 @@ void main_init( lua_State *L ) {
     lua_setglobal( L, "System" );
 }
 
-void main_start( lua_State *L ) {
-
+void main_set( lua_State *L ) {
     lua_settop( L, 0 );
     lua_getglobal( L, "main" );
     emma_call( L, 0, 0 );
@@ -155,10 +145,24 @@ lua_State *L;
 
 - (void)start {
     frame = view.frame;
-    [self setupLua];
     [self setMouse];
-    main_start( L );
+    [self setLua];
+    main_set( L );
 }
+
+
+- (void)setLua {
+    [self setupFileWatcher];
+    L = luaL_newstate();
+    luaL_openlibs( L );
+    luaopen_luagl( L );
+    lua_initMat4( L );
+    lua_initVec3( L );
+    luaopen_gpc( L );
+    main_init( L );
+    [self executeLuaFile];
+}
+
 
 - (void)setMouse {
     const int maskDown = NSLeftMouseDownMask | NSRightMouseDown;
@@ -184,22 +188,18 @@ lua_State *L;
                                            }];
 }
 
-- (void)draw {
+
+- (void)executeLuaFile {
+    const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
+    if ( luaL_dofile( L, c ) ) {
+        fucked = true;
+        printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
+        // luaL_error( L, "cannot run lua :( %s", lua_tostring( L, -1 ) );
+    } else {
+        fucked = false;
+    }
 }
 
-
-- (void)setupLua {
-    [self setupFileWatcher];
-    // create global lua state
-    L = luaL_newstate();
-    luaL_openlibs( L );
-    luaopen_luagl( L );
-    lua_initMat4( L );
-    lua_initVec3( L );
-    luaopen_gpc( L );
-    main_init( L );
-    [self executeLuaFile];
-}
 
 - (void)setupFileWatcher {
 
@@ -238,17 +238,6 @@ lua_State *L;
            selector:@selector( aFileHasBeenChanged )
                name:UKFileWatcherWriteNotification
              object:nil];
-}
-
-- (void)executeLuaFile {
-    const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
-    if ( luaL_dofile( L, c ) ) {
-        fucked = true;
-        printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
-        // luaL_error( L, "cannot run lua :( %s", lua_tostring( L, -1 ) );
-    } else {
-        fucked = false;
-    }
 }
 
 - (void)aFileHasBeenChanged {

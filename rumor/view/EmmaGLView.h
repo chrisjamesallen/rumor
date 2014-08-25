@@ -10,12 +10,12 @@
 
 @class Emma;
 
-@interface AppGLView : NSOpenGLView <NSWindowDelegate> {
-@public
-  NSSize windowSize;
+@interface EmmaGLView : NSOpenGLView <NSWindowDelegate> {
+  @public
+    NSSize windowSize;
     NSCondition* condition;
 }
-@property(nonatomic, retain) Emma *director;
+@property( nonatomic, retain ) Emma* director;
 
 - (void)setup;
 - (void)stopDrawLoop;

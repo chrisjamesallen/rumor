@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		72AF10E2869F8E60ED3B18E3 /* renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1EB80487E93A7DD0CD45 /* renderer.m */; };
-		72AF1141A1EDD2938130CE7A /* mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1EAE593CFB90B0A15129 /* mesh.m */; };
 		72AF1240C254A3A66F10107A /* Emma.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1756FCF6BEDAF09E4A10 /* Emma.m */; };
 		72AF12BD14D286F5E3C798B8 /* texture.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1B019C5D67A0DA70D863 /* texture.m */; };
 		72AF13433173929534D04D3E /* chris.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1353DC6398EF39932983 /* chris.m */; };
-		72AF139ABEED6C9736EF9F6F /* AppGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF18F27E3CDC58BD7E60E3 /* AppGLView.m */; };
+		72AF139ABEED6C9736EF9F6F /* EmmaGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF18F27E3CDC58BD7E60E3 /* EmmaGLView.m */; };
 		72AF14120CEA2A77EFBBF4E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72AF183E8E4DD4BA995AE04D /* InfoPlist.strings */; };
 		72AF1552931FC6E1DEF5DA68 /* default.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 72AF12AD3D83846937D537FA /* default.vsh */; };
 		72AF15B5CE93CAD0A1D8BEDF /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 72AF1C8FF9A6E9203A597204 /* readme.txt */; };
@@ -99,14 +98,13 @@
 		72AF13D31D0687192EC64940 /* desky-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "desky-Info.plist"; sourceTree = "<group>"; };
 		72AF144559629296821E05E9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		72AF14CDD204742277F25466 /* Emma.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emma.h; sourceTree = "<group>"; };
-		72AF15A63B2C0ADA6F5C7534 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
 		72AF15E382E5CFB115F3A38E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = rumor/Base.lproj/app.xib; sourceTree = SOURCE_ROOT; };
 		72AF160C61584BE3AA343E74 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
 		72AF1728AC4CD3A035E2EB97 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../rumor/main.m; sourceTree = "<group>"; };
 		72AF1756FCF6BEDAF09E4A10 /* Emma.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emma.m; sourceTree = "<group>"; };
 		72AF17D2C51EA69B5B913618 /* desky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = desky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72AF18D21E6E88E42E7CBABB /* desky-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "desky-Prefix.pch"; sourceTree = "<group>"; };
-		72AF18F27E3CDC58BD7E60E3 /* AppGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppGLView.m; sourceTree = "<group>"; };
+		72AF18F27E3CDC58BD7E60E3 /* EmmaGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmmaGLView.m; path = ../view/EmmaGLView.m; sourceTree = "<group>"; };
 		72AF196F0065B0BF8B317CF5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		72AF1A59195EC0913F051CBA /* plane_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plane_mesh.h; sourceTree = "<group>"; };
 		72AF1B019C5D67A0DA70D863 /* texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = texture.m; sourceTree = "<group>"; };
@@ -116,9 +114,8 @@
 		72AF1CC5D97BCA23032105B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		72AF1DBE2C889A59B7EF5A5B /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		72AF1DF4C009A23351ADAA58 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		72AF1E0CC06A0A4269E2F863 /* AppGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppGLView.h; sourceTree = "<group>"; };
+		72AF1E0CC06A0A4269E2F863 /* EmmaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmmaGLView.h; path = ../view/EmmaGLView.h; sourceTree = "<group>"; };
 		72AF1E7600476010528AA13D /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
-		72AF1EAE593CFB90B0A15129 /* mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mesh.m; sourceTree = "<group>"; };
 		72AF1EB80487E93A7DD0CD45 /* renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = renderer.m; sourceTree = "<group>"; };
 		72AF1EC6639600773CED5076 /* chris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chris.h; sourceTree = "<group>"; };
 		BC14100A1972E0CD00CBA0E2 /* lgpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgpc.c; path = ../rumor/controllers/lgpc.c; sourceTree = "<group>"; };
@@ -375,8 +372,6 @@
 		72AF1AA3564666A1B07A1B72 /* meshes+texture */ = {
 			isa = PBXGroup;
 			children = (
-				72AF15A63B2C0ADA6F5C7534 /* mesh.h */,
-				72AF1EAE593CFB90B0A15129 /* mesh.m */,
 				72AF1B019C5D67A0DA70D863 /* texture.m */,
 				72AF160C61584BE3AA343E74 /* texture.h */,
 				72AF1A59195EC0913F051CBA /* plane_mesh.h */,
@@ -384,11 +379,13 @@
 			path = "meshes+texture";
 			sourceTree = "<group>";
 		};
-		72AF1C2A6460A0BC9E763974 /* lua-binders */ = {
+		72AF1C2A6460A0BC9E763974 /* emma */ = {
 			isa = PBXGroup;
 			children = (
 				72AF14CDD204742277F25466 /* Emma.h */,
 				72AF1756FCF6BEDAF09E4A10 /* Emma.m */,
+				72AF1E0CC06A0A4269E2F863 /* EmmaGLView.h */,
+				72AF18F27E3CDC58BD7E60E3 /* EmmaGLView.m */,
 				BCF7D6EE1944A55300B7F453 /* luagl.h */,
 				BCF7D6EB1944A45C00B7F453 /* luagl.m */,
 				BCE3FCD8195A222300A3A7FF /* emma_mat4.h */,
@@ -398,7 +395,7 @@
 				72AF1EC6639600773CED5076 /* chris.h */,
 				72AF1353DC6398EF39932983 /* chris.m */,
 			);
-			name = "lua-binders";
+			name = emma;
 			path = controllers;
 			sourceTree = "<group>";
 		};
@@ -408,7 +405,7 @@
 				72AF16F3C0E558AFCD332A9A /* main */,
 				72AF1CC5D97BCA23032105B3 /* Images.xcassets */,
 				72AF1C8FF9A6E9203A597204 /* readme.txt */,
-				72AF1C2A6460A0BC9E763974 /* lua-binders */,
+				72AF1C2A6460A0BC9E763974 /* emma */,
 				72AF1F5189DBB137FB89F04E /* view */,
 				72AF1AA3564666A1B07A1B72 /* meshes+texture */,
 				72AF11DBDF650C58E496D960 /* shaders */,
@@ -430,8 +427,6 @@
 		72AF1F5189DBB137FB89F04E /* view */ = {
 			isa = PBXGroup;
 			children = (
-				72AF18F27E3CDC58BD7E60E3 /* AppGLView.m */,
-				72AF1E0CC06A0A4269E2F863 /* AppGLView.h */,
 				72AF134F9D30135C8ACF058A /* app.xib */,
 			);
 			path = view;
@@ -712,7 +707,7 @@
 				BC438CD418FC982400AA5D15 /* lstate.c in Sources */,
 				BC438CD218FC982400AA5D15 /* lparser.c in Sources */,
 				BC438CD818FC982400AA5D15 /* lstrlib.c in Sources */,
-				72AF139ABEED6C9736EF9F6F /* AppGLView.m in Sources */,
+				72AF139ABEED6C9736EF9F6F /* EmmaGLView.m in Sources */,
 				72AF18F99137FCA1F6743C9F /* main.m in Sources */,
 				BC438CF618FC9E8100AA5D15 /* UKMainThreadProxy.m in Sources */,
 				BC438CB318FC982400AA5D15 /* ldblib.c in Sources */,
@@ -743,7 +738,6 @@
 				BC438CC418FC982400AA5D15 /* llex.c in Sources */,
 				BC438CAF18FC982400AA5D15 /* lcorolib.c in Sources */,
 				BC438CE218FC982400AA5D15 /* lundump.c in Sources */,
-				72AF1141A1EDD2938130CE7A /* mesh.m in Sources */,
 				72AF10E2869F8E60ED3B18E3 /* renderer.m in Sources */,
 				BC438CB118FC982400AA5D15 /* lctype.c in Sources */,
 				BCE3FCD0195A21FE00A3A7FF /* plane.c in Sources */,

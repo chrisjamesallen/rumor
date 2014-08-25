@@ -7,15 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class AppGLView;
+@class EmmaGLView;
 @class Emma;
 
-@interface App : NSObject <NSApplicationDelegate>{
+@interface App : NSObject <NSApplicationDelegate> {
     CGRect frame;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+@property( assign ) IBOutlet NSWindow *window;
 
-@property(nonatomic, retain) AppGLView *glview;
-@property(nonatomic, retain) Emma *emma;
+@property( nonatomic, retain ) EmmaGLView *glview;
+@property( nonatomic, retain ) Emma *emma;
 @end

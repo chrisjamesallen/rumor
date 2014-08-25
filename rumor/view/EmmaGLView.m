@@ -1,4 +1,4 @@
-#import "AppGLView.h"
+#import "EmmaGLView.h"
 #import "Emma.h"
 
 // c callbacks
@@ -11,30 +11,18 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
                                                void *displayLinkContext ) {
 
     @autoreleasepool {
-        AppGLView *view = (__bridge AppGLView *)displayLinkContext;
-        [view->condition lock];
+        EmmaGLView *view = (__bridge EmmaGLView *)displayLinkContext;
+        //[view->condition lock];
 
-
-        if ( FLUSHING == NO ) {
+        if ( FLUSHING == NO && !fucked ) {
             [view.openGLContext makeCurrentContext];
-            CGLLockContext( view.openGLContext.CGLContextObj ); // This is needed because
-                                                                // this isn't running on
-                                                                // the main thread.
-            if ( !fucked ) {
-                // call lua
-                emma_update( L, outputTime->rateScalar, outputTime->videoTime );
-                emma_draw( L );
-
-
-                [view draw:view.bounds]; // Draw the scene. This doesn't need to be in
-                // the drawRect method.
-                CGLUnlockContext( view.openGLContext.CGLContextObj );
-                CGLFlushDrawable(
-                    view.openGLContext.CGLContextObj ); // This does glFlush() for you.
-            }
+            emma_update( L, outputTime->rateScalar, outputTime->videoTime );
+            emma_draw( L );
+            [view draw:view.bounds];
+            CGLFlushDrawable( view.openGLContext.CGLContextObj );
         }
 
-        [view->condition unlock];
+        //[view->condition unlock];
         return kCVReturnSuccess;
     }
 }
@@ -42,22 +30,20 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 
 /* : AppGLView
  =================================================== */
-@interface AppGLView () {
+@interface EmmaGLView () {
     CVDisplayLinkRef *dL;
 }
 @property( atomic, assign ) CVDisplayLinkRef *displayLink;
 @end
 
-@implementation AppGLView
+@implementation EmmaGLView
 
 - (void)setup {
-
-    // NSLog( @"setup app gl view" );
-    // var
-    int aValue = 0;
+    int aValue;
     NSOpenGLPixelFormat *format;
     NSOpenGLContext *context;
-    NSCondition *condition = [[NSCondition alloc] init];
+
+    // Set pixel format
     NSOpenGLPixelFormatAttribute pixelFormats[] = {
         NSOpenGLPFAColorSize,          32,                      NSOpenGLPFADepthSize,
         32,                            NSOpenGLPFADoubleBuffer, NSOpenGLPFAStencilSize,
@@ -65,45 +51,22 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
         NSOpenGLProfileVersion3_2Core, 0
     };
     format = [[[NSOpenGLPixelFormat alloc] initWithAttributes:pixelFormats] autorelease];
+    [self setPixelFormat:format];
+
+    // Set context
+    aValue = 0;
     context =
         [[[NSOpenGLContext alloc] initWithFormat:format shareContext:nil] autorelease];
     [context setValues:&aValue forParameter:NSOpenGLCPSurfaceOpacity];
-
     [self setOpenGLContext:context];
-    [self setPixelFormat:format];
     [self.openGLContext makeCurrentContext];
 }
 
-- (void)draw:(NSRect)dirtyRect {
-    //[self clearView];
-    [self.director draw];
-}
-
-// note: important to remember
-// [NSGraphicsContext currentContext]; (the window context, what we need
-// here to make window translucent)
-// [NSOpenGLContext currentContext]; (the opengl context, what we use to
-// draw our own stuff)
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     [self clearView];
 }
-
-- (void)reshape {
-    //   glViewport( 0, 0, windowSize.width, windowSize.height );
-}
-
-- (void)mouseUp:(NSEvent *)theEvent {
-    NSLog( @"mouseup" );
-    [self.openGLContext flushBuffer];
-}
-
-//- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
-//    windowSize = frameSize;
-//    //self.frame = CGRectMake( 0, 0, frameSize.width, frameSize.height );
-//    return frameSize;
-//}
 
 - (void)clearView {
     [[NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0.0] set];
@@ -112,7 +75,6 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 
 - (void)prepareOpenGL {
     [super prepareOpenGL];
-    // NSLog( @"prepareOpenGL >>> version %s", glGetString( GL_VERSION ) );
     [self clearView];
     glEnable( GL_BLEND );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
@@ -147,9 +109,28 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
     CVDisplayLinkStop( _displayLink );
 }
 
+
+- (void)reshape {
+}
+
+- (void)mouseUp:(NSEvent *)theEvent {
+    NSLog( @"mouseup" );
+    [self.openGLContext flushBuffer];
+}
+
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize {
+    return frameSize;
+}
+
+
 - (void)dealloc {
     [_director release];
     [super dealloc];
 }
 
+// note: important to remember
+// [NSGraphicsContext currentContext]; (the window context, what we need
+// here to make window translucent)
+// [NSOpenGLContext currentContext]; (the opengl context, what we use to
+// draw our own stuff)
 @end

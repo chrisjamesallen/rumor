@@ -5,7 +5,7 @@
 
 
 #import "app.h"
-#import "AppGLView.h"
+#import "EmmaGLView.h"
 #import "Emma.h"
 
 @implementation App
@@ -36,7 +36,7 @@
     NSWindow *window = self.window;
 
     // create glview
-    self.glview = [[AppGLView alloc] initWithFrame:self.window.frame];
+    self.glview = [[EmmaGLView alloc] initWithFrame:self.window.frame];
     [self.glview setup];
 
     // add to window
