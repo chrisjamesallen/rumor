@@ -22,14 +22,14 @@ function Em:init()
     self.vbo = {}; 
     self.vao = {};
     self.inputs = {}; 
-    self.programs = {}; 
+    self.programs = {};
 
     --setup shader
     self:addProgram('default');
 
     -- make vao
     self:setVertexArray()
-     print('domeghjg ')
+
 
     -- create geometry
     self.geometry = {}
@@ -231,7 +231,7 @@ end
 function Em:closePath()
     --close path
     self:lineTo(self.startPos.x, self.startPos.y)
-    print('data before normalize:', inspect(self.data_))
+    --print('data before normalize:', inspect(self.data_))
     self.data_ = _.flatten(self.data_)
     local maxX = 800
     local maxY = 800

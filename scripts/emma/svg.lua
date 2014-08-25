@@ -68,7 +68,7 @@ function SVG:extractSvg()
         d["command"] = command;
         _.push(operations, d)
     end
-    print(inspect(operations))
+    --print(inspect(operations))
 
     return operations;
 end
@@ -253,7 +253,7 @@ end
 function SVG:closePath()
     --close path
     self:lineTo(self.startPos.x, self.startPos.y)
-    print('data before normalize:', inspect(self.data_))
+    --print('data before normalize:', inspect(self.data_))
     self.data_ = _.flatten(self.data_)
     local maxX = 800
     local maxY = 800

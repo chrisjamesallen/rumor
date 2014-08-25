@@ -150,11 +150,11 @@ lua_State *L;
     lua_initVec3( L );
     luaopen_gpc( L );
     lua_initMain( L );
-    [self doLuaFile];
+    [self doLuaFile: LUA_MAIN];
 }
 
-- (bool)doLuaFile {
-    const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
+- (bool)doLuaFile:(NSString *) path {
+    const char *c = [path cStringUsingEncoding:NSUTF8StringEncoding];
     if ( luaL_dofile( L, c ) ) {
         fucked = true;
         printf( "cannot run lua! :( %s", lua_tostring( L, -1 ) );
@@ -251,8 +251,7 @@ lua_State *L;
     [view.openGLContext makeCurrentContext];
     [self onFileChange_tearDownLua];
     [self onFileChange_checkNewFiles];
-    if ( ![self doLuaFile] ) {
-        printf( "\n reloading... \n" );
+    if ( ![self doLuaFile:LUA_APP] ) {
         emma_reload( L );
     }
 

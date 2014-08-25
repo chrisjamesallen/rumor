@@ -15,7 +15,6 @@ App = Class()
 function App:init()
    print("\n\n\napp init ")
    self.objects = {}
-
    --create default program
    local p = shader('default');--its ok this isnt released
    p:setAttribute('position');
@@ -52,15 +51,15 @@ end
 
 function App:destroy()
     --_.each(_.keys(package.loaded), print)          
+    self.objects = nil
+    print("app:destroy!!")
+    Em = nil
+end
+
+function AppDestroy()
     package.loaded['emma/emma'] = nil
     package.loaded['emma/_shader'] = nil
     package.loaded['emma/_matrix'] = nil
     package.loaded['emma/svg'] = nil
-    package.loaded['emma/app'] = nil
-    self.objects = nil
-    print("app:destroy!")
-    Em = nil
 end
- 
-  
 return App;

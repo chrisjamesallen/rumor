@@ -1,7 +1,7 @@
 -- libraries
 package.path = "/Users/chrisallen/projects/desky/scripts/?.lua;" .. package.path
 require "base"
-require "libs/debugger"
+dbg = require "libs/debugger"
 require "libs/helper"
 Tween = require "libs/tween"
 _ = require "libs/underscore"
@@ -20,7 +20,7 @@ clock = os.clock
 
 function main()
     app = App:new()
-    print(inspect(package.loaded), "yo ")
+
 end
 
 function update (delta,runTime,pos)
@@ -41,12 +41,12 @@ function draw()
 end
 
 function destroy()
-
+    AppDestroy();
     if(app~=nil) then
         destroying = true;
         app:destroy()
-        app = nil
         collect()
+        app = nil
         destroying = false;
     end
 end
@@ -56,7 +56,7 @@ function collect()
 end
 
 function reload()
-    print('reload')
+    print('main:reload', app)
     app = App:new()
 end
 
