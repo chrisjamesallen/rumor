@@ -1,21 +1,26 @@
+-- libraries
 package.path = "/Users/chrisallen/projects/desky/scripts/?.lua;" .. package.path
 require "base"
+require "libs/debugger"
+require "libs/helper"
 Tween = require "libs/tween"
 _ = require "libs/underscore"
 inspect = require "libs/inspect"
 require "emma/app"
 
--- Main
+
+
+-- constants
 runtime = 0;
 starttime = 0;
 drawtime = 0;
-fps = 60;
-SCREEN = {}
+clock = os.clock
 
+-- main functions
 
 function main()
     app = App:new()
-
+    print(inspect(package.loaded), "yo ")
 end
 
 function update (delta,runTime,pos)
@@ -36,11 +41,11 @@ function draw()
 end
 
 function destroy()
+
     if(app~=nil) then
         destroying = true;
         app:destroy()
         app = nil
-        package.loaded['emma/app']  = nil
         collect()
         destroying = false;
     end
@@ -60,6 +65,7 @@ end
 
 
 
+-- touch
 
 function  touchStarted(x,y)
 end
@@ -69,21 +75,4 @@ end
 
 function  touchEnded(x,y)
 end
-
-function sleep(n)
-    os.execute("sleep " .. tonumber(n))
-end
-
-local clock = os.clock
-
-function wait(n)  -- seconds
-    local t0 = clock()
-    while clock() - t0 <= n do end
-end
-
-
-
-
-
-
 

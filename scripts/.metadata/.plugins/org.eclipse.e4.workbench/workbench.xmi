@@ -3,9 +3,11 @@
   <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.koneki.ldt.ui.editor&quot; name=&quot;main.lua&quot; tooltip=&quot;/Users/chrisallen/projects/desky/scripts/main.lua&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/chrisallen/projects/desky/scripts/main.lua&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.koneki.ldt.ui.editor&quot; name=&quot;base.lua&quot; tooltip=&quot;/Users/chrisallen/projects/desky/scripts/base.lua&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/chrisallen/projects/desky/scripts/base.lua&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_ANackSxTEeSFyqJcqnbHzw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_AsJnASxTEeSFyqJcqnbHzw" label="%trimmedwindow.label.eclipseSDK" x="123" y="67" width="1485" height="994">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_ANackSxTEeSFyqJcqnbHzw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_AsJnASxTEeSFyqJcqnbHzw" label="%trimmedwindow.label.eclipseSDK" x="268" y="22" width="1485" height="994">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
+    <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workingSets/>"/>
+    <persistedState key="aggregateWorkingSetId"/>
     <tags>topLevel</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_AsJnASxTEeSFyqJcqnbHzw" selectedElement="_AsJnAixTEeSFyqJcqnbHzw" horizontal="true">
       <children xsi:type="advanced:PerspectiveStack" xmi:id="_AsJnAixTEeSFyqJcqnbHzw" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_AweGUCxTEeSFyqJcqnbHzw">
@@ -34,10 +36,11 @@
           <tags>persp.newWizSC:org.eclipse.koneki.ldt.wizard</tags>
           <tags>persp.newWizSC:org.eclipse.koneki.ldt.wizard.file</tags>
           <tags>persp.newWizSC:org.eclipse.koneki.ldt.wizard.docfile</tags>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_AweGUSxTEeSFyqJcqnbHzw" selectedElement="_AweGWixTEeSFyqJcqnbHzw" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_AweGUSxTEeSFyqJcqnbHzw" selectedElement="_AweGUixTEeSFyqJcqnbHzw" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_AweGUixTEeSFyqJcqnbHzw" containerData="2600" selectedElement="_AweGUyxTEeSFyqJcqnbHzw">
               <children xsi:type="basic:PartStack" xmi:id="_AweGUyxTEeSFyqJcqnbHzw" elementId="topLeft" containerData="5000" selectedElement="_AweGVCxTEeSFyqJcqnbHzw">
                 <tags>newtablook</tags>
+                <tags>active</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_AweGVCxTEeSFyqJcqnbHzw" elementId="org.eclipse.dltk.ui.ScriptExplorer" ref="_AwXYoCxTEeSFyqJcqnbHzw"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_AweGVSxTEeSFyqJcqnbHzw" elementId="org.eclipse.ui.navigator.ProjectExplorer" toBeRendered="false" ref="_AwZN0CxTEeSFyqJcqnbHzw"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_AweGVixTEeSFyqJcqnbHzw" elementId="org.eclipse.ui.views.BookmarkView" toBeRendered="false" ref="_AwZ04CxTEeSFyqJcqnbHzw"/>
@@ -79,31 +82,18 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_AwKkUCxTEeSFyqJcqnbHzw" elementId="org.eclipse.ui.editorss" selectedElement="_AwKkUSxTEeSFyqJcqnbHzw">
-      <children xsi:type="basic:PartStack" xmi:id="_AwKkUSxTEeSFyqJcqnbHzw" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_GYEA8CxTEeSFyqJcqnbHzw">
+      <children xsi:type="basic:PartStack" xmi:id="_AwKkUSxTEeSFyqJcqnbHzw" elementId="org.eclipse.e4.primaryDataStack">
         <tags>newtablook</tags>
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
-        <tags>active</tags>
-        <children xsi:type="basic:Part" xmi:id="_GYEA8CxTEeSFyqJcqnbHzw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="base" iconURI="platform:/plugin/org.eclipse.koneki.ldt.ui/icons/obj16/lua-logo.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.koneki.ldt.ui.editor&quot; name=&quot;base.lua&quot; partName=&quot;base&quot; title=&quot;base&quot; tooltip=&quot;/Users/chrisallen/projects/desky/scripts/base.lua&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/chrisallen/projects/desky/scripts/base.lua&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;391&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.koneki.ldt.ui.editor</tags>
-          <tags>removeOnHide</tags>
-          <tags>active</tags>
-          <tags>activeOnClose</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_GsexwCxTEeSFyqJcqnbHzw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="main" iconURI="platform:/plugin/org.eclipse.koneki.ldt.ui/icons/obj16/lua-logo.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.koneki.ldt.ui.editor&quot; name=&quot;main.lua&quot; partName=&quot;main&quot; title=&quot;main&quot; tooltip=&quot;/Users/chrisallen/projects/desky/scripts/main.lua&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/Users/chrisallen/projects/desky/scripts/main.lua&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;1&quot; selectionOffset=&quot;190&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.koneki.ldt.ui.editor</tags>
-          <tags>removeOnHide</tags>
-        </children>
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_AwXYoCxTEeSFyqJcqnbHzw" elementId="org.eclipse.dltk.ui.ScriptExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Script Explorer" iconURI="platform:/plugin/org.eclipse.dltk.ui/icons/full/eview16/package.gif" closeable="true">
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view group_libraries=&quot;1&quot; isWindowWorkingSet=&quot;false&quot; layout=&quot;1&quot; linkWithEditor=&quot;0&quot; rootMode=&quot;1&quot; workingSetName=&quot;&quot;>&#xA;&lt;customFilters userDefinedPatternsEnabled=&quot;false&quot;>&#xA;&lt;xmlDefinedFilters>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.SyntheticMembersFilter&quot; isEnabled=&quot;true&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.LibraryFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.internal.ui.PackageExplorer.EmptyPackageFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.internal.ui.PackageExplorer.EmptyInnerPackageFilter&quot; isEnabled=&quot;true&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.ClosedProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.FieldsFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.NonScriptElementFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.NonSharedProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.internal.ui.PackageExplorer.ContainMembersFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.NonScriptProjectsFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.ContainedLibraryFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.PackageDeclarationFilter&quot; isEnabled=&quot;true&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.SMFileFilter&quot; isEnabled=&quot;false&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.ui.ScriptExplorer.ImportDeclarationFilter&quot; isEnabled=&quot;true&quot;/>&#xA;&lt;child filterId=&quot;org.eclipse.dltk.internal.ui.PackageExplorer.DotFilesFilter&quot; isEnabled=&quot;true&quot;/>&#xA;&lt;/xmlDefinedFilters>&#xA;&lt;/customFilters>&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:Dynamic Languages</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_A1WmUCxTEeSFyqJcqnbHzw" elementId="org.eclipse.dltk.ui.ScriptExplorer">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -169,7 +159,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_AtMv4CxTEeSFyqJcqnbHzw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_AtS2gCxTEeSFyqJcqnbHzw" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_AOQKGCxTEeSFyqJcqnbHzw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Qw97MCxjEeSto9DrDSSZ8A" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_AOQKGCxTEeSFyqJcqnbHzw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_AtNW8CxTEeSFyqJcqnbHzw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -190,7 +180,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_AtN-ACxTEeSFyqJcqnbHzw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_AtXvACxTEeSFyqJcqnbHzw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_AOO79yxTEeSFyqJcqnbHzw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_QxF3ACxjEeSto9DrDSSZ8A" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_AOO79yxTEeSFyqJcqnbHzw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_AtN-ASxTEeSFyqJcqnbHzw" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -452,7 +442,7 @@
       <tags>platform:cocoa</tags>
     </bindings>
     <bindings xmi:id="_APKJAixTEeSFyqJcqnbHzw" keySequence="CTRL+H" command="_AOQxNCxTEeSFyqJcqnbHzw"/>
-    <bindings xmi:id="_APlm1CxTEeSFyqJcqnbHzw" keySequence="COMMAND+CTRL+F" command="_APlm0ixTEeSFyqJcqnbHzw"/>
+    <bindings xmi:id="_QWKOgSxjEeSto9DrDSSZ8A" keySequence="COMMAND+CTRL+F" command="_APlm0ixTEeSFyqJcqnbHzw"/>
   </bindingTables>
   <bindingTables xmi:id="_AO5DRCxTEeSFyqJcqnbHzw" elementId="org.eclipse.dltk.ui.scriptEditorScope" bindingContext="_AOZUAixTEeSFyqJcqnbHzw">
     <bindings xmi:id="_AO5DRSxTEeSFyqJcqnbHzw" keySequence="COMMAND+SHIFT+F" command="_AOQxLyxTEeSFyqJcqnbHzw"/>
@@ -517,7 +507,7 @@
     <bindings xmi:id="_APKwESxTEeSFyqJcqnbHzw" keySequence="COMMAND+SHIFT+D" command="_AOVCkCxTEeSFyqJcqnbHzw"/>
   </bindingTables>
   <bindingTables xmi:id="_APmN5CxTEeSFyqJcqnbHzw" contributorURI="platform:/fragment/org.eclipse.e4.ui.workbench.renderers.swt.cocoa" bindingContext="_ANacmixTEeSFyqJcqnbHzw">
-    <bindings xmi:id="_APmN5SxTEeSFyqJcqnbHzw" keySequence="M1+W" command="_APmN4ixTEeSFyqJcqnbHzw"/>
+    <bindings xmi:id="_QWKOgixjEeSto9DrDSSZ8A" keySequence="M1+W" command="_APmN4ixTEeSFyqJcqnbHzw"/>
   </bindingTables>
   <bindingTables xmi:id="_AwMZgCxTEeSFyqJcqnbHzw" bindingContext="_AwLycCxTEeSFyqJcqnbHzw"/>
   <bindingTables xmi:id="_AwMZgixTEeSFyqJcqnbHzw" bindingContext="_AwMZgSxTEeSFyqJcqnbHzw"/>

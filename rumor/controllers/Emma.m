@@ -6,6 +6,7 @@
 #import "Emma.h"
 #import "emma_vec3.h"
 #import "lgpc.h"
+#include "lualib.h"
 
 /* : Constants
 =================================================== */
@@ -28,8 +29,10 @@ static int emma_gc( lua_State *L ) {
 }
 
 void emma_call( lua_State *L, int args, int returns ) {
-    if ( lua_pcall( L, args, returns, 0 ) != 0 )
+    if ( lua_pcall( L, args, returns, 0 ) != 0 ){
+        fucked = true;
         printf( "emma:error calling function %s\n", lua_tostring( L, -1 ) );
+    }
 }
 
 static const struct luaL_Reg emma[] = { { "delete", emma_gc },
@@ -59,6 +62,7 @@ void emma_draw( lua_State *L ) {
 void emma_reload( lua_State *L ) {
     lua_getglobal( L, "reload" );
     emma_call( L, 0, 0 );
+    FLUSHING = NO;
 }
 
 void emma_destroy( lua_State *L ) {
@@ -153,7 +157,7 @@ lua_State *L;
     const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
     if ( luaL_dofile( L, c ) ) {
         fucked = true;
-        printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
+        printf( "cannot run lua! :( %s", lua_tostring( L, -1 ) );
     } else {
         fucked = false;
     }
@@ -196,11 +200,11 @@ lua_State *L;
     // add observer for when files are renamed or changed
     // check when renamed
 
-    [[[NSWorkspace sharedWorkspace] notificationCenter]
-        addObserver:self
-           selector:@selector( onFileChange )
-               name:UKFileWatcherRenameNotification
-             object:nil];
+//    [[[NSWorkspace sharedWorkspace] notificationCenter]
+//        addObserver:self
+//           selector:@selector( onFileChange )
+//               name:UKFileWatcherAccessRevocationNotification
+//             object:nil];
 
     // check when file is changed..
 
@@ -241,20 +245,21 @@ lua_State *L;
 }
 
 - (void)onFileChange {
+    FLUSHING = YES;
 
+    printf( "\n file change... \n" );
     [view.openGLContext makeCurrentContext];
     [self onFileChange_tearDownLua];
     [self onFileChange_checkNewFiles];
-    if ( [self executeLuaFile] ) {
+    if ( ![self doLuaFile] ) {
         printf( "\n reloading... \n" );
         emma_reload( L );
     }
+
 }
 
 - (void)onFileChange_tearDownLua {
-    FLUSHING = YES;
     emma_destroy( L );
-    FLUSHING = NO;
 }
 
 - (void)onFileChange_checkNewFiles {
