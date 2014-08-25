@@ -10,7 +10,6 @@
 		72AF10E2869F8E60ED3B18E3 /* renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1EB80487E93A7DD0CD45 /* renderer.m */; };
 		72AF1240C254A3A66F10107A /* Emma.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1756FCF6BEDAF09E4A10 /* Emma.m */; };
 		72AF12BD14D286F5E3C798B8 /* texture.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1B019C5D67A0DA70D863 /* texture.m */; };
-		72AF13433173929534D04D3E /* chris.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF1353DC6398EF39932983 /* chris.m */; };
 		72AF139ABEED6C9736EF9F6F /* EmmaGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72AF18F27E3CDC58BD7E60E3 /* EmmaGLView.m */; };
 		72AF14120CEA2A77EFBBF4E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72AF183E8E4DD4BA995AE04D /* InfoPlist.strings */; };
 		72AF1552931FC6E1DEF5DA68 /* default.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 72AF12AD3D83846937D537FA /* default.vsh */; };
@@ -93,13 +92,12 @@
 		72AF11AD808DCCFF833C4E95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72AF128DA5A06EE92305716E /* app.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app.h; sourceTree = "<group>"; };
 		72AF12AD3D83846937D537FA /* default.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.vsh; sourceTree = "<group>"; };
-		72AF1353DC6398EF39932983 /* chris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chris.m; sourceTree = "<group>"; };
 		72AF136855377E4E09C2638D /* default.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.fsh; sourceTree = "<group>"; };
 		72AF13D31D0687192EC64940 /* desky-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "desky-Info.plist"; sourceTree = "<group>"; };
 		72AF144559629296821E05E9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		72AF14CDD204742277F25466 /* Emma.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emma.h; sourceTree = "<group>"; };
 		72AF15E382E5CFB115F3A38E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = rumor/Base.lproj/app.xib; sourceTree = SOURCE_ROOT; };
-		72AF160C61584BE3AA343E74 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
+		72AF160C61584BE3AA343E74 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = texture.h; path = "../meshes+texture/texture.h"; sourceTree = "<group>"; };
 		72AF1728AC4CD3A035E2EB97 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../rumor/main.m; sourceTree = "<group>"; };
 		72AF1756FCF6BEDAF09E4A10 /* Emma.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emma.m; sourceTree = "<group>"; };
 		72AF17D2C51EA69B5B913618 /* desky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = desky.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,17 +105,16 @@
 		72AF18F27E3CDC58BD7E60E3 /* EmmaGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmmaGLView.m; path = ../view/EmmaGLView.m; sourceTree = "<group>"; };
 		72AF196F0065B0BF8B317CF5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		72AF1A59195EC0913F051CBA /* plane_mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plane_mesh.h; sourceTree = "<group>"; };
-		72AF1B019C5D67A0DA70D863 /* texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = texture.m; sourceTree = "<group>"; };
+		72AF1B019C5D67A0DA70D863 /* texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = texture.m; path = "../meshes+texture/texture.m"; sourceTree = "<group>"; };
 		72AF1B97885CAB86D9553633 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		72AF1C6E7AE2096C767986EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		72AF1C8FF9A6E9203A597204 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		72AF1CC5D97BCA23032105B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		72AF1C8FF9A6E9203A597204 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = readme.txt; path = rumor/readme.txt; sourceTree = "<group>"; };
+		72AF1CC5D97BCA23032105B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../rumor/Images.xcassets; sourceTree = "<group>"; };
 		72AF1DBE2C889A59B7EF5A5B /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		72AF1DF4C009A23351ADAA58 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		72AF1E0CC06A0A4269E2F863 /* EmmaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmmaGLView.h; path = ../view/EmmaGLView.h; sourceTree = "<group>"; };
 		72AF1E7600476010528AA13D /* renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
 		72AF1EB80487E93A7DD0CD45 /* renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = renderer.m; sourceTree = "<group>"; };
-		72AF1EC6639600773CED5076 /* chris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chris.h; sourceTree = "<group>"; };
 		BC14100A1972E0CD00CBA0E2 /* lgpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lgpc.c; path = ../rumor/controllers/lgpc.c; sourceTree = "<group>"; };
 		BC14100C1972E33000CBA0E2 /* gpc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpc.c; path = ../rumor/controllers/gpc.c; sourceTree = "<group>"; };
 		BC14100D1972E33000CBA0E2 /* gpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpc.h; path = ../rumor/controllers/gpc.h; sourceTree = "<group>"; };
@@ -260,10 +257,10 @@
 		BCE3FCC7195A21FE00A3A7FF /* vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
 		BCE3FCC8195A21FE00A3A7FF /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
 		BCE3FCC9195A21FE00A3A7FF /* vec4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec4.h; sourceTree = "<group>"; };
-		BCE3FCD8195A222300A3A7FF /* emma_mat4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emma_mat4.h; sourceTree = "<group>"; };
-		BCE3FCD9195A222300A3A7FF /* emma_mat4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emma_mat4.m; sourceTree = "<group>"; };
-		BCE3FCDE195EFA9700A3A7FF /* emma_vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emma_vec3.h; sourceTree = "<group>"; };
-		BCE3FCDF195EFA9700A3A7FF /* emma_vec3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emma_vec3.m; sourceTree = "<group>"; };
+		BCE3FCD8195A222300A3A7FF /* emma_mat4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = emma_mat4.h; path = controllers/emma_mat4.h; sourceTree = "<group>"; };
+		BCE3FCD9195A222300A3A7FF /* emma_mat4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = emma_mat4.m; path = controllers/emma_mat4.m; sourceTree = "<group>"; };
+		BCE3FCDE195EFA9700A3A7FF /* emma_vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = emma_vec3.h; path = controllers/emma_vec3.h; sourceTree = "<group>"; };
+		BCE3FCDF195EFA9700A3A7FF /* emma_vec3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = emma_vec3.m; path = controllers/emma_vec3.m; sourceTree = "<group>"; };
 		BCF7D6EB1944A45C00B7F453 /* luagl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = luagl.m; path = ../../other/src/luagl.m; sourceTree = "<group>"; };
 		BCF7D6EE1944A55300B7F453 /* luagl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = luagl.h; path = ../../other/src/luagl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -310,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				BC8795461972EB4800C50ED8 /* svg.lua */,
+				72AF1C8FF9A6E9203A597204 /* readme.txt */,
 				BC74ACA619449627006D8543 /* scripts */,
 				72AF1D5E33684D7E53676F56 /* rumor */,
 				72AF1D9B43962BA9C3A73D3D /* other */,
@@ -324,7 +322,8 @@
 				72AF136855377E4E09C2638D /* default.fsh */,
 				72AF12AD3D83846937D537FA /* default.vsh */,
 			);
-			path = shaders;
+			name = shaders;
+			path = ../shaders;
 			sourceTree = "<group>";
 		};
 		72AF128A88F5682B7A3BB410 /* Products */ = {
@@ -361,21 +360,22 @@
 		72AF16F3C0E558AFCD332A9A /* main */ = {
 			isa = PBXGroup;
 			children = (
-				72AF1728AC4CD3A035E2EB97 /* main.m */,
-				72AF1042F698081DF1660915 /* app.m */,
 				72AF128DA5A06EE92305716E /* app.h */,
+				72AF1042F698081DF1660915 /* app.m */,
+				72AF1728AC4CD3A035E2EB97 /* main.m */,
+				72AF134F9D30135C8ACF058A /* app.xib */,
 			);
 			name = main;
 			path = ../other/main;
 			sourceTree = "<group>";
 		};
-		72AF1AA3564666A1B07A1B72 /* meshes+texture */ = {
+		72AF1AA3564666A1B07A1B72 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				72AF1B019C5D67A0DA70D863 /* texture.m */,
-				72AF160C61584BE3AA343E74 /* texture.h */,
+				72AF11DBDF650C58E496D960 /* shaders */,
 				72AF1A59195EC0913F051CBA /* plane_mesh.h */,
 			);
+			name = assets;
 			path = "meshes+texture";
 			sourceTree = "<group>";
 		};
@@ -388,12 +388,9 @@
 				72AF18F27E3CDC58BD7E60E3 /* EmmaGLView.m */,
 				BCF7D6EE1944A55300B7F453 /* luagl.h */,
 				BCF7D6EB1944A45C00B7F453 /* luagl.m */,
-				BCE3FCD8195A222300A3A7FF /* emma_mat4.h */,
-				BCE3FCD9195A222300A3A7FF /* emma_mat4.m */,
-				BCE3FCDE195EFA9700A3A7FF /* emma_vec3.h */,
-				BCE3FCDF195EFA9700A3A7FF /* emma_vec3.m */,
-				72AF1EC6639600773CED5076 /* chris.h */,
-				72AF1353DC6398EF39932983 /* chris.m */,
+				72AF1B019C5D67A0DA70D863 /* texture.m */,
+				72AF160C61584BE3AA343E74 /* texture.h */,
+				BC2ABE7419AB8508002C65E1 /* maths */,
 			);
 			name = emma;
 			path = controllers;
@@ -403,12 +400,8 @@
 			isa = PBXGroup;
 			children = (
 				72AF16F3C0E558AFCD332A9A /* main */,
-				72AF1CC5D97BCA23032105B3 /* Images.xcassets */,
-				72AF1C8FF9A6E9203A597204 /* readme.txt */,
 				72AF1C2A6460A0BC9E763974 /* emma */,
-				72AF1F5189DBB137FB89F04E /* view */,
-				72AF1AA3564666A1B07A1B72 /* meshes+texture */,
-				72AF11DBDF650C58E496D960 /* shaders */,
+				72AF1AA3564666A1B07A1B72 /* assets */,
 			);
 			path = rumor;
 			sourceTree = "<group>";
@@ -416,20 +409,13 @@
 		72AF1D9B43962BA9C3A73D3D /* other */ = {
 			isa = PBXGroup;
 			children = (
+				72AF1CC5D97BCA23032105B3 /* Images.xcassets */,
 				BC1410091972E07900CBA0E2 /* vendor */,
 				72AF128A88F5682B7A3BB410 /* Products */,
 				72AF104082EBD70AC73DFE58 /* Frameworks */,
 				72AF12929BAD15036CA86B7B /* Supporting Files */,
 			);
 			path = other;
-			sourceTree = "<group>";
-		};
-		72AF1F5189DBB137FB89F04E /* view */ = {
-			isa = PBXGroup;
-			children = (
-				72AF134F9D30135C8ACF058A /* app.xib */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		BC1410091972E07900CBA0E2 /* vendor */ = {
@@ -452,6 +438,18 @@
 				BC1410101972E41F00CBA0E2 /* lgpc.h */,
 			);
 			name = gpc;
+			sourceTree = "<group>";
+		};
+		BC2ABE7419AB8508002C65E1 /* maths */ = {
+			isa = PBXGroup;
+			children = (
+				BCE3FCD8195A222300A3A7FF /* emma_mat4.h */,
+				BCE3FCD9195A222300A3A7FF /* emma_mat4.m */,
+				BCE3FCDE195EFA9700A3A7FF /* emma_vec3.h */,
+				BCE3FCDF195EFA9700A3A7FF /* emma_vec3.m */,
+			);
+			name = maths;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		BC438C4518FC979B00AA5D15 /* 5.2 */ = {
@@ -721,7 +719,6 @@
 				72AF1240C254A3A66F10107A /* Emma.m in Sources */,
 				BC438CA718FC982400AA5D15 /* lauxlib.c in Sources */,
 				BC438CDA18FC982400AA5D15 /* ltable.c in Sources */,
-				72AF13433173929534D04D3E /* chris.m in Sources */,
 				BC14100E1972E33000CBA0E2 /* gpc.c in Sources */,
 				BCE3FCCC195A21FE00A3A7FF /* mat4stack.c in Sources */,
 				BC438CF318FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m in Sources */,
@@ -766,6 +763,7 @@
 				72AF15E382E5CFB115F3A38E /* Base */,
 			);
 			name = app.xib;
+			path = ../../rumor/view;
 			sourceTree = "<group>";
 		};
 		72AF183E8E4DD4BA995AE04D /* InfoPlist.strings */ = {

@@ -13,7 +13,7 @@ require "emma/_matrix"
 App = Class()
 
 function App:init()
-   print("\n\n\napp:init: ")
+   print("\n\n\napp:init::: ")
    self.objects = {}
 
    --create default program
@@ -22,6 +22,8 @@ function App:init()
    p:setUniform('modelViewProjectionMatrix');
    p.inputs.mvpm = p:getUniform('modelViewProjectionMatrix')
  
+ self.system = {}
+     self.system.screen = System.screen()
   local triangle = Em:new()
   table.insert(self.objects, triangle);
     

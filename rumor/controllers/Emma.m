@@ -1,13 +1,14 @@
-#import "Emma.h"
-#import "chris.h"
 #import <OpenGL/OpenGL.h>
 #import <GLKit/GLKit.h>
 #import <QuartzCore/CVDisplayLink.h>
 #include <time.h>
+
+#import "Emma.h"
 #import "emma_vec3.h"
 #import "lgpc.h"
 
-// CONSTS
+/* : Constants
+=================================================== */
 const NSString *LUA_PATH = @"/Users/chrisallen/projects/desky/";
 const NSString *LUA_MAIN = @"/Users/chrisallen/projects/desky/scripts/main.lua";
 const NSString *LUA_APP = @"/Users/chrisallen/projects/desky/scripts/emma/app.lua";
@@ -18,14 +19,13 @@ struct appS {
     BOOL dragged;
 } AppState;
 
-/* : Emma
+/* : Emma Library
 =================================================== */
 static int emma_gc( lua_State *L ) {
     stackDump( L );
     puts( "__gc called" );
     return 0;
 }
-
 
 void emma_call( lua_State *L, int args, int returns ) {
     if ( lua_pcall( L, args, returns, 0 ) != 0 )
@@ -35,7 +35,6 @@ void emma_call( lua_State *L, int args, int returns ) {
 static const struct luaL_Reg emma[] = { { "delete", emma_gc },
                                         { "__gc", emma_gc },
                                         { NULL, NULL } };
-
 
 static int emma_new( lua_State *L ) {
     lua_getglobal( L, "newObject" );
@@ -67,8 +66,7 @@ void emma_destroy( lua_State *L ) {
     emma_call( L, 0, 0 );
 }
 
-
-/* : System
+/* : System Library
 =================================================== */
 
 static int systemTime( lua_State *L ) {
@@ -108,35 +106,24 @@ static const struct luaL_Reg sys[] = { { "time", systemTime },
                                        { NULL, NULL } };
 
 
-void main_init( lua_State *L ) {
+void lua_initMain( lua_State *L ) {
     luaL_newmetatable( L, "_Emma" );
     luaL_setfuncs( L, emma, 0 );
-    // create constructor
     lua_pushcfunction( L, emma_new );
     lua_setglobal( L, "Emma" );
     lua_settop( L, 0 );
-
     lua_newtable( L );
     luaL_setfuncs( L, sys, 0 );
     lua_setglobal( L, "System" );
 }
 
-void main_set( lua_State *L ) {
-    lua_settop( L, 0 );
-    lua_getglobal( L, "main" );
-    emma_call( L, 0, 0 );
-    lua_settop( L, 0 );
-}
-
 
 lua_State *L;
-
 
 @implementation Emma {
 }
 
-- (id)init;
-{
+- (id)init {
     self = [super init];
     if ( self != nil ) {
     }
@@ -145,30 +132,94 @@ lua_State *L;
 
 - (void)start {
     frame = view.frame;
-    [self setMouse];
+    [self setUserInteractionListeners];
     [self setLua];
-    main_set( L );
+    [self callLua];
 }
 
-
 - (void)setLua {
-    [self setupFileWatcher];
+    [self setFileListeners];
     L = luaL_newstate();
     luaL_openlibs( L );
     luaopen_luagl( L );
     lua_initMat4( L );
     lua_initVec3( L );
     luaopen_gpc( L );
-    main_init( L );
-    [self executeLuaFile];
+    lua_initMain( L );
+    [self doLuaFile];
+}
+
+- (bool)doLuaFile {
+    const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
+    if ( luaL_dofile( L, c ) ) {
+        fucked = true;
+        printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
+    } else {
+        fucked = false;
+    }
+    return fucked;
+}
+
+- (void)callLua {
+    lua_settop( L, 0 );
+    lua_getglobal( L, "main" );
+    emma_call( L, 0, 0 );
+    lua_settop( L, 0 );
+}
+
+- (void)setFileListeners {
+
+    // add watcher support
+
+    kqueue = [UKKQueue sharedFileWatcher];
+
+    // grab all lua files
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *bundleURL = [NSURL URLWithString:LUA_PATH];
+    scriptURL = [[NSURL URLWithString:@"scripts/emma/" relativeToURL:bundleURL] retain];
+    NSArray *contents =
+        [fileManager contentsOfDirectoryAtURL:scriptURL
+                   includingPropertiesForKeys:@[]
+                                      options:NSDirectoryEnumerationSkipsHiddenFiles
+                                        error:nil];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pathExtension == 'lua'"];
+
+    // add paths to file watcher object
+
+    for ( NSURL *fileURL in [contents filteredArrayUsingPredicate:predicate] ) {
+        NSLog( @"path %@", [fileURL path] );
+        [kqueue addPath:[fileURL path]];
+    }
+
+    // add observer for when files are renamed or changed
+    // check when renamed
+
+    [[[NSWorkspace sharedWorkspace] notificationCenter]
+        addObserver:self
+           selector:@selector( onFileChange )
+               name:UKFileWatcherRenameNotification
+             object:nil];
+
+    // check when file is changed..
+
+    [[[NSWorkspace sharedWorkspace] notificationCenter]
+        addObserver:self
+           selector:@selector( onFileChange )
+               name:UKFileWatcherWriteNotification
+             object:nil];
 }
 
 
-- (void)setMouse {
+- (void)setUserInteractionListeners {
+
     const int maskDown = NSLeftMouseDownMask | NSRightMouseDown;
     const int maskLift = NSLeftMouseUp | NSRightMouseUp;
     const int maskDrag = NSLeftMouseDragged | NSRightMouseDragged;
-    // The global monitoring handler is *not* called for events sent to our application
+
+    // The global monitoring handler is *not* called for events sent to our
+    // application
     [NSEvent addGlobalMonitorForEventsMatchingMask:maskDown
                                            handler:^( NSEvent *event ) {
                                                AppState.pressed = YES;
@@ -180,7 +231,8 @@ lua_State *L;
                                                AppState.dragged = NO;
                                            }];
 
-    // The global monitoring handler is *not* called for events sent to our application
+    // The global monitoring handler is *not* called for events sent to our
+    // application
     [NSEvent addGlobalMonitorForEventsMatchingMask:maskDrag
                                            handler:^( NSEvent *event ) {
                                                // get location here...
@@ -188,101 +240,52 @@ lua_State *L;
                                            }];
 }
 
+- (void)onFileChange {
 
-- (void)executeLuaFile {
-    const char *c = [LUA_MAIN cStringUsingEncoding:NSUTF8StringEncoding];
-    if ( luaL_dofile( L, c ) ) {
-        fucked = true;
-        printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
-        // luaL_error( L, "cannot run lua :( %s", lua_tostring( L, -1 ) );
-    } else {
-        fucked = false;
-    }
-}
-
-
-- (void)setupFileWatcher {
-
-    // add watcher support
-    kqueue = [UKKQueue sharedFileWatcher];
-
-    // grab all lua files
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *bundleURL =
-        [NSURL URLWithString:LUA_PATH]; //[[NSBundle mainBundle] resourceURL];
-    scriptURL = [[NSURL URLWithString:@"scripts/emma/" relativeToURL:bundleURL] retain];
-    NSArray *contents =
-        [fileManager contentsOfDirectoryAtURL:scriptURL
-                   includingPropertiesForKeys:@[]
-                                      options:NSDirectoryEnumerationSkipsHiddenFiles
-                                        error:nil];
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pathExtension == 'lua'"];
-
-    // add paths to file watcher object
-    for ( NSURL *fileURL in [contents filteredArrayUsingPredicate:predicate] ) {
-        NSLog( @"path %@", [fileURL path] );
-        [kqueue addPath:[fileURL path]];
-    }
-
-    // add observer for when files are renamed or changed
-    // check when renamed
-    [[[NSWorkspace sharedWorkspace] notificationCenter]
-        addObserver:self
-           selector:@selector( aFileHasBeenChanged )
-               name:UKFileWatcherRenameNotification
-             object:nil];
-    // check when file is changed..
-    [[[NSWorkspace sharedWorkspace] notificationCenter]
-        addObserver:self
-           selector:@selector( aFileHasBeenChanged )
-               name:UKFileWatcherWriteNotification
-             object:nil];
-}
-
-- (void)aFileHasBeenChanged {
-    // NSLog( @"file change!" );
-    printf( "\nfile change\n" );
-    [view->condition lock];
     [view.openGLContext makeCurrentContext];
+    [self onFileChange_tearDownLua];
+    [self onFileChange_checkNewFiles];
+    if ( [self executeLuaFile] ) {
+        printf( "\n reloading... \n" );
+        emma_reload( L );
+    }
+}
+
+- (void)onFileChange_tearDownLua {
     FLUSHING = YES;
     emma_destroy( L );
     FLUSHING = NO;
-    [view->condition signal];
-    [view->condition unlock];
+}
 
+- (void)onFileChange_checkNewFiles {
 
+    // Get files
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *contents =
         [fileManager contentsOfDirectoryAtURL:scriptURL
                    includingPropertiesForKeys:@[]
                                       options:NSDirectoryEnumerationSkipsHiddenFiles
                                         error:nil];
+    // Filter to lua files
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pathExtension == 'lua'"];
 
-    // add paths to file watcher object
+    // Check for new lua files
     for ( NSURL *fileURL in [contents filteredArrayUsingPredicate:predicate] ) {
+        BOOL found;
+        found = false;
         NSString *path = [fileURL path];
-        BOOL found = false;
         for ( NSString *p in kqueue->watchedPaths ) {
             if ( [p isEqualToString:path] ) {
                 found = true;
             }
         }
+
         if ( !found ) {
             NSLog( @"newbie lu file %@", [fileURL path] );
             [kqueue addPath:path];
         }
     }
-
-    const char *c = [LUA_APP cStringUsingEncoding:NSUTF8StringEncoding];
-    if ( luaL_dofile( L, c ) ) {
-        fucked = true;
-        printf( "cannot run lua :( %s", lua_tostring( L, -1 ) );
-    } else {
-        fucked = false;
-    }
-    emma_reload( L );
 }
+
 
 @end

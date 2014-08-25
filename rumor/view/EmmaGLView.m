@@ -2,6 +2,7 @@
 #import "Emma.h"
 
 // c callbacks
+
 // This is the callback function for the display link.
 static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
                                                const CVTimeStamp *now,
@@ -12,17 +13,12 @@ static CVReturn OpenGLViewCoreProfileCallBack( CVDisplayLinkRef displayLink,
 
     @autoreleasepool {
         EmmaGLView *view = (__bridge EmmaGLView *)displayLinkContext;
-        //[view->condition lock];
-
         if ( FLUSHING == NO && !fucked ) {
             [view.openGLContext makeCurrentContext];
             emma_update( L, outputTime->rateScalar, outputTime->videoTime );
             emma_draw( L );
-            [view draw:view.bounds];
             CGLFlushDrawable( view.openGLContext.CGLContextObj );
         }
-
-        //[view->condition unlock];
         return kCVReturnSuccess;
     }
 }

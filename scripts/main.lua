@@ -1,4 +1,3 @@
--- so here we are going to require all the relevant libraries...
 package.path = "/Users/chrisallen/projects/desky/scripts/?.lua;" .. package.path
 require "base"
 Tween = require "libs/tween"
@@ -15,21 +14,18 @@ SCREEN = {}
 
 
 function main()
-    print("yo yo!")
-    SCREEN = System.screen()
     app = App:new()
+
 end
 
 function update (delta,runTime,pos)
     if(starttime <=0) then
         starttime = runTime
-        RUNTIME = starttime
+        app.system.runTime = starttime
     end
     if(app~=nil and destroying ~= true) then
-        RUNTIME = runTime - starttime  --Store game time
+        app.system.runTime = runTime - starttime  --Store game time
         app:update(delta)
-        mouse = System.mouse()
-        --print("Move::", mouse.pressed, mouse.dragging)
     end
 end
 
@@ -50,14 +46,20 @@ function destroy()
     end
 end
 
+function collect()
+    collectgarbage('collect')
+end
+
 function reload()
     print('reload')
     app = App:new()
 end
 
-function collect()
-   collectgarbage('collect')
-end
+
+
+
+
+
 
 function  touchStarted(x,y)
 end

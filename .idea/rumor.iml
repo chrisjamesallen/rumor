@@ -7,6 +7,12 @@
     <content url="file://$MODULE_DIR$/../lib/lua/5.2">
       <sourceFolder url="file://$MODULE_DIR$/../lib/lua/5.2" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../testlua/a.out">
+      <sourceFolder url="file://$MODULE_DIR$/../testlua/a.out" isTestSource="false" />
+    </content>
+    <content url="file:///usr/local/bin/lua">
+      <sourceFolder url="file:///usr/local/bin/lua" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
