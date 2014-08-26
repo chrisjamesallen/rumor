@@ -1,5 +1,8 @@
 SVG = Class()
-
+local test = "M276.8,226.6 h-180 V112.3C96.8,112.3,275.2,91.7,276.8,226.6z";
+test = "M96.8,112.3c74-33.6,163.3-21.6,180,114.2h-180V112.3";
+test = "M96.8,112.3c267.3,19.8,163.3-21.6,180,114.2h-180V112.3"
+--test = "M105.4,272c0.4,25.7,16.9,36.3,35.9,36.3c13.6,0,21.8-2.4,29-5.4l3.2,13.6c-6.7,3-18.2,6.5-34.8,6.5c-32.2,0-51.4-21.2-51.4-52.7s18.6-56.4,49.1-56.4c34.2,0,43.2,30,43.2,49.3c0,3.9-0.4,6.9-0.7,8.9H105.4z M161.2,258.4c0.2-12.1-5-30.9-26.4-30.9c-19.2,0-27.7,17.7-29.2,30.9H161.2z"
 
 function SVG:init()
     self.data_ = {};
@@ -7,37 +10,8 @@ function SVG:init()
     self.pos.x = 0
     self.pos.y = 0
     self.startPos = {};
-    print('svg init');
---    local svg = self:extractSvg();
---    self:convertSvg(svg);
-    return self;
+    return self; --
 end
-
-
-
-
-
-function SVG:useGPC()
-    local verts = {
-        1315, 1282,
-        1315, 1329,
-        1300, 1314,
-        1284, 1345,
-        1253, 1312,
-        1284, 1298,
-        1268, 1282,
-        1315, 1282
-    };
-    self:extractSvg()
-    local obj = gpc.new():add(verts);
-    local data = {};
-    self:plottri(data, obj:strip(), 0, 0, 0, 0);
-    self:normalizeOutput(data, 2000, 2000);
-    print('fofof')
-    return data, obj;
-end
-
-
 
 function SVG:extractSvg()
 
@@ -52,7 +26,7 @@ function SVG:extractSvg()
     local pattern = "(%D)(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*),?%s?(-?[0-9]*%.?[0-9]*)%s?"
 
     local operations = {}
-    for command, x1, y1, x2, y2, x3, y3 in string.gmatch(str, pattern) do
+    for command, x1, y1, x2, y2, x3, y3 in string.gmatch(test, pattern) do
         if (command == "z" or command == "Z") then
             break
         end
@@ -71,25 +45,6 @@ function SVG:extractSvg()
     --print(inspect(operations))
 
     return operations;
-end
-
-
-function SVG:plottri(f, p, r, g, b, command)
-    --if command=="stroke" then output(f,0,"setlinewidth") end
-    for c = 1, p:get() do
-
-        local n = p:get(c)
-        local x1, y1 = p:get(c, 1)
-        local x2, y2 = p:get(c, 2)
-        for i = 3, n do
-            local x, y = p:get(c, i)
-            output(f, x1, y1, "moveto")
-            output(f, x2, y2, "lineto")
-            output(f, x, y, "lineto")
-            --output(f,"closepath")
-            x1, y1, x2, y2 = x2, y2, x, y
-        end
-    end
 end
 
 function output(data, x, y, command)
@@ -122,8 +77,8 @@ function SVG:normalizeOutput(data, w, h)
 end
 
 
-
 function SVG:convertSvg(operations)
+
     _.each(operations, function(i)
         if i.command == 'M' then self:moveTo(i[1], i[2]) end
         --lineto
@@ -136,8 +91,8 @@ function SVG:convertSvg(operations)
         if i.command == 'v' then self:lineToRelative(0, i[1], i.command) end
         if i.command == 'V' then self:lineTo(self.pos.x, i[1], i.command) end -- x param
         -- Cubic curveto C (c)
-        if i.command == 'c' then self:curveToRelative(i[1], i[2], i[3], i[4], i[5], i[6]) end
-        if i.command == 'C' then self:curveTo(i[1], i[2], i[3], i[4], i[5], i[6]) end
+        if i.command == 'c' then self:plotCurveRel(i[1], i[2], i[3], i[4], i[5], i[6]) end
+        if i.command == 'C' then self:plotCurve(i[1], i[2], i[3], i[4], i[5], i[6]) end
         -- Cubic shorthand curveto S (s)
         if i.command == 's' then self:smoothCurveToRelative(0, i[1], i.command) end
         if i.command == 'S' then self:smoothCurveTo(self.pos.x, i[1], i.command) end
@@ -150,6 +105,7 @@ end
 -- create triangles for each quadratic curve
 
 function SVG:curveTo(x1, y1, x2, y2, x3, y3)
+    print("curveto C", x1, y1, x2, y2, x3, y3)
     local x, y = 0
     _.push(self.data_, { self.pos.x, self.pos.y, 0 })
     x = x1
@@ -165,8 +121,59 @@ function SVG:curveTo(x1, y1, x2, y2, x3, y3)
     self.pos.y = y3
 end
 
+function SVG:cubicBezier(A, B, C, D, t)
+    local E = A:mix(B, t)
+    local F = B:mix(C, t)
+    local G = C:mix(D, t)
+    return self:quadBezier(E,F,G,t)
+end
+
+
+function SVG:quadBezier(A, B, C, t)
+    local D = A:mix(B, t)
+    local E = B:mix(C, t)
+    local P = D:mix(E, t)
+    return P
+end
+
+
+
+function SVG:plotCurve(x1, y1, x2, y2, x3, y3)
+    -- use mix formula with time segment to create multiple points
+    print("plot curve C", x1, y1, x2, y2, x3, y3)
+    local segments = 10
+    local a, b = 0,0
+    while a < segments do
+        a = a + 1
+        b = b + 1 / segments
+        local a = self:quadBezier(vec3(x1, y1, 0), vec3(x2, y2, 0), vec3(x3, y3, 0), b)
+        _.push(self.data_, { a.x, a.y, a.z })
+        print("quad", a.x, a.y, a.z)
+    end
+    self.pos.x = x3;
+    self.pos.y = y3;
+
+end
+
+function SVG:plotCurveRel(x1, y1, x2, y2, x3, y3)
+    -- use mix formula with time segment to create multiple points
+    print("plot curve c", x1, y1, x2, y2, x3, y3)
+    local segments = 10
+    local a, b = 0,0
+    while a < segments do
+        a = a + 1
+        b = b + 1 / segments
+        local a = self:cubicBezier(vec3(self.pos.x, self.pos.y, 0), vec3(self.pos.x+x1, self.pos.y+y1, 0), vec3(self.pos.x+x2, self.pos.x+y2, 0),vec3(self.pos.x+x3, self.pos.x+y3, 0), b)
+        _.push(self.data_, { a.x, a.y, a.z })
+        print("cubic", a.x, a.y, a.z)
+    end
+    self.pos.x = self.pos.x+x3
+    self.pos.y = self.pos.y+y3
+end
+
 function SVG:curveToRelative(x1, y1, x2, y2, x3, y3)
     local x, y = 0
+    print("curvetoRelative c", x1, y1, x2, y2, x3, y3)
     -- end point 1
     _.push(self.data_, { self.pos.x, self.pos.y, 0 })
 
@@ -215,6 +222,7 @@ end
 
 
 function SVG:moveTo(x, y)
+    print("moveto", x, y)
     if (self.pos.started == nil) then
         self.pos.started = true
         self.startPos.x = x;
@@ -226,6 +234,7 @@ function SVG:moveTo(x, y)
 end
 
 function SVG:lineTo(x, y, r)
+    print("lineTo", x, y, r)
     --print(r,x,y)
     --print('\npoint',r,x,y)
     _.push(self.data_, { x, y, 0 })
@@ -234,11 +243,13 @@ function SVG:lineTo(x, y, r)
 end
 
 function SVG:lineToRelative(x, y, r)
+    print("lineToRelative", x, y, r)
     -- print('\nrel',r,x,y)
     --print(r,x,y)
     self.pos.x = self.pos.x + x
     self.pos.y = self.pos.y + y
     _.push(self.data_, { self.pos.x, self.pos.y, 0 })
+    print("---lineToRelative", self.pos.x, self.pos.y)
 end
 
 
@@ -275,6 +286,52 @@ function SVG:closePath()
         self.data_[k] = n
         --print(k,self.data_[k])
     end
-    print('data>>>')
+    print('data>>>', inspect(self.data_))
 end
 
+
+
+
+
+
+
+function SVG:useGPC()
+    local verts = {
+        1315, 1282,
+        1315, 1329,
+        1300, 1314,
+        1284, 1345,
+        1253, 1312,
+        1284, 1298,
+        1268, 1282,
+        1315, 1282
+    };
+    self:extractSvg()
+    local obj = gpc.new():add(verts);
+    local data = {};
+    self:plottri(data, obj:strip(), 0, 0, 0, 0);
+    self:normalizeOutput(data, 2000, 2000);
+    print('fofof');
+    return data, obj;
+end
+
+function SVG:plottri(f, p, r, g, b, command)
+    --if command=="stroke" then output(f,0,"setlinewidth") end
+    for c = 1, p:get() do
+
+        local n = p:get(c)
+        local x1, y1 = p:get(c, 1)
+        local x2, y2 = p:get(c, 2)
+        for i = 3, n do
+            local x, y = p:get(c, i)
+            output(f, x1, y1, "moveto")
+            output(f, x2, y2, "lineto")
+            output(f, x, y, "lineto")
+            --output(f,"closepath")
+            x1, y1, x2, y2 = x2, y2, x, y
+        end
+    end
+end
+
+
+return SVG;

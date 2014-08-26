@@ -33,7 +33,7 @@ function Obj:extend (o)
 end
 
 function Obj:destroy ()
-     print("Obj_:destroy")
+    -- print("Obj_:destroy")
 end
 
 

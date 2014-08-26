@@ -48,7 +48,7 @@ static int emma_new( lua_State *L ) {
 void emma_update( lua_State *L, double delta, int64_t time ) {
     lua_plock( L, "" );
     lua_getglobal( L, "update" );
-    lua_pushnumber( L, delta );
+    lua_pushnumber( L, (long)delta );
     lua_pushnumber( L, (long)time );
     emma_call( L, 2, 0 );
     lua_punlock( L, "" );

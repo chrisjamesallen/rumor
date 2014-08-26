@@ -74,7 +74,7 @@ function Shader:draw()
 end
 
 function Shader:destroy()
-    print("destroy:shader\n"); 
+   -- print("destroy:shader\n");
     gl.DeleteProgram(self.program)
 end
 
