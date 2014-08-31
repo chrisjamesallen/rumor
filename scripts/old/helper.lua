@@ -13,6 +13,7 @@ for k,v in pairs(gl) do print(k) end
 -- [strings]
  concat uses ..
 
+--local data = array.new({1.0, -1.0, 1.0,  1.0, -1.0, 1.0,  1.0, 1.0, 1.0,  -1.0, 1.0, 1,  0}, 50);
 
 
 -- long string
