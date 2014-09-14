@@ -3,7 +3,7 @@
 require "emma/emma"
 require "emma/_shader"
 require "emma/_matrix"
-require "emma/svg_shader"
+require "emma/svg"
 
 App = Class()
 
@@ -52,7 +52,8 @@ function AppDestroy()
     package.loaded['emma/_shader'] = nil
     package.loaded['emma/_matrix'] = nil
     package.loaded['emma/svg'] = nil
-    package.loaded['emma/svg_shader'] = nil
+    package.loaded['emma/svg_main'] = nil
+    package.loaded['emma/svg_hull'] = nil
 end
 
 return App;
