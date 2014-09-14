@@ -50,6 +50,12 @@ function SVG:extract(svgStr)
 end
 
 
+function SVG:createBasicFill()
+    -- just take the points and render  and triangulate into on set of data
+
+
+end
+
 function SVG:openSubPath(operations)
     --add to paths array
     print("open subpath")
@@ -63,7 +69,7 @@ function SVG:closeSubPath(operations)
     if (#operations == 0) then
         return nil
     end
-    self:convertSvg(operations)
+    self:convertSvgCommands(operations)
     self:lineTo(self.startPos.x, self.startPos.y)
     self.data_ = _.flatten(self.data_)
     self.paths[self.data_index] = self.data_
@@ -91,7 +97,7 @@ function SVG:closeSubPath(operations)
     return self.data_
 end
 
-function SVG:convertSvg(operations)
+function SVG:convertSvgCommands(operations)
 
     _.each(operations, function(i)
         if i.command == 'M' then self:moveTo(i[1], i[2]) end
