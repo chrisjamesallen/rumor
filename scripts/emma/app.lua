@@ -1,5 +1,4 @@
---[[
---]]
+
 require "emma/emma"
 require "emma/_shader"
 require "emma/_matrix"
@@ -8,14 +7,15 @@ require "emma/svg"
 App = Class()
 
 function App:init()
-    print("\n\n\napp init ")
+    print("\n\n\n------------------------------------------------")
+    print("app init ")
     self.objects = {}
     --create default program
     local p = shader('default'); --its ok this isnt released
     p:setAttribute('position');
     p:setUniform('modelViewProjectionMatrix');
     p.inputs.mvpm = p:getUniform('modelViewProjectionMatrix')
-
+    --set system wide stuff
     self.system = {}
     self.system.screen = System.screen()
     local triangle = Em:new()
@@ -51,9 +51,11 @@ function AppDestroy()
     package.loaded['emma/emma'] = nil
     package.loaded['emma/_shader'] = nil
     package.loaded['emma/_matrix'] = nil
-    package.loaded['emma/svg'] = nil
     package.loaded['emma/svg_main'] = nil
     package.loaded['emma/svg_hull'] = nil
+    package.loaded['emma/svg_curves'] = nil
+    package.loaded['emma/svg'] = nil
+
 end
 
 return App;

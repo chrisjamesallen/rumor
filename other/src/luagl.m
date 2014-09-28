@@ -4617,6 +4617,44 @@ static int luagl_UniformMatrix4fv( lua_State *L ) {
     return 0;
 }
 
+static int luagl_Uniform3fv( lua_State *L ) {
+    GLint location;
+    location = lua_tonumberx( L, -2, NULL );
+    lua_vec3 *p = vec3_userdatap( L, -1 );
+    glUniform3fv( location, 1 , p->data );
+    return 0;
+}
+
+static int luagl_Uniform3f( lua_State *L ) {
+    GLint location;
+    GLfloat x, y, z;
+    location = lua_tonumberx( L, -4, NULL );
+    x = lua_tonumberx( L, -3, NULL );
+    y = lua_tonumberx( L, -2, NULL );
+    z = lua_tonumberx( L, -1, NULL );
+    glUniform3f( location, x, y, z );
+    return 0;
+}
+
+static int luagl_Uniform2f( lua_State *L ) {
+    GLint location;
+    GLfloat x, y, z;
+    location = lua_tonumberx( L, -3, NULL );
+    x = lua_tonumberx( L, -2, NULL );
+    y = lua_tonumberx( L, -1, NULL );
+    glUniform2f( location, x, y );
+    return 0;
+}
+
+static int luagl_Uniform1f( lua_State *L ) {
+    GLint location;
+    GLfloat x, y, z;
+    location = lua_tonumberx( L, -2, NULL );
+    x = lua_tonumberx( L, -1, NULL );
+    glUniform1f( location, x );
+    return 0;
+}
+
 
 static int luagl_enableVertexAttribArray( lua_State *L ) {
     GLuint pos;
@@ -4944,6 +4982,10 @@ static const struct luaL_Reg luagl_lib[] = {
     { "CopyData", luagl_copyVerts },
     { "ClearData", luagl_clearData },
     { "UniformMatrix4fv", luagl_UniformMatrix4fv },
+    { "Uniform3fv", luagl_Uniform3fv },
+    { "Uniform1f", luagl_Uniform1f },
+    { "Uniform2f", luagl_Uniform2f },
+    { "Uniform3f", luagl_Uniform3f },
     { NULL, NULL }
 };
 

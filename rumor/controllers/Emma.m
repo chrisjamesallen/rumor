@@ -29,7 +29,7 @@ static int emma_gc( lua_State *L ) {
 }
 
 void emma_call( lua_State *L, int args, int returns ) {
-    if ( lua_pcall( L, args, returns, 0 ) != 0 ){
+    if ( lua_pcall( L, args, returns, 0 ) != 0 ) {
         fucked = true;
         printf( "emma:error calling function %s\n", lua_tostring( L, -1 ) );
     }
@@ -150,10 +150,10 @@ lua_State *L;
     lua_initVec3( L );
     luaopen_gpc( L );
     lua_initMain( L );
-    [self doLuaFile: LUA_MAIN];
+    [self doLuaFile:LUA_MAIN];
 }
 
-- (bool)doLuaFile:(NSString *) path {
+- (bool)doLuaFile:(NSString *)path {
     const char *c = [path cStringUsingEncoding:NSUTF8StringEncoding];
     if ( luaL_dofile( L, c ) ) {
         fucked = true;
@@ -193,18 +193,18 @@ lua_State *L;
     // add paths to file watcher object
 
     for ( NSURL *fileURL in [contents filteredArrayUsingPredicate:predicate] ) {
-        NSLog( @"path %@", [fileURL path] );
+        // NSLog( @"path %@", [fileURL path] );
         [kqueue addPath:[fileURL path]];
     }
 
     // add observer for when files are renamed or changed
     // check when renamed
 
-//    [[[NSWorkspace sharedWorkspace] notificationCenter]
-//        addObserver:self
-//           selector:@selector( onFileChange )
-//               name:UKFileWatcherAccessRevocationNotification
-//             object:nil];
+    //    [[[NSWorkspace sharedWorkspace] notificationCenter]
+    //        addObserver:self
+    //           selector:@selector( onFileChange )
+    //               name:UKFileWatcherAccessRevocationNotification
+    //             object:nil];
 
     // check when file is changed..
 
@@ -254,7 +254,6 @@ lua_State *L;
     if ( ![self doLuaFile:LUA_APP] ) {
         emma_reload( L );
     }
-
 }
 
 - (void)onFileChange_tearDownLua {

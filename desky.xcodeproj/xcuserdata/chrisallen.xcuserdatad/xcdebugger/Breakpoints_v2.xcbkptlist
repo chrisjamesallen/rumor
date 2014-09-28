@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "377"
             endingLineNumber = "377"
-            landmarkName = "vec3_gc()"
+            landmarkName = "vec3_inversetransformnormal()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -64,6 +64,38 @@
             startingLineNumber = "40"
             endingLineNumber = "40"
             landmarkName = "Pclip()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "other/src/luagl.m"
+            timestampString = "433598281.058467"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4721"
+            endingLineNumber = "4721"
+            landmarkName = "luagl_get_uniform_location()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "other/src/luagl.m"
+            timestampString = "433598887.92106"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4624"
+            endingLineNumber = "4624"
+            landmarkName = "luagl_Uniform3fv()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

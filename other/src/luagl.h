@@ -21,16 +21,17 @@
 * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************************************************************/
- 
+
 #ifndef __LUAGL_H__
 #define __LUAGL_H__
- 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 #import "lua.h"
 #import "lauxlib.h"
 #import "emma_mat4.h"
+#import "emma_vec3.h"
 int luaopen_luagl( lua_State *L );
 
 #ifdef __cplusplus
@@ -39,10 +40,10 @@ int luaopen_luagl( lua_State *L );
 
 
 #endif
-extern void stackDump (lua_State *L);
-static const struct  luaL_Reg luagl_lib[];
-static int luagl_viewport(lua_State *L);
-static int flushing_lu(lua_State *L);
-void luagl_flushing(lua_State *L);
-void luagl_flushing_done(lua_State *L);
-int EMMA_FLUSHING; 
+extern void stackDump( lua_State *L );
+static const struct luaL_Reg luagl_lib[];
+static int luagl_viewport( lua_State *L );
+static int flushing_lu( lua_State *L );
+void luagl_flushing( lua_State *L );
+void luagl_flushing_done( lua_State *L );
+int EMMA_FLUSHING;
