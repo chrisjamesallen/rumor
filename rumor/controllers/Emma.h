@@ -2,7 +2,7 @@
 #include "lua.h"
 #include "lauxlib.h"
 #include "luagl.h"
-#import "UKKQueue.h"
+#import "VDKQueue.h"
 #import "EmmaGLView.h"
 #import "emma_mat4.h"
 #import "emma_vec3.h"
@@ -14,9 +14,9 @@ extern void emma_update( lua_State *L, double delta, int64_t time );
 extern void emma_draw( lua_State *L );
 
 
-@interface Emma : NSObject <UKFileWatcher> {
+@interface Emma : NSObject <VDKQueueDelegate> {
   @public
-    UKKQueue *kqueue;
+    VDKQueue *kqueue;
     NSURL *scriptURL;
     EmmaGLView *view;
 }

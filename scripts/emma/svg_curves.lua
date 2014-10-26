@@ -23,11 +23,24 @@ function SVGCurves:extract(svgStr)
     return self
 end
 
+function SVGCurves:triangulate()
+    local data = {}
+    _.each(self.paths, function(path)
+         _.push(data, path)
+    end)
+ 
+    self.data_ = _.flatten(self.paths);
+      self.count = math.ceil(#self.data_ / 3) -- this is cause there are three points to each vertex
+      self.points = #self.data_
+      self.vertices = self.data_
+end
+
+
 
 function SVGCurves:convertSvgToPoints(operations)
+    --inspect(operations)
     _.each(operations, function(i)
         if i.command == 'M' then
-            _.push(self.data_, { i[1], i[2], 0 })
             self.pos.x = i[1]
             self.pos.y = i[2]
             self.pos.cx = self.pos.x
@@ -37,27 +50,23 @@ function SVGCurves:convertSvgToPoints(operations)
         if i.command == 'L' then
             self.pos.x = i[1]
             self.pos.y = i[2]
-            _.push(self.data_, { i[1], i[2], 0 })
             self.pos.cx = self.pos.x
             self.pos.cy = self.pos.y
         end
         if i.command == 'l' then
             self.pos.x = self.pos.x + i[1]
             self.pos.y = self.pos.y + i[2]
-            _.push(self.data_, { self.pos.x , self.pos.y, 0 })
             self.pos.cx = self.pos.x
             self.pos.cy = self.pos.y
         end
         --h line
         if i.command == 'h' then
-            _.push(self.data_, { self.pos.x + i[1], self.pos.y, 0 })
             self.pos.x = self.pos.x + i[1]
             self.pos.y = self.pos.y
             self.pos.cx = self.pos.x
             self.pos.cy = self.pos.y
         end
         if i.command == 'H' then
-            _.push(self.data_, { i[1], self.pos.y, 0 })
             self.pos.x = i[1]
             self.pos.y = self.pos.y
             self.pos.cx = self.pos.x
@@ -65,14 +74,12 @@ function SVGCurves:convertSvgToPoints(operations)
         end -- y param
         -- v line
         if i.command == 'v' then
-            _.push(self.data_, { self.pos.x, self.pos.y + i[1], 0 })
             self.pos.x = self.pos.x
             self.pos.y = self.pos.y + i[1]
             self.pos.cx = self.pos.x
             self.pos.cy = self.pos.y
         end
         if i.command == 'V' then
-            _.push(self.data_, { self.pos.x, i[1], 0 })
             self.pos.x = self.pos.x
             self.pos.y = i[1]
             self.pos.cx = self.pos.x
@@ -80,26 +87,26 @@ function SVGCurves:convertSvgToPoints(operations)
         end
         -- Cubic curveto C (c)
         if i.command == 'c' then
+           print("c")
             local sp = vec3(self.pos.x, self.pos.y, 0)
             local cp1 = vec3(self.pos.x + i[1], self.pos.y + i[2], 0)
             local cp2 = vec3(self.pos.x + i[3], self.pos.y + i[4], 0)
             local ep = vec3(self.pos.x + i[5], self.pos.y + i[6], 0)
             local a = self:cubicBezier(sp, cp1, cp2, ep, 0.5)
-            self:determineCurveRightSide(a, sp, cp1, cp2)
-            _.push(self.data_, { ep.x, ep.y, 0 })
+            self:determineCurveRightSide(a, sp, cp1, cp2, ep)
             self.pos.x = i[5] + self.pos.x
             self.pos.y = i[6] + self.pos.y
             self.pos.cx = i[3]  + self.pos.x
             self.pos.cy = i[4] + self.pos.y
         end
         if i.command == 'C' then
+           print("C")
             local sp = vec3(self.pos.x, self.pos.y, 0)
             local cp1 = vec3(i[1], i[2], 0)
             local cp2 = vec3(i[3], i[4], 0)
             local ep = vec3(i[5], i[6], 0)
             local a = self:cubicBezier(sp, cp1, cp2, ep, 0.5)
-            self:determineCurveRightSide(a, sp, cp1, cp2)
-            _.push(self.data_, { ep.x, ep.y, 0 })
+            self:determineCurveRightSide(a, sp, cp1, cp2, ep)
             self.pos.x = i[5]
             self.pos.y = i[6]
             self.pos.cx = i[3]
@@ -107,6 +114,7 @@ function SVGCurves:convertSvgToPoints(operations)
         end
         -- Cubic shorthand curveto S (s)
         if i.command == 's' then
+           print("s")
             -- take the previous control point and mirror
             local c1x, c1y
             c1x = ((self.pos.cx - self.pos.x) * -1) + self.pos.x
@@ -116,14 +124,15 @@ function SVGCurves:convertSvgToPoints(operations)
             local cp2 = vec3(self.pos.x + i[1], self.pos.y + i[2], 0)
             local ep = vec3(self.pos.x + i[3], self.pos.y + i[4], 0)
             local a = self:cubicBezier(sp, cp1, cp2, ep, 0.5)
-            self:determineCurveRightSide(a, sp, cp1, cp2)
-            _.push(self.data_, { ep.x, ep.y, 0 })
+            self:determineCurveRightSide(a, sp, cp1, cp2, ep)
+           
             self.pos.x = self.pos.x + i[3]
             self.pos.y = self.pos.y + i[4]
             self.pos.cx = self.pos.x + i[1]
             self.pos.cy = self.pos.y + i[2]
         end
         if i.command == 'S' then
+           print("S")
             local c1x = ((self.pos.cx - self.pos.x) * -1) + self.pos.x
             local c1y = ((self.pos.cy - self.pos.y) * -1) + self.pos.y
             local sp = vec3(self.pos.x, self.pos.y, 0)
@@ -131,7 +140,7 @@ function SVGCurves:convertSvgToPoints(operations)
             local cp2 = vec3(i[1], i[2], 0)
             local ep = vec3(i[3], i[4], 0)
             local a = self:cubicBezier(sp, cp1, cp2, ep, 0.5)
-            self:determineCurveRightSide(a, sp, cp1, cp2)
+            self:determineCurveRightSide(a, sp, cp1, cp2, ep)
             _.push(self.data_, { ep.x, ep.y, 0 })
             self.pos.x = i[3]
             self.pos.y = i[4]
@@ -144,22 +153,33 @@ function SVGCurves:convertSvgToPoints(operations)
 end
 
 
-function SVGCurves:determineCurveRightSide(midCurve, sp, cp1, cp2)
+function SVGCurves:determineCurveRightSide(midCurve, sp, cp1, cp2, ep)
     -- take the curve and determine from the mid point if curve is concave or convex
     local i = midCurve
     if (i.x < sp.x) then
         --convex (outside)
         --use midpoint
-        print('convex')
+        --print("out side ~ left!")
+        -- first triangle
+        _.push(self.data_, { sp.x, sp.y, sp.z })
+        _.push(self.data_, { cp1.x, cp1.y, cp1.z })
         _.push(self.data_, { i.x, i.y, i.z })
+        -- second triangle
+        _.push(self.data_, { i.x, i.y, i.z })
+        _.push(self.data_, { cp2.x, cp2.y, cp2.z })
+        _.push(self.data_, { ep.x, ep.y, ep.z })
     else
         --concave (inside
         --use two cps
-        print("concave")
-        -- here add center point
-
+        --print("inside side ~ right")
+        -- first triangle
+        _.push(self.data_, { sp.x, sp.y, sp.z })
+        _.push(self.data_, { cp1.x, cp1.y, cp1.z })
         _.push(self.data_, { i.x, i.y, i.z })
-        --_.push(self.data_, { cp2.x, cp2.y, cp2.z })
+        -- second triangle
+        _.push(self.data_, { i.x, i.y, i.z })
+        _.push(self.data_, { cp2.x, cp2.y, cp2.z })
+        _.push(self.data_, { ep.x, ep.y, ep.z })
     end
 end
 return SVGCurves;

@@ -23,8 +23,37 @@ function SVGHull:extract(svgStr)
     return self
 end
 
+function SVGHull:triangulate()
+    local subPath = 0
+    local subPaths = {}
+    local t
+    _.each(self.paths, function(data)
+           local data_ = _.flatten(data)
+           subPath = subPath + 1
+           if (_.is_empty(data) == false) then
+           local a = 0
+           data_ = _.select(data_, function(i) a = a + 1; return a % 3 ~= 0 end)
+           t = gpc.new():add(data_)
+           _.push(subPaths, t)
+           end
+           end)
+           
+           local pool = {};
+           local p = _.first(subPaths)
+           _.each(_.rest(subPaths), function(path)
+                  p = p * path;
+                  end)
+      self:plottri(pool, p:strip(), 0, 0, 0, 0);
+      self.data_ = pool
+      self.count = math.ceil(#pool / 3) -- this is cause there are three points to each vertex
+      self.points = #self.data_
+      self.vertices = self.data_
+end
+
+
 
 function SVGHull:convertSvgToPoints(operations)
+    inspect(operations)
     _.each(operations, function(i)
         if i.command == 'M' then
             _.push(self.data_, { i[1], i[2], 0 })
@@ -122,7 +151,7 @@ function SVGHull:convertSvgToPoints(operations)
             self.pos.y = self.pos.y + i[4]
             self.pos.cx = self.pos.x + i[1]
             self.pos.cy = self.pos.y + i[2]
-        end
+        end 
         if i.command == 'S' then
             local c1x = ((self.pos.cx - self.pos.x) * -1) + self.pos.x
             local c1y = ((self.pos.cy - self.pos.y) * -1) + self.pos.y
@@ -137,7 +166,7 @@ function SVGHull:convertSvgToPoints(operations)
             self.pos.y = i[4]
             self.pos.cx = i[1]
             self.pos.cy = i[2]
-        end
+        end 
     end)
 
     return operations
@@ -148,12 +177,12 @@ function SVGHull:determineCurveRightSide(midCurve, sp, cp1, cp2)
     -- take the curve and determine from the mid point if curve is concave or convex
     local i = midCurve
     if (i.x < sp.x) then
-        --convex (outside)
         --use midpoint
-        print('convex')
-        _.push(self.data_, { i.x, i.y, i.z })
+        print("convex")
+        _.push(self.data_, { cp1.x, cp1.y, cp1.z })
+        --_.push(self.data_, { midCurve.x, midCurve.y, midCurve.z })
+        _.push(self.data_, { cp2.x, cp2.y, cp2.z })
     else
-        --concave (inside
         --use two cps
         print("concave")
         _.push(self.data_, { cp1.x, cp1.y, cp1.z })

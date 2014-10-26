@@ -44,8 +44,12 @@ function Shader:create(name, vert, frag)
 end
 
 function Shader:setAttribute(name)
-    self.inputs[name] = gl.GetAttribLocation(self.program, name)
-    return self.inputs[name];
+    local l =  gl.GetAttribLocation(self.program, name)
+    self.inputs[name] = l
+    if(l == -1) then
+         print("gl error: gl attach attribute name", name, l)
+    end
+    return l;
 end
 
 function Shader:setUniform(name)

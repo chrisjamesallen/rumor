@@ -35,9 +35,7 @@ void emma_call( lua_State *L, int args, int returns ) {
     }
 }
 
-static const struct luaL_Reg emma[] = { { "delete", emma_gc },
-                                        { "__gc", emma_gc },
-                                        { NULL, NULL } };
+static const struct luaL_Reg emma[] = { { "delete", emma_gc }, { "__gc", emma_gc }, { NULL, NULL } };
 
 static int emma_new( lua_State *L ) {
     lua_getglobal( L, "newObject" );
@@ -104,10 +102,7 @@ static int systemMouse( lua_State *L ) {
     return 1;
 }
 
-static const struct luaL_Reg sys[] = { { "time", systemTime },
-                                       { "screen", systemScreen },
-                                       { "mouse", systemMouse },
-                                       { NULL, NULL } };
+static const struct luaL_Reg sys[] = { { "time", systemTime }, { "screen", systemScreen }, { "mouse", systemMouse }, { NULL, NULL } };
 
 
 void lua_initMain( lua_State *L ) {
@@ -175,7 +170,7 @@ lua_State *L;
 
     // add watcher support
 
-    kqueue = [UKKQueue sharedFileWatcher];
+    kqueue = [[VDKQueue alloc] init];
 
     // grab all lua files
 
@@ -183,17 +178,14 @@ lua_State *L;
     NSURL *bundleURL = [NSURL URLWithString:LUA_PATH];
     scriptURL = [[NSURL URLWithString:@"scripts/emma/" relativeToURL:bundleURL] retain];
     NSArray *contents =
-        [fileManager contentsOfDirectoryAtURL:scriptURL
-                   includingPropertiesForKeys:@[]
-                                      options:NSDirectoryEnumerationSkipsHiddenFiles
-                                        error:nil];
+        [fileManager contentsOfDirectoryAtURL:scriptURL includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pathExtension == 'lua'"];
 
     // add paths to file watcher object
 
     for ( NSURL *fileURL in [contents filteredArrayUsingPredicate:predicate] ) {
-        // NSLog( @"path %@", [fileURL path] );
+        NSLog( @"path %@", [fileURL path] );
         [kqueue addPath:[fileURL path]];
     }
 
@@ -208,11 +200,20 @@ lua_State *L;
 
     // check when file is changed..
 
-    [[[NSWorkspace sharedWorkspace] notificationCenter]
-        addObserver:self
-           selector:@selector( onFileChange )
-               name:UKFileWatcherWriteNotification
-             object:nil];
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                           selector:@selector( onFileChange )
+                                                               name:VDKQueueWriteNotification
+                                                             object:nil];
+
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                           selector:@selector( onFileChange )
+                                                               name:VDKQueueDeleteNotification
+                                                             object:nil];
+}
+
+- (void)VDKQueue:(VDKQueue *)queue receivedNotification:(NSString *)noteName forPath:(NSString *)fpath {
+
+    NSLog( @"change" );
 }
 
 
@@ -224,10 +225,7 @@ lua_State *L;
 
     // The global monitoring handler is *not* called for events sent to our
     // application
-    [NSEvent addGlobalMonitorForEventsMatchingMask:maskDown
-                                           handler:^( NSEvent *event ) {
-                                               AppState.pressed = YES;
-                                           }];
+    [NSEvent addGlobalMonitorForEventsMatchingMask:maskDown handler:^( NSEvent *event ) { AppState.pressed = YES; }];
 
     [NSEvent addGlobalMonitorForEventsMatchingMask:maskLift
                                            handler:^( NSEvent *event ) {
@@ -248,6 +246,7 @@ lua_State *L;
     FLUSHING = YES;
 
     printf( "\n file change... \n" );
+    [kqueue removeAllPaths];
     [view.openGLContext makeCurrentContext];
     [self onFileChange_tearDownLua];
     [self onFileChange_checkNewFiles];
@@ -265,10 +264,7 @@ lua_State *L;
     // Get files
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *contents =
-        [fileManager contentsOfDirectoryAtURL:scriptURL
-                   includingPropertiesForKeys:@[]
-                                      options:NSDirectoryEnumerationSkipsHiddenFiles
-                                        error:nil];
+        [fileManager contentsOfDirectoryAtURL:scriptURL includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
     // Filter to lua files
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pathExtension == 'lua'"];
 
@@ -277,16 +273,18 @@ lua_State *L;
         BOOL found;
         found = false;
         NSString *path = [fileURL path];
-        for ( NSString *p in kqueue->watchedPaths ) {
-            if ( [p isEqualToString:path] ) {
-                found = true;
-            }
-        }
-
-        if ( !found ) {
-            NSLog( @"newbie lu file %@", [fileURL path] );
-            [kqueue addPath:path];
-        }
+        //        for ( NSString *p in kqueue->watchedPaths ) {
+        //            if ( [p isEqualToString:path] ) {
+        //                found = true;
+        //            }
+        //        }
+        //
+        //        if ( !found ) {
+        //            NSLog( @"newbie lu file %@", [fileURL path] );
+        //        }
+        // new kqueue means to add each time to resolve atomic temp file saves
+        NSLog( @"path %@", path );
+        [kqueue addPath:path];
     }
 }
 

@@ -20,7 +20,7 @@ clock = os.clock
 
 function main()
     app = App:new()
-
+  
 end
 
 function update (delta,runTime,pos)

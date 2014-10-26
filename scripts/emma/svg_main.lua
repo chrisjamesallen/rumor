@@ -9,9 +9,9 @@ function SVG:init()
 end
 
 function SVG:extract(str)
-    --local data = self.hull:extract(str)
+    -- local data = self.hull:extract(str)
     local data = self.curves.concave:extract(str)
-    print("finish extract")
+    print("finish extract baby")
     return data;
 end
 
@@ -38,6 +38,7 @@ function SVGShape:closeSubPath(operations)
         return nil
     end
     self:convertSvgToPoints(operations)
+   -- inspect(self.data_)
     self.data_ = _.flatten(self.data_)
     self:normalizeData(self.data_)
     self.paths[self.data_index] = self.data_

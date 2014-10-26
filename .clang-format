@@ -5,7 +5,7 @@ BreakBeforeBraces: Attach
 AllowShortIfStatementsOnASingleLine: false
 IndentCaseLabels: false
 AllowShortBlocksOnASingleLine: false
-ColumnLimit: 90
+ColumnLimit: 150
 BreakBeforeBinaryOperators: false     
 AlwaysBreakTemplateDeclarations: true  
 AllowShortLoopsOnASingleLine: false 

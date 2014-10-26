@@ -59,12 +59,8 @@
 		BC438CE218FC982400AA5D15 /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = BC438C9C18FC982400AA5D15 /* lundump.c */; };
 		BC438CE418FC982400AA5D15 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = BC438C9F18FC982400AA5D15 /* lvm.c */; };
 		BC438CE618FC982400AA5D15 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = BC438CA218FC982400AA5D15 /* lzio.c */; };
-		BC438CF218FC9E8100AA5D15 /* UKFileWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = BC438CEA18FC9E8100AA5D15 /* UKFileWatcher.m */; };
-		BC438CF318FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = BC438CEC18FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m */; };
-		BC438CF418FC9E8100AA5D15 /* UKKQueue Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC438CED18FC9E8100AA5D15 /* UKKQueue Readme.txt */; };
-		BC438CF518FC9E8100AA5D15 /* UKKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC438CEF18FC9E8100AA5D15 /* UKKQueue.m */; };
-		BC438CF618FC9E8100AA5D15 /* UKMainThreadProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */; };
 		BC74ACA719449627006D8543 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = BC74ACA619449627006D8543 /* scripts */; };
+		BC88FF5519FC490D00F1AE86 /* VDKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC88FF5419FC490D00F1AE86 /* VDKQueue.m */; };
 		BCDE08D018DDF05F002587B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */; };
 		BCDE08D218DDF07C002587B8 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08D118DDF07C002587B8 /* Quartz.framework */; };
 		BCDE08D418DDF0B6002587B8 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08D318DDF0B6002587B8 /* GLKit.framework */; };
@@ -218,18 +214,11 @@
 		BC438CA218FC982400AA5D15 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
 		BC438CA318FC982400AA5D15 /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		BC438CA418FC982400AA5D15 /* lzio.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = lzio.o; sourceTree = "<group>"; };
-		BC438CE918FC9E8100AA5D15 /* UKFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKFileWatcher.h; sourceTree = "<group>"; };
-		BC438CEA18FC9E8100AA5D15 /* UKFileWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKFileWatcher.m; sourceTree = "<group>"; };
-		BC438CEB18FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKFNSubscribeFileWatcher.h; sourceTree = "<group>"; };
-		BC438CEC18FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKFNSubscribeFileWatcher.m; sourceTree = "<group>"; };
-		BC438CED18FC9E8100AA5D15 /* UKKQueue Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UKKQueue Readme.txt"; sourceTree = "<group>"; };
-		BC438CEE18FC9E8100AA5D15 /* UKKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKKQueue.h; sourceTree = "<group>"; };
-		BC438CEF18FC9E8100AA5D15 /* UKKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKKQueue.m; sourceTree = "<group>"; };
-		BC438CF018FC9E8100AA5D15 /* UKMainThreadProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKMainThreadProxy.h; sourceTree = "<group>"; };
-		BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKMainThreadProxy.m; sourceTree = "<group>"; };
 		BC663FB918F9C7D3001DB2C3 /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = "../../Downloads/lua-5.2.3/src/liblua.a"; sourceTree = "<group>"; };
 		BC74ACA619449627006D8543 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		BC8795461972EB4800C50ED8 /* svg.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = svg.lua; path = scripts/emma/svg.lua; sourceTree = "<group>"; };
+		BC88FF5319FC490D00F1AE86 /* VDKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKQueue.h; sourceTree = "<group>"; };
+		BC88FF5419FC490D00F1AE86 /* VDKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKQueue.m; sourceTree = "<group>"; };
 		BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCDE08D118DDF07C002587B8 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BCDE08D318DDF0B6002587B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -427,9 +416,9 @@
 		BC1410091972E07900CBA0E2 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				BC88FF5219FC490D00F1AE86 /* queue */,
 				BC14100F1972E33600CBA0E2 /* gpc */,
 				BCE3FCAC195A21FE00A3A7FF /* kazmath */,
-				BC438CE818FC9E8100AA5D15 /* UKKQueue */,
 				BC438C4818FC982400AA5D15 /* lua */,
 			);
 			name = vendor;
@@ -565,21 +554,13 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		BC438CE818FC9E8100AA5D15 /* UKKQueue */ = {
+		BC88FF5219FC490D00F1AE86 /* queue */ = {
 			isa = PBXGroup;
 			children = (
-				BC438CE918FC9E8100AA5D15 /* UKFileWatcher.h */,
-				BC438CEA18FC9E8100AA5D15 /* UKFileWatcher.m */,
-				BC438CEB18FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.h */,
-				BC438CEC18FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m */,
-				BC438CED18FC9E8100AA5D15 /* UKKQueue Readme.txt */,
-				BC438CEE18FC9E8100AA5D15 /* UKKQueue.h */,
-				BC438CEF18FC9E8100AA5D15 /* UKKQueue.m */,
-				BC438CF018FC9E8100AA5D15 /* UKMainThreadProxy.h */,
-				BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */,
+				BC88FF5319FC490D00F1AE86 /* VDKQueue.h */,
+				BC88FF5419FC490D00F1AE86 /* VDKQueue.m */,
 			);
-			name = UKKQueue;
-			path = ../rumor/UKKQueue;
+			path = queue;
 			sourceTree = "<group>";
 		};
 		BCE3FCAC195A21FE00A3A7FF /* kazmath */ = {
@@ -686,7 +667,6 @@
 				72AF16694FB538CED698330B /* Credits.rtf in Resources */,
 				72AF1CFCC850CA72EEE269F2 /* default.fsh in Resources */,
 				72AF1552931FC6E1DEF5DA68 /* default.vsh in Resources */,
-				BC438CF418FC9E8100AA5D15 /* UKKQueue Readme.txt in Resources */,
 				72AF18E884D03F93886F1BA4 /* .editorconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,6 +681,7 @@
 				BCE3FCD3195A21FE00A3A7FF /* ray3.c in Sources */,
 				BCE3FCD5195A21FE00A3A7FF /* vec2.c in Sources */,
 				BCF7D6ED1944A4F600B7F453 /* luagl.m in Sources */,
+				BC88FF5519FC490D00F1AE86 /* VDKQueue.m in Sources */,
 				BC438CC818FC982400AA5D15 /* lmem.c in Sources */,
 				BC438CCE18FC982400AA5D15 /* lopcodes.c in Sources */,
 				BC438CCC18FC982400AA5D15 /* lobject.c in Sources */,
@@ -715,7 +696,6 @@
 				BC438CD818FC982400AA5D15 /* lstrlib.c in Sources */,
 				72AF139ABEED6C9736EF9F6F /* EmmaGLView.m in Sources */,
 				72AF18F99137FCA1F6743C9F /* main.m in Sources */,
-				BC438CF618FC9E8100AA5D15 /* UKMainThreadProxy.m in Sources */,
 				BC438CB318FC982400AA5D15 /* ldblib.c in Sources */,
 				BC438CDE18FC982400AA5D15 /* ltm.c in Sources */,
 				BCE3FCD2195A21FE00A3A7FF /* ray2.c in Sources */,
@@ -729,7 +709,6 @@
 				BC438CDA18FC982400AA5D15 /* ltable.c in Sources */,
 				BC14100E1972E33000CBA0E2 /* gpc.c in Sources */,
 				BCE3FCCC195A21FE00A3A7FF /* mat4stack.c in Sources */,
-				BC438CF318FC9E8100AA5D15 /* UKFNSubscribeFileWatcher.m in Sources */,
 				BCE3FCD1195A21FE00A3A7FF /* quaternion.c in Sources */,
 				BCE3FCD4195A21FE00A3A7FF /* utility.c in Sources */,
 				BC438CC218FC982400AA5D15 /* liolib.c in Sources */,
@@ -752,8 +731,6 @@
 				BC438CD018FC982400AA5D15 /* loslib.c in Sources */,
 				72AF12BD14D286F5E3C798B8 /* texture.m in Sources */,
 				BC438CC018FC982400AA5D15 /* linit.c in Sources */,
-				BC438CF518FC9E8100AA5D15 /* UKKQueue.m in Sources */,
-				BC438CF218FC9E8100AA5D15 /* UKFileWatcher.m in Sources */,
 				BCE3FCDA195A222300A3A7FF /* emma_mat4.m in Sources */,
 				BC438CB718FC982400AA5D15 /* ldo.c in Sources */,
 				BC438CA518FC982400AA5D15 /* lapi.c in Sources */,

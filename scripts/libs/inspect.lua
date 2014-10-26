@@ -287,7 +287,7 @@ function inspect.inspect(rootObject, options)
   end
 
   putValue(rootObject, {})
-
+  print(table.concat(buffer))
   return table.concat(buffer)
 end
 
