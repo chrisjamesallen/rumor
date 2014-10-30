@@ -64,6 +64,7 @@
 		BC438CF418FC9E8100AA5D15 /* UKKQueue Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC438CED18FC9E8100AA5D15 /* UKKQueue Readme.txt */; };
 		BC438CF518FC9E8100AA5D15 /* UKKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC438CEF18FC9E8100AA5D15 /* UKKQueue.m */; };
 		BC438CF618FC9E8100AA5D15 /* UKMainThreadProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */; };
+		BC4C47151A02E8F20030AE47 /* EmmaView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C47141A02E8F20030AE47 /* EmmaView.m */; };
 		BC74ACA719449627006D8543 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = BC74ACA619449627006D8543 /* scripts */; };
 		BCDE08D018DDF05F002587B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08CF18DDF05F002587B8 /* QuartzCore.framework */; };
 		BCDE08D218DDF07C002587B8 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE08D118DDF07C002587B8 /* Quartz.framework */; };
@@ -229,6 +230,8 @@
 		BC438CEF18FC9E8100AA5D15 /* UKKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKKQueue.m; sourceTree = "<group>"; };
 		BC438CF018FC9E8100AA5D15 /* UKMainThreadProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKMainThreadProxy.h; sourceTree = "<group>"; };
 		BC438CF118FC9E8100AA5D15 /* UKMainThreadProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKMainThreadProxy.m; sourceTree = "<group>"; };
+		BC4C47131A02E8F20030AE47 /* EmmaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmmaView.h; sourceTree = "<group>"; };
+		BC4C47141A02E8F20030AE47 /* EmmaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmmaView.m; sourceTree = "<group>"; };
 		BC663FB918F9C7D3001DB2C3 /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = "../../Downloads/lua-5.2.3/src/liblua.a"; sourceTree = "<group>"; };
 		BC74ACA619449627006D8543 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		BC8795461972EB4800C50ED8 /* svg.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = svg.lua; path = scripts/emma/svg.lua; sourceTree = "<group>"; };
@@ -366,6 +369,8 @@
 			children = (
 				72AF1728AC4CD3A035E2EB97 /* main.m */,
 				72AF1042F698081DF1660915 /* app.m */,
+				BC4C47131A02E8F20030AE47 /* EmmaView.h */,
+				BC4C47141A02E8F20030AE47 /* EmmaView.m */,
 				72AF128DA5A06EE92305716E /* app.h */,
 			);
 			name = main;
@@ -697,6 +702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC4C47151A02E8F20030AE47 /* EmmaView.m in Sources */,
 				BCE3FCD3195A21FE00A3A7FF /* ray3.c in Sources */,
 				BCE3FCD5195A21FE00A3A7FF /* vec2.c in Sources */,
 				BCF7D6ED1944A4F600B7F453 /* luagl.m in Sources */,

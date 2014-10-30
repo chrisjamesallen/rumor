@@ -5,12 +5,14 @@
 
 
 #import "app.h"
-#import "Emma.h"
+#import "EmmaView.h"
 #import <WebKit/WebKit.h>
 
 @implementation App
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    ProcessSerialNumber psn = { 0, kCurrentProcess };
+    TransformProcessType( &psn, kProcessTransformToUIElementApplication );
     [self configureWindow];
     // [self setupDirector];
 }
@@ -21,15 +23,15 @@
     [self.window setOpaque:NO];
     NSColor *transparent = [NSColor colorWithCalibratedWhite:1.0 alpha:0.0];
     [self.window setBackgroundColor:transparent];
-    // frame = CGRectMake( 0, 0, 500, 500 );
-    //[self.window setFrame:frame display:YES];
-    [self.window setLevel:kCGFloatingWindowLevelKey];
+    CGRect frame = CGRectMake( 0, 0, 500, 500 );
+    [self.window setFrame:frame display:YES];
+    //[self.window setLevel:kCGFloatingWindowLevelKey];
 
+    [self.window setStyleMask:NSBorderlessWindowMask];
+    EmmaView *view =
+        [[EmmaView alloc] initWithFrame:self.window.frame frameName:@"" groupName:@""];
 
-    WebView *view =
-        [[WebView alloc] initWithFrame:self.window.frame frameName:@"" groupName:@""];
-
-    NSURL *url = [NSURL URLWithString:@"http://localhost:3000"];
+    NSURL *url = [NSURL URLWithString:@"http://localhost:9000"];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [[view mainFrame] loadRequest:urlRequest];
     [self.window setContentView:view];
