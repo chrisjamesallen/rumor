@@ -9,10 +9,11 @@
         self.meshes = {};
         self.meshes.hull = {}
         self.dataSets = {};
-        self.texCoords = {1.0,1.0, 1.0,0.0, 0.0,0.0};
+        self.texCoords = {0.0,0.0, 0.0,0.5, 1.0,1.0};
         --setup shader
-        local shader = self:addShader('default');
-        self.shaders.default = shader;
+        local shader;
+        self:addShader('curve',GLSL_V_CURVE, GLSL_F_CURVE);
+        self:addShader('hull',VERTSTR, FRAGSTR);
 
         local a= "M47.8,110.8l25.3-40.4c0,0-2.2,60,52,37.8 s-7.1,69.3 -7.1,69.3 l-65.3-2.7L47.8,110.8z"
         local str = "M55.7,131.1c0.4,24.4,16,34.4,34,34.4c12.9,0,20.7-2.3,27.4-5.1l3.1,12.9c-6.4,2.9-17.2,6.2-33,6.2c-30.5,0-48.7-20.1-48.7-50s17.6-53.4,46.5-53.4c32.4,0,41,28.5,41,46.7c0,3.7-0.4,6.6-0.6,8.4H55.7z"
@@ -23,81 +24,91 @@
 
         -- make vao
         local svg = SVG:new();
-        local data = svg:extract(self.str);
-        
-        self.vao = gl.GenVertexArrays()
-        gl.BindVertexArray(self.vao)
+        svg:extract(self.str);
+        self.vaoCurves = gl.GenVertexArrays()
+        self.vaoHull = gl.GenVertexArrays()
         
         -- attach hull
-        self:attachData("position",data,shader, 3);
-        -- attach concave
-        
-        -- attach convex
-        
+        self.shaders.hull:use()
+        data = svg.hullData
+        gl.BindVertexArray(self.vaoHull)
+        self:attachData("position",data.vertices,self.shaders.hull,3);
+        self.hullCount = data.count
         gl.BindVertexArray(0);
-        
 
+
+        -- attach curves
+        self.shaders.curve:use()
+        data = svg.curveData
+        gl.BindVertexArray(self.vaoCurves)
+        self:attachData("texCoord",data.texCoords,self.shaders.curve,3);
+        self:attachData("position",data.vertices,self.shaders.curve,3);
+        self.curveCount = data.count
+        gl.BindVertexArray(0);
+  
         -- create geometry
         self.geometry = {}
         self.geometry.mv = mat4();
         self.geometry.pr = mat4:CreateProjection(150, System.screen().height / System.screen().width, 0, 1000);
     end
 
-    function Em:addShader(name)
-        local p = shader(name)
-        _.push(self.shaders, p);
+    function Em:addShader(name, vert, frag)
+        local p = shader(name, vert, frag)
+        self.shaders[name] = p;
         return p
     end
 
 
-    function Em:attachData(name, dataSet, shader, verts)
+    function Em:attachData(name, dataSet, shader, size)
         local shaderLoc;
-        if(self.dataSets[name] == nil) then
-            self.dataSets[name] = {}
-        end
-        data = self.dataSets[name]
+        self.dataSets[name] = {}
+        local data = self.dataSets[name]
         data.count = dataSet.count
-        data.vertices = array.new(dataSet.vertices)
-    --    print("dataset",#_.keys(self.dataSets))
-
+        data.vertices = array.new(dataSet)
+        --print("dataset",#dataSet)
         data.vbo = gl.GenBuffers()
         gl.BindBuffer(gl.ARRAY_BUFFER, data.vbo)
         data.cRef = gl.CopyData(data.vertices, array.len(data.vertices));
-        gl.BufferData(gl.ARRAY_BUFFER, 4*verts*array.len(data.vertices), data.cRef, gl.DYNAMIC_DRAW )
+        gl.BufferData(gl.ARRAY_BUFFER, 4*size*array.len(data.vertices), data.cRef, gl.DYNAMIC_DRAW )
         data.shaderLoc = shader:setAttribute(name)
-       
+        data.name = name
         gl.EnableVertexAttribArray(data.shaderLoc)
-        gl.VertexAttribPointer(0,3,gl.FLOAT,gl.FALSE,0,0)
+        gl.VertexAttribPointer(data.shaderLoc,size,gl.FLOAT,gl.FALSE,0,0)
+        inspect(data)
+        gl.BindBuffer(gl.ARRAY_BUFFER, nil)
         
     end
 
     function Em:draw()
         local shader, m
-          
-        shader = self.shaders.default;
+        
+  
+        -- CURVE
+        shader = self.shaders.curve;
         shader:use()
-        gl.PointSize(5)
-
         -- go through data sets and bind
-        gl.BindVertexArray(self.vao);
-      
+        gl.BindVertexArray(self.vaoCurves);
         -- set geometry
         m = matrix:get('mv');
         m:translate(0.5, 0, 0);
         gl.UniformMatrix4fv(shader.inputs.mvpm, 1, 0, matrix:get('mv'));
-
-        -- set color
-        local uniformColorLoc = gl.GetUniformLocation(shader.program, "color");
-        local color = vec3(1.0,0.0,1.0);
-        gl.Uniform3fv(uniformColorLoc,color);
-
         -- draw
-        gl.DrawArrays(gl.TRIANGLES, 0, data.count);
+        gl.DrawArrays(gl.TRIANGLES, 0, self.curveCount);
+        gl.BindVertexArray(0);
+ 
+ 
+        -- HULL
+        shader = self.shaders.hull;
+        shader:use()
+        -- go through data sets and bind
+        gl.BindVertexArray(self.vaoHull);
+        -- set geometry
+        m = matrix:get('mv');
+        gl.UniformMatrix4fv(shader.inputs.mvpm, 1, 0, matrix:get('mv'));
+        -- draw
+        gl.DrawArrays(gl.TRIANGLES, 0, self.hullCount);
         gl.BindVertexArray(0);
 
-
-        _.each(_.keys(self.dataSets), function(data) end)
-            
 
     end
 
@@ -124,5 +135,10 @@
     return Em
 
 
-
+--[[
+-- set color
+local uniformColorLoc = gl.GetUniformLocation(shader.program, "color");
+local color = vec3(1.0,0.0,1.0);
+gl.Uniform3fv(uniformColorLoc,color);
+--]]
 

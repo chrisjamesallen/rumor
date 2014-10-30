@@ -28,7 +28,7 @@ function App:update(delta)
     local r = (math.sin(a) * 127 + 128) / 255
     local g = (math.sin(a + 255) * 127 + 128) / 255
     local b = (math.sin(a + 100) * 127 + 128) / 255
-    gl.ClearColor(r, g, b, 1)
+    gl.ClearColor(r, g, b,1)
     gl.Clear(gl.COLOR_BUFFER_BIT);
     local triangle = self.objects[1]
     triangle = self.objects[1]

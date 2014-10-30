@@ -179,9 +179,9 @@ function SVGHull:determineCurveRightSide(midCurve, sp, cp1, cp2)
     if (i.x < sp.x) then
         --use midpoint
         print("convex")
-        _.push(self.data_, { cp1.x, cp1.y, cp1.z })
-        --_.push(self.data_, { midCurve.x, midCurve.y, midCurve.z })
-        _.push(self.data_, { cp2.x, cp2.y, cp2.z })
+        --_.push(self.data_, { cp1.x, cp1.y, cp1.z })
+        _.push(self.data_, { midCurve.x, midCurve.y, midCurve.z })
+        --_.push(self.data_, { cp2.x, cp2.y, cp2.z })
     else
         --use two cps
         print("concave")

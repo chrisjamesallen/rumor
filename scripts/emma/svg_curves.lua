@@ -28,10 +28,18 @@ function SVGCurves:triangulate()
     _.each(self.paths, function(path)
          _.push(data, path)
     end)
- 
     self.data_ = _.flatten(self.paths);
       self.count = math.ceil(#self.data_ / 3) -- this is cause there are three points to each vertex
+    -- for every three floats, create {0.0,0.0, 0.0,0.5, 1.0,1.0}
+    local texCoordsStride = math.ceil(self.count / 3)
+    local texCoords = {}
+    _.each(_.range(texCoordsStride), function(a)
+         _.push(texCoords, {1.0,1.0, 0.5,0,0,0})  
+     end)
+     inspect(self.texData);
+     texCoords = _.flatten(self.texData);
       self.points = #self.data_
+      self.texCoords = texCoords
       self.vertices = self.data_
 end
 
@@ -93,6 +101,7 @@ function SVGCurves:convertSvgToPoints(operations)
             local cp2 = vec3(self.pos.x + i[3], self.pos.y + i[4], 0)
             local ep = vec3(self.pos.x + i[5], self.pos.y + i[6], 0)
             local a = self:cubicBezier(sp, cp1, cp2, ep, 0.5)
+            local b = cp2:mix(cp1, 0.5)
             self:determineCurveRightSide(a, sp, cp1, cp2, ep)
             self.pos.x = i[5] + self.pos.x
             self.pos.y = i[6] + self.pos.y
@@ -106,6 +115,7 @@ function SVGCurves:convertSvgToPoints(operations)
             local cp2 = vec3(i[3], i[4], 0)
             local ep = vec3(i[5], i[6], 0)
             local a = self:cubicBezier(sp, cp1, cp2, ep, 0.5)
+            local b = cp2:mix(cp1, 0.5)
             self:determineCurveRightSide(a, sp, cp1, cp2, ep)
             self.pos.x = i[5]
             self.pos.y = i[6]
@@ -153,6 +163,7 @@ function SVGCurves:convertSvgToPoints(operations)
 end
 
 
+
 function SVGCurves:determineCurveRightSide(midCurve, sp, cp1, cp2, ep)
     -- take the curve and determine from the mid point if curve is concave or convex
     local i = midCurve
@@ -164,22 +175,38 @@ function SVGCurves:determineCurveRightSide(midCurve, sp, cp1, cp2, ep)
         _.push(self.data_, { sp.x, sp.y, sp.z })
         _.push(self.data_, { cp1.x, cp1.y, cp1.z })
         _.push(self.data_, { i.x, i.y, i.z })
+        self:tex(1)
+
         -- second triangle
         _.push(self.data_, { i.x, i.y, i.z })
         _.push(self.data_, { cp2.x, cp2.y, cp2.z })
         _.push(self.data_, { ep.x, ep.y, ep.z })
+        self:tex(1)
+
     else
         --concave (inside
         --use two cps
-        --print("inside side ~ right")
+        print("inside side ~ right")
         -- first triangle
         _.push(self.data_, { sp.x, sp.y, sp.z })
         _.push(self.data_, { cp1.x, cp1.y, cp1.z })
         _.push(self.data_, { i.x, i.y, i.z })
+        self:tex(0)
         -- second triangle
         _.push(self.data_, { i.x, i.y, i.z })
         _.push(self.data_, { cp2.x, cp2.y, cp2.z })
         _.push(self.data_, { ep.x, ep.y, ep.z })
+        self:tex(0)
     end
 end
+
+
+function SVGCurves:tex(side)
+    if(side==1) then
+        _.push(self.texData, {1,1,0,  0.5,0,0, 0,0,0})
+    else
+        _.push(self.texData, {1,1,1,  0.5,0,1, 0,0,1})
+    end
+end
+
 return SVGCurves;

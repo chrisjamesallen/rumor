@@ -9,8 +9,8 @@ function SVG:init()
 end
 
 function SVG:extract(str)
-    -- local data = self.hull:extract(str)
-    local data = self.curves.concave:extract(str)
+    self.hullData = self.hull:extract(str)
+    self.curveData = self.curves.concave:extract(str)
     print("finish extract baby")
     return data;
 end
@@ -23,6 +23,7 @@ function SVGShape:init()
     self.pos = {x=0,y=0,cx=0,cy=0};
     self.startPos = {};
     self.paths = {};
+    self.texData = {}
     return self; --
 end
 
